@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Daehyeon Kim | Personal Website</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+      color: #1f2937;
+      background: #f8fafc;
+    }
+
+    header {
+      background: #0f172a;
+      color: white;
+      padding: 70px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 42px;
+      margin-bottom: 12px;
+    }
+
+    header p {
+      font-size: 18px;
+      color: #cbd5e1;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    nav {
+      background: white;
+      border-bottom: 1px solid #e5e7eb;
+      padding: 14px 20px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+    }
+
+    nav a {
+      color: #334155;
+      text-decoration: none;
+      margin: 0 14px;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    nav a:hover {
+      color: #2563eb;
+    }
+
+    section {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 55px 20px;
+    }
+
+    h2 {
+      font-size: 28px;
+      margin-bottom: 20px;
+      color: #0f172a;
+      border-bottom: 2px solid #e5e7eb;
+      padding-bottom: 10px;
+    }
+
+    .card {
+      background: white;
+      padding: 26px;
+      margin-bottom: 22px;
+      border-radius: 16px;
+      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08);
+    }
+
+    .card h3 {
+      color: #111827;
+      margin-bottom: 10px;
+      font-size: 21px;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #e0f2fe;
+      color: #0369a1;
+      padding: 5px 10px;
+      border-radius: 999px;
+      font-size: 13px;
+      margin: 5px 5px 5px 0;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 22px;
+    }
+
+    .button {
+      display: inline-block;
+      margin-top: 16px;
+      padding: 11px 18px;
+      background: #2563eb;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+
+    .button:hover {
+      background: #1d4ed8;
+    }
+
+    footer {
+      text-align: center;
+      padding: 35px 20px;
+      background: #0f172a;
+      color: #cbd5e1;
+      font-size: 14px;
+    }
+
+    ul {
+      margin-left: 20px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>Daehyeon Kim</h1>
+    <p>
+      Mechanical Engineering Researcher interested in soft electronics,
+      laser-based microfabrication, fiber-shaped devices, and wearable electronic systems.
+    </p>
+  </header>
+
+  <nav>
+    <a href="#about">About</a>
+    <a href="#research">Research</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#cv">CV</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <section id="about">
+    <h2>About</h2>
+    <div class="card">
+      <p>
+        I am a mechanical engineering researcher with experience in advanced materials,
+        soft electronic devices, and laser-based microfabrication. My research focuses on
+        developing micro/nanoscale conductive structures on flexible and fiber-shaped
+        platforms for next-generation wearable and soft electronic systems.
+      </p>
+      <br>
+      <p>
+        My current work explores laser-written silver electrodes on single microfibers,
+        material design for soft electronic interfaces, and functional device integration
+        using flexible conductive materials.
+      </p>
+    </div>
+  </section>
+
+  <section id="research">
+    <h2>Research Interests</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Laser Microfabrication</h3>
+        <p>
+          Laser direct writing, localized material activation, and selective electrode
+          formation on curved or fiber-shaped substrates.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Soft Electronics</h3>
+        <p>
+          Development of flexible, stretchable, and conformable electronic systems for
+          wearable devices, sensors, and robotic interfaces.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Fiber-shaped Devices</h3>
+        <p>
+          Functional electrodes and passive electronic components integrated onto
+          single-fiber platforms.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>Featured Projects</h2>
+
+    <div class="card">
+      <h3>Laser-written Silver Electrodes on Single Microfibers</h3>
+      <p>
+        Developed a laser-induced fabrication strategy for forming conductive silver
+        pathways on individual nylon microfibers using a laser-reactive composite coating.
+        This work aims to enable fiber-shaped electronic devices with localized,
+        mask-free, and designable electrode patterns.
+      </p>
+      <span class="tag">Laser direct writing</span>
+      <span class="tag">Silver electrodes</span>
+      <span class="tag">Microfiber electronics</span>
+      <span class="tag">Soft electronics</span>
+    </div>
+
+    <div class="card">
+      <h3>Capacitive Tactile Sensor Array for Robotic Grippers</h3>
+      <p>
+        Designed and integrated flexible capacitive tactile sensors into soft robotic
+        finger structures for force sensing and object-interaction demonstrations.
+      </p>
+      <span class="tag">Capacitive sensor</span>
+      <span class="tag">Soft robotics</span>
+      <span class="tag">Tactile sensing</span>
+    </div>
+
+    <div class="card">
+      <h3>Thermal Simulation of Laser-induced Material Activation</h3>
+      <p>
+        Conducted thermal analysis to understand how laser power, scan speed, scan count,
+        and optical absorption affect localized heating and thermal diffusion in coated
+        microfiber systems.
+      </p>
+      <span class="tag">COMSOL</span>
+      <span class="tag">Heat transfer</span>
+      <span class="tag">Photothermal effect</span>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="card">
+      <h3>Fabrication</h3>
+      <p>
+        Laser direct writing, dip coating, spin coating, soft lithography,
+        conductive composite preparation, and flexible device integration.
+      </p>
+      <br>
+
+      <h3>Characterization</h3>
+      <p>
+        SEM, EDS, XPS, FT-IR, UV-vis spectroscopy, electrical resistance measurement,
+        and capacitive sensing evaluation.
+      </p>
+      <br>
+
+      <h3>Simulation & Design</h3>
+      <p>
+        COMSOL thermal simulation, SolidWorks-based design, device structure design,
+        and experimental system configuration.
+      </p>
+    </div>
+  </section>
+
+  <section id="cv">
+    <h2>CV</h2>
+    <div class="card">
+      <p>
+        My curriculum vitae will be available here.
+      </p>
+      <a class="button" href="#">Download CV</a>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <div class="card">
+      <p><strong>Email:</strong> your-email@example.com</p>
+      <p><strong>GitHub:</strong> https://github.com/daehyeon-ko</p>
+      <p><strong>Google Scholar:</strong> Add your Google Scholar link here</p>
+      <p><strong>LinkedIn:</strong> Add your LinkedIn link here</p>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 Daehyeon Kim. All rights reserved.
+  </footer>
+
+</body>
+</html>
