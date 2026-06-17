@@ -441,10 +441,46 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      z-index: 1002;
     }
 
     .modal-close:hover {
       background: rgba(255, 255, 255, 0.28);
+    }
+
+    .modal-nav {
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 48px;
+      height: 48px;
+      border: none;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.16);
+      color: white;
+      font-size: 34px;
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1002;
+      line-height: 1;
+    }
+
+    .modal-nav:hover {
+      background: rgba(255, 255, 255, 0.28);
+    }
+
+    .modal-nav.prev {
+      left: 26px;
+    }
+
+    .modal-nav.next {
+      right: 26px;
+    }
+
+    .modal-nav.active {
+      display: flex;
     }
 
     .modal-caption {
@@ -455,6 +491,7 @@
       color: #e2e8f0;
       text-align: center;
       font-size: 14px;
+      z-index: 1002;
     }
 
     .tag {
@@ -624,6 +661,20 @@
       .modal-close {
         top: 14px;
         right: 14px;
+      }
+
+      .modal-nav {
+        width: 40px;
+        height: 40px;
+        font-size: 28px;
+      }
+
+      .modal-nav.prev {
+        left: 12px;
+      }
+
+      .modal-nav.next {
+        right: 12px;
       }
     }
   </style>
@@ -797,7 +848,7 @@
       </div>
 
       <div class="research-text">
-        <h3>Fast Synthesis of Metal Nanoparticle Ink and Flexible Electrodes</h3>
+        <h3>Metal Nanoparticles Synthesis and Flexible Electrode Fabrication</h3>
         <p>
           Developed a rapid synthesis strategy for metal nanoparticle-based conductive ink
           and flexible electrodes. This work aims to support scalable materials processing
@@ -918,14 +969,19 @@
 
   <div class="image-modal" id="image-modal">
     <button class="modal-close" type="button" id="modal-close" aria-label="Close image">×</button>
+    <button class="modal-nav prev" type="button" id="modal-prev" aria-label="Previous image">‹</button>
     <img id="modal-image" src="" alt="">
+    <button class="modal-nav next" type="button" id="modal-next" aria-label="Next image">›</button>
     <div class="modal-caption" id="modal-caption"></div>
   </div>
 
   <script>
     const imageExtensions = ["png", "jpg", "jpeg", "gif", "webp"];
     const normalImageDuration = 3000;
-    const gifImageDuration = 5000;
+    const gifImageDuration = 8000;
+
+    let modalGallery = [];
+    let modalIndex = 0;
 
     function findImageSource(basePath) {
       return new Promise(function(resolve) {
@@ -967,19 +1023,41 @@
       return normalImageDuration;
     }
 
-    function openImageModal(src, altText) {
-      const modal = document.getElementById("image-modal");
+    function updateModalImage() {
       const modalImage = document.getElementById("modal-image");
       const modalCaption = document.getElementById("modal-caption");
+      const modalPrev = document.getElementById("modal-prev");
+      const modalNext = document.getElementById("modal-next");
 
-      if (!modal || !modalImage) return;
+      if (!modalImage || modalGallery.length === 0) return;
 
-      modalImage.src = src;
-      modalImage.alt = altText || "Research image";
+      const currentSrc = modalGallery[modalIndex];
+
+      modalImage.src = currentSrc;
+      modalImage.alt = `Research image ${modalIndex + 1}`;
 
       if (modalCaption) {
-        modalCaption.textContent = altText || "";
+        modalCaption.textContent = `Research image ${modalIndex + 1} / ${modalGallery.length}`;
       }
+
+      if (modalGallery.length > 1) {
+        if (modalPrev) modalPrev.classList.add("active");
+        if (modalNext) modalNext.classList.add("active");
+      } else {
+        if (modalPrev) modalPrev.classList.remove("active");
+        if (modalNext) modalNext.classList.remove("active");
+      }
+    }
+
+    function openImageModal(gallerySources, startIndex) {
+      const modal = document.getElementById("image-modal");
+
+      if (!modal || !gallerySources || gallerySources.length === 0) return;
+
+      modalGallery = gallerySources.slice();
+      modalIndex = startIndex;
+
+      updateModalImage();
 
       modal.classList.add("active");
       document.body.style.overflow = "hidden";
@@ -997,14 +1075,45 @@
       if (modalImage) {
         modalImage.src = "";
       }
+
+      modalGallery = [];
+      modalIndex = 0;
+    }
+
+    function showNextModalImage() {
+      if (modalGallery.length <= 1) return;
+      modalIndex = (modalIndex + 1) % modalGallery.length;
+      updateModalImage();
+    }
+
+    function showPreviousModalImage() {
+      if (modalGallery.length <= 1) return;
+      modalIndex = (modalIndex - 1 + modalGallery.length) % modalGallery.length;
+      updateModalImage();
     }
 
     function initializeImageModal() {
       const modal = document.getElementById("image-modal");
       const closeButton = document.getElementById("modal-close");
+      const modalPrev = document.getElementById("modal-prev");
+      const modalNext = document.getElementById("modal-next");
 
       if (closeButton) {
         closeButton.addEventListener("click", closeImageModal);
+      }
+
+      if (modalPrev) {
+        modalPrev.addEventListener("click", function(event) {
+          event.stopPropagation();
+          showPreviousModalImage();
+        });
+      }
+
+      if (modalNext) {
+        modalNext.addEventListener("click", function(event) {
+          event.stopPropagation();
+          showNextModalImage();
+        });
       }
 
       if (modal) {
@@ -1016,8 +1125,20 @@
       }
 
       document.addEventListener("keydown", function(event) {
+        const modalIsOpen = modal && modal.classList.contains("active");
+
+        if (!modalIsOpen) return;
+
         if (event.key === "Escape") {
           closeImageModal();
+        }
+
+        if (event.key === "ArrowRight") {
+          showNextModalImage();
+        }
+
+        if (event.key === "ArrowLeft") {
+          showPreviousModalImage();
         }
       });
     }
@@ -1107,7 +1228,7 @@
           }
 
           img.addEventListener("click", function() {
-            openImageModal(src, img.alt);
+            openImageModal(imageSources, index);
           });
 
           carousel.insertBefore(img, prevButton);
