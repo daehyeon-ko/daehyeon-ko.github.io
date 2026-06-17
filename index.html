@@ -147,9 +147,10 @@
       padding-bottom: 10px;
     }
 
+    /* 모든 카드의 여백을 32px 42px로 통일하여 웹사이트 전체 우측 끝선을 맞춤 */
     .card {
       background: white;
-      padding: 26px;
+      padding: 32px 42px;
       margin-bottom: 22px;
       border-radius: 16px;
       box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08);
@@ -167,7 +168,6 @@
       grid-template-columns: 260px minmax(0, 1fr);
       gap: 38px;
       align-items: start;
-      padding: 32px 42px;
       overflow: hidden;
     }
 
@@ -424,6 +424,7 @@
       padding: 18px 12px;
       text-align: center;
       box-shadow: 0 3px 12px rgba(37, 99, 235, 0.08);
+      /* 스탯 카드는 기존 내부 여백을 유지 */
     }
 
     .stat-number {
@@ -447,7 +448,6 @@
       grid-template-columns: minmax(300px, 0.9fr) minmax(0, 1.25fr);
       gap: 28px;
       align-items: center;
-      padding: 32px 42px;
       overflow: hidden;
     }
 
@@ -754,9 +754,12 @@
     }
 
     @media (max-width: 960px) {
+      .card {
+        padding: 28px;
+      }
+
       .about-card {
         grid-template-columns: 1fr;
-        padding: 28px;
       }
 
       .about-content {
@@ -783,7 +786,6 @@
 
       .research-card {
         grid-template-columns: 1fr;
-        padding: 28px;
       }
 
       .research-text {
@@ -803,13 +805,12 @@
     }
 
     @media (max-width: 620px) {
-      .stats-grid {
-        grid-template-columns: 1fr;
+      .card {
+        padding: 22px;
       }
 
-      .about-card,
-      .research-card {
-        padding: 22px;
+      .stats-grid {
+        grid-template-columns: 1fr;
       }
 
       .image-modal {
