@@ -125,16 +125,16 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      display: block;
+      display: none;
     }
 
     .photo-placeholder {
-      display: none;
       width: 100%;
       height: 100%;
       color: #64748b;
       font-size: 14px;
       text-align: center;
+      display: flex;
       align-items: center;
       justify-content: center;
       padding: 18px;
@@ -275,6 +275,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      background: #f1f5f9;
     }
 
     .carousel img.active {
@@ -296,6 +297,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      z-index: 5;
     }
 
     .carousel-btn:hover {
@@ -316,6 +318,7 @@
       left: 0;
       right: 0;
       text-align: center;
+      z-index: 5;
     }
 
     .dot {
@@ -420,21 +423,6 @@
       text-decoration: underline;
     }
 
-    .button {
-      display: inline-block;
-      margin-top: 16px;
-      padding: 11px 18px;
-      background: #2563eb;
-      color: white;
-      text-decoration: none;
-      border-radius: 8px;
-      font-weight: bold;
-    }
-
-    .button:hover {
-      background: #1d4ed8;
-    }
-
     a {
       color: #2563eb;
     }
@@ -445,14 +433,6 @@
       background: #0f172a;
       color: #cbd5e1;
       font-size: 14px;
-    }
-
-    ul {
-      margin-left: 20px;
-    }
-
-    li {
-      margin-bottom: 8px;
     }
 
     @media (max-width: 960px) {
@@ -541,10 +521,10 @@
     <div class="card about-card">
       <div class="profile-column">
         <div class="profile-photo">
-          <img src="images/profile.jpg" alt="Daehyeon Kim profile photo" onerror="this.style.display='none'; this.parentElement.querySelector('.photo-placeholder').style.display='flex';">
-          <div class="photo-placeholder">
+          <img id="profile-image" class="smart-image" data-base="images/profile" alt="Daehyeon Kim profile photo">
+          <div class="photo-placeholder" id="profile-placeholder">
             Upload profile photo as<br>
-            images/profile.jpg
+            images/profile.(png/jpg/jpeg/gif/webp)
           </div>
         </div>
 
@@ -644,9 +624,9 @@
 
     <div class="card research-card">
       <div class="carousel" data-carousel>
-        <img src="images/laser1.jpg" alt="Laser-induced electrode patterning image 1" class="active">
-        <img src="images/laser2.jpg" alt="Laser-induced electrode patterning image 2">
-        <img src="images/laser3.jpg" alt="Laser-induced electrode patterning image 3">
+        <img class="active smart-image" data-base="images/laser1" alt="Laser-induced electrode patterning image 1">
+        <img class="smart-image" data-base="images/laser2" alt="Laser-induced electrode patterning image 2">
+        <img class="smart-image" data-base="images/laser3" alt="Laser-induced electrode patterning image 3">
 
         <button class="carousel-btn prev" type="button" data-prev>‹</button>
         <button class="carousel-btn next" type="button" data-next>›</button>
@@ -676,9 +656,9 @@
 
     <div class="card research-card">
       <div class="carousel" data-carousel>
-        <img src="images/ink1.jpg" alt="Metal nanoparticle ink image 1" class="active">
-        <img src="images/ink2.jpg" alt="Metal nanoparticle ink image 2">
-        <img src="images/ink3.jpg" alt="Metal nanoparticle ink image 3">
+        <img class="active smart-image" data-base="images/ink1" alt="Metal nanoparticle ink image 1">
+        <img class="smart-image" data-base="images/ink2" alt="Metal nanoparticle ink image 2">
+        <img class="smart-image" data-base="images/ink3" alt="Metal nanoparticle ink image 3">
 
         <button class="carousel-btn prev" type="button" data-prev>‹</button>
         <button class="carousel-btn next" type="button" data-next>›</button>
@@ -811,36 +791,108 @@
   </footer>
 
   <script>
-    document.querySelectorAll('[data-carousel]').forEach(function(carousel) {
-      const images = carousel.querySelectorAll('img');
-      const dots = carousel.querySelectorAll('.dot');
-      const prevButton = carousel.querySelector('[data-prev]');
-      const nextButton = carousel.querySelector('[data-next]');
-      let currentIndex = 0;
+    const imageExtensions = ["png", "jpg", "jpeg", "gif", "webp"];
 
-      function showImage(index) {
-        images[currentIndex].classList.remove('active');
-        dots[currentIndex].classList.remove('active');
+    function tryLoadImageByBase(imgElement) {
+      const basePath = imgElement.dataset.base;
+      if (!basePath) return;
 
-        currentIndex = (index + images.length) % images.length;
+      let attemptIndex = 0;
 
-        images[currentIndex].classList.add('active');
-        dots[currentIndex].classList.add('active');
+      function tryNext() {
+        if (attemptIndex >= imageExtensions.length) {
+          handleImageNotFound(imgElement);
+          return;
+        }
+
+        const ext = imageExtensions[attemptIndex];
+        const testSrc = `${basePath}.${ext}`;
+        const tester = new Image();
+
+        tester.onload = function () {
+          imgElement.src = testSrc;
+          imgElement.style.display = "block";
+
+          if (imgElement.id === "profile-image") {
+            const placeholder = document.getElementById("profile-placeholder");
+            if (placeholder) {
+              placeholder.style.display = "none";
+            }
+          }
+        };
+
+        tester.onerror = function () {
+          attemptIndex++;
+          tryNext();
+        };
+
+        tester.src = testSrc;
       }
 
-      function nextImage() {
-        showImage(currentIndex + 1);
+      tryNext();
+    }
+
+    function handleImageNotFound(imgElement) {
+      if (imgElement.id === "profile-image") {
+        imgElement.style.display = "none";
+        const placeholder = document.getElementById("profile-placeholder");
+        if (placeholder) {
+          placeholder.style.display = "flex";
+        }
+      } else {
+        imgElement.style.display = "block";
+        imgElement.src =
+          "data:image/svg+xml;utf8," +
+          encodeURIComponent(`
+            <svg xmlns="http://www.w3.org/2000/svg" width="800" height="600">
+              <rect width="100%" height="100%" fill="#f1f5f9"/>
+              <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle"
+                    fill="#64748b" font-family="Arial" font-size="24">
+                Image not uploaded yet
+              </text>
+            </svg>
+          `);
       }
+    }
 
-      function prevImage() {
-        showImage(currentIndex - 1);
-      }
+    function initializeSmartImages() {
+      document.querySelectorAll(".smart-image").forEach(function(img) {
+        tryLoadImageByBase(img);
+      });
+    }
 
-      nextButton.addEventListener('click', nextImage);
-      prevButton.addEventListener('click', prevImage);
+    function initializeCarousels() {
+      document.querySelectorAll('[data-carousel]').forEach(function(carousel) {
+        const images = carousel.querySelectorAll('img');
+        const dots = carousel.querySelectorAll('.dot');
+        const prevButton = carousel.querySelector('[data-prev]');
+        const nextButton = carousel.querySelector('[data-next]');
+        let currentIndex = 0;
 
-      setInterval(nextImage, 3000);
-    });
+        function showImage(index) {
+          images[currentIndex].classList.remove('active');
+          dots[currentIndex].classList.remove('active');
+
+          currentIndex = (index + images.length) % images.length;
+
+          images[currentIndex].classList.add('active');
+          dots[currentIndex].classList.add('active');
+        }
+
+        function nextImage() {
+          showImage(currentIndex + 1);
+        }
+
+        function prevImage() {
+          showImage(currentIndex - 1);
+        }
+
+        nextButton.addEventListener('click', nextImage);
+        prevButton.addEventListener('click', prevImage);
+
+        setInterval(nextImage, 3000);
+      });
+    }
 
     function updateResearchMetrics() {
       const publicationCards = Array.from(document.querySelectorAll(".publication-card"));
@@ -869,6 +921,8 @@
       document.getElementById("h-index").textContent = hIndex;
     }
 
+    initializeSmartImages();
+    initializeCarousels();
     updateResearchMetrics();
   </script>
 
