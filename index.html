@@ -89,6 +89,16 @@
       line-height: 1.4;
     }
 
+    .title-link {
+      color: #111827;
+      text-decoration: none;
+    }
+
+    .title-link:hover {
+      color: #2563eb;
+      text-decoration: underline;
+    }
+
     .tag {
       display: inline-block;
       background: #e0f2fe;
@@ -97,6 +107,30 @@
       border-radius: 999px;
       font-size: 13px;
       margin: 5px 5px 5px 0;
+    }
+
+    .status {
+      display: inline-block;
+      padding: 5px 11px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      margin: 2px 0 14px 0;
+    }
+
+    .status-submitted {
+      background: #e0f2fe;
+      color: #0369a1;
+    }
+
+    .status-preparation {
+      background: #fef3c7;
+      color: #92400e;
+    }
+
+    .status-published {
+      background: #dcfce7;
+      color: #166534;
     }
 
     .journal-info {
@@ -230,6 +264,7 @@
 
     <div class="card">
       <h3>Laser-Induced Photothermal Reduction for Microscale Electrode Patterning on Single Microfibers</h3>
+      <span class="status status-submitted">Submitted</span>
       <p>
         Developed a laser-induced fabrication strategy for forming conductive silver pathways
         on individual nylon microfibers using a laser-reactive composite coating. This work
@@ -244,6 +279,7 @@
 
     <div class="card">
       <h3>Fast Synthesis of Metal Nanoparticle Ink and Flexible Electrodes</h3>
+      <span class="status status-preparation">In preparation</span>
       <p>
         Developed a rapid synthesis strategy for metal nanoparticle-based conductive ink
         and flexible electrodes. This work aims to support scalable materials processing
@@ -260,9 +296,41 @@
     <h2>Publications</h2>
 
     <div class="card">
-      <h3>Advances and Perspectives in Fiber-Based Electronic Devices for Next-Generation Systems</h3>
+      <h3>Laser-Induced Photothermal Reduction for Microscale Electrode Patterning on Single Microfibers</h3>
+      <span class="status status-preparation">In preparation</span>
       <div class="authors">
-        Hwajoong Kim†, <span class="my-name">Daehyeon Kim†</span> (Co-first author), Jinho Kim, Yukye Lee, and Jaehong Lee*
+        <span class="my-name">Daehyeon Kim†</span>, Minchang Shin, and Jaehong Lee*
+      </div>
+      <div class="publication-meta">Manuscript in preparation</div>
+      <p>
+        This manuscript reports a laser-induced photothermal strategy for microscale
+        electrode patterning on single microfiber platforms.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Deformation Invariant Biodegradable Fibre Electrodes Enabled by Compliant Coordination Bridges Reinforcing Percolation Network</h3>
+      <span class="status status-submitted">Submitted</span>
+      <div class="authors">
+        Jinho Kim, Yukye Lee, Huidam Woo, Hwajoong Kim, <span class="my-name">Daehyeon Kim</span>, Minchang Shin, Jimin Kim, Sangwon Seo, and Jaehong Lee*
+      </div>
+      <div class="publication-meta">Submitted manuscript, 2026</div>
+      <p>
+        This manuscript presents biodegradable fibre electrodes designed to maintain
+        electrical functionality under deformation through compliant coordination bridges
+        that reinforce the conductive percolation network.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>
+        <a class="title-link" href="https://www.nature.com/articles/s41528-025-00465-w" target="_blank" rel="noopener noreferrer">
+          Advances and Perspectives in Fiber-Based Electronic Devices for Next-Generation Soft Systems
+        </a>
+      </h3>
+      <span class="status status-published">Published</span>
+      <div class="authors">
+        Hwajoong Kim†, <span class="my-name">Daehyeon Kim†</span> (Co-first author), Jinho Kim, Yukye Lee, Minchang Shin, Jimin Kim, Fransiska M. Bossuyt, Gun-Hee Lee, Byeongmoon Lee, William R. Taylor, and Jaehong Lee*
       </div>
       <div class="publication-meta">npj Flexible Electronics, Vol. 9, 84 (2025)</div>
       
@@ -280,12 +348,17 @@
       <p>
         A comprehensive review on advances and perspectives in fiber-based electronic devices,
         covering design principles, fabrication strategies, materials platforms, and applications
-        in next-generation wearable and soft electronic systems.
+        in next-generation soft electronic systems.
       </p>
     </div>
 
     <div class="card">
-      <h3>Progresses and Perspective of One-Dimensional Soft Sensing Device for Healthcare Application</h3>
+      <h3>
+        <a class="title-link" href="https://advanced.onlinelibrary.wiley.com/doi/10.1002/adfm.202406651" target="_blank" rel="noopener noreferrer">
+          Progresses and Perspectives of 1D Soft Sensing Devices for Healthcare Applications
+        </a>
+      </h3>
+      <span class="status status-published">Published</span>
       <div class="authors">
         Jinho Kim†, Hwajoong Kim†, Muguen Lee, Junyeong Lee, Yukye Lee, <span class="my-name">Daehyeon Kim</span>, and Jaehong Lee*
       </div>
