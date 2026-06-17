@@ -268,6 +268,9 @@
       border-radius: 14px;
       border: 1px solid #e5e7eb;
       background: #f1f5f9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .carousel img {
@@ -282,6 +285,13 @@
       display: block;
     }
 
+    .carousel-placeholder {
+      color: #64748b;
+      font-size: 14px;
+      text-align: center;
+      padding: 18px;
+    }
+
     .carousel-btn {
       position: absolute;
       top: 50%;
@@ -294,7 +304,7 @@
       color: white;
       font-size: 20px;
       cursor: pointer;
-      display: flex;
+      display: none;
       align-items: center;
       justify-content: center;
       z-index: 5;
@@ -319,6 +329,7 @@
       right: 0;
       text-align: center;
       z-index: 5;
+      display: none;
     }
 
     .dot {
@@ -521,7 +532,7 @@
     <div class="card about-card">
       <div class="profile-column">
         <div class="profile-photo">
-          <img id="profile-image" class="smart-image" data-base="images/profile" alt="Daehyeon Kim profile photo">
+          <img id="profile-image" data-base="images/profile" alt="Daehyeon Kim profile photo">
           <div class="photo-placeholder" id="profile-placeholder">
             Upload profile photo as<br>
             images/profile.(png/jpg/jpeg/gif/webp)
@@ -623,19 +634,16 @@
     <h2>Research</h2>
 
     <div class="card research-card">
-      <div class="carousel" data-carousel>
-        <img class="active smart-image" data-base="images/laser1" alt="Laser-induced electrode patterning image 1">
-        <img class="smart-image" data-base="images/laser2" alt="Laser-induced electrode patterning image 2">
-        <img class="smart-image" data-base="images/laser3" alt="Laser-induced electrode patterning image 3">
+      <div class="carousel" data-carousel data-prefix="images/laser" data-count="6">
+        <div class="carousel-placeholder">
+          Upload images as<br>
+          images/laser1~laser6.(png/jpg/jpeg/gif/webp)
+        </div>
 
         <button class="carousel-btn prev" type="button" data-prev>‹</button>
         <button class="carousel-btn next" type="button" data-next>›</button>
 
-        <div class="carousel-dots">
-          <span class="dot active"></span>
-          <span class="dot"></span>
-          <span class="dot"></span>
-        </div>
+        <div class="carousel-dots"></div>
       </div>
 
       <div class="research-text">
@@ -655,19 +663,16 @@
     </div>
 
     <div class="card research-card">
-      <div class="carousel" data-carousel>
-        <img class="active smart-image" data-base="images/ink1" alt="Metal nanoparticle ink image 1">
-        <img class="smart-image" data-base="images/ink2" alt="Metal nanoparticle ink image 2">
-        <img class="smart-image" data-base="images/ink3" alt="Metal nanoparticle ink image 3">
+      <div class="carousel" data-carousel data-prefix="images/ink" data-count="6">
+        <div class="carousel-placeholder">
+          Upload images as<br>
+          images/ink1~ink6.(png/jpg/jpeg/gif/webp)
+        </div>
 
         <button class="carousel-btn prev" type="button" data-prev>‹</button>
         <button class="carousel-btn next" type="button" data-next>›</button>
 
-        <div class="carousel-dots">
-          <span class="dot active"></span>
-          <span class="dot"></span>
-          <span class="dot"></span>
-        </div>
+        <div class="carousel-dots"></div>
       </div>
 
       <div class="research-text">
@@ -793,90 +798,137 @@
   <script>
     const imageExtensions = ["png", "jpg", "jpeg", "gif", "webp"];
 
-    function tryLoadImageByBase(imgElement) {
-      const basePath = imgElement.dataset.base;
-      if (!basePath) return;
+    function findImageSource(basePath) {
+      return new Promise(function(resolve) {
+        let attemptIndex = 0;
 
-      let attemptIndex = 0;
-
-      function tryNext() {
-        if (attemptIndex >= imageExtensions.length) {
-          handleImageNotFound(imgElement);
-          return;
-        }
-
-        const ext = imageExtensions[attemptIndex];
-        const testSrc = `${basePath}.${ext}`;
-        const tester = new Image();
-
-        tester.onload = function () {
-          imgElement.src = testSrc;
-          imgElement.style.display = "block";
-
-          if (imgElement.id === "profile-image") {
-            const placeholder = document.getElementById("profile-placeholder");
-            if (placeholder) {
-              placeholder.style.display = "none";
-            }
+        function tryNext() {
+          if (attemptIndex >= imageExtensions.length) {
+            resolve(null);
+            return;
           }
-        };
 
-        tester.onerror = function () {
-          attemptIndex++;
-          tryNext();
-        };
+          const ext = imageExtensions[attemptIndex];
+          const testSrc = `${basePath}.${ext}`;
+          const tester = new Image();
 
-        tester.src = testSrc;
-      }
+          tester.onload = function() {
+            resolve(testSrc);
+          };
 
-      tryNext();
-    }
+          tester.onerror = function() {
+            attemptIndex++;
+            tryNext();
+          };
 
-    function handleImageNotFound(imgElement) {
-      if (imgElement.id === "profile-image") {
-        imgElement.style.display = "none";
-        const placeholder = document.getElementById("profile-placeholder");
-        if (placeholder) {
-          placeholder.style.display = "flex";
+          tester.src = testSrc;
         }
-      } else {
-        imgElement.style.display = "block";
-        imgElement.src =
-          "data:image/svg+xml;utf8," +
-          encodeURIComponent(`
-            <svg xmlns="http://www.w3.org/2000/svg" width="800" height="600">
-              <rect width="100%" height="100%" fill="#f1f5f9"/>
-              <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle"
-                    fill="#64748b" font-family="Arial" font-size="24">
-                Image not uploaded yet
-              </text>
-            </svg>
-          `);
-      }
-    }
 
-    function initializeSmartImages() {
-      document.querySelectorAll(".smart-image").forEach(function(img) {
-        tryLoadImageByBase(img);
+        tryNext();
       });
     }
 
-    function initializeCarousels() {
-      document.querySelectorAll('[data-carousel]').forEach(function(carousel) {
-        const images = carousel.querySelectorAll('img');
-        const dots = carousel.querySelectorAll('.dot');
-        const prevButton = carousel.querySelector('[data-prev]');
-        const nextButton = carousel.querySelector('[data-next]');
+    async function initializeProfileImage() {
+      const profileImage = document.getElementById("profile-image");
+      const profilePlaceholder = document.getElementById("profile-placeholder");
+
+      if (!profileImage) return;
+
+      const src = await findImageSource("images/profile");
+
+      if (src) {
+        profileImage.src = src;
+        profileImage.style.display = "block";
+
+        if (profilePlaceholder) {
+          profilePlaceholder.style.display = "none";
+        }
+      } else {
+        profileImage.style.display = "none";
+
+        if (profilePlaceholder) {
+          profilePlaceholder.style.display = "flex";
+        }
+      }
+    }
+
+    async function initializeCarousels() {
+      const carousels = document.querySelectorAll("[data-carousel]");
+
+      for (const carousel of carousels) {
+        const prefix = carousel.dataset.prefix;
+        const count = Number(carousel.dataset.count || 6);
+        const placeholder = carousel.querySelector(".carousel-placeholder");
+        const prevButton = carousel.querySelector("[data-prev]");
+        const nextButton = carousel.querySelector("[data-next]");
+        const dotsContainer = carousel.querySelector(".carousel-dots");
+
+        const imageSources = [];
+
+        for (let i = 1; i <= count; i++) {
+          const src = await findImageSource(`${prefix}${i}`);
+          if (src) {
+            imageSources.push(src);
+          }
+        }
+
+        if (imageSources.length === 0) {
+          if (placeholder) {
+            placeholder.style.display = "block";
+          }
+          if (prevButton) {
+            prevButton.style.display = "none";
+          }
+          if (nextButton) {
+            nextButton.style.display = "none";
+          }
+          if (dotsContainer) {
+            dotsContainer.style.display = "none";
+          }
+          continue;
+        }
+
+        if (placeholder) {
+          placeholder.style.display = "none";
+        }
+
+        imageSources.forEach(function(src, index) {
+          const img = document.createElement("img");
+          img.src = src;
+          img.alt = `Research image ${index + 1}`;
+
+          if (index === 0) {
+            img.classList.add("active");
+          }
+
+          carousel.insertBefore(img, prevButton);
+        });
+
+        if (dotsContainer) {
+          dotsContainer.innerHTML = "";
+
+          imageSources.forEach(function(_, index) {
+            const dot = document.createElement("span");
+            dot.className = "dot";
+            if (index === 0) {
+              dot.classList.add("active");
+            }
+            dotsContainer.appendChild(dot);
+          });
+        }
+
+        const images = carousel.querySelectorAll("img");
+        const dots = carousel.querySelectorAll(".dot");
         let currentIndex = 0;
 
         function showImage(index) {
-          images[currentIndex].classList.remove('active');
-          dots[currentIndex].classList.remove('active');
+          images[currentIndex].classList.remove("active");
+          dots[currentIndex].classList.remove("active");
 
           currentIndex = (index + images.length) % images.length;
 
-          images[currentIndex].classList.add('active');
-          dots[currentIndex].classList.add('active');
+          images[currentIndex].classList.add("active");
+          dots[currentIndex].classList.add("active");
         }
 
         function nextImage() {
@@ -887,11 +939,36 @@
           showImage(currentIndex - 1);
         }
 
-        nextButton.addEventListener('click', nextImage);
-        prevButton.addEventListener('click', prevImage);
+        if (images.length > 1) {
+          if (prevButton) {
+            prevButton.style.display = "flex";
+            prevButton.addEventListener("click", prevImage);
+          }
 
-        setInterval(nextImage, 3000);
-      });
+          if (nextButton) {
+            nextButton.style.display = "flex";
+            nextButton.addEventListener("click", nextImage);
+          }
+
+          if (dotsContainer) {
+            dotsContainer.style.display = "block";
+          }
+
+          setInterval(nextImage, 3000);
+        } else {
+          if (prevButton) {
+            prevButton.style.display = "none";
+          }
+
+          if (nextButton) {
+            nextButton.style.display = "none";
+          }
+
+          if (dotsContainer) {
+            dotsContainer.style.display = "none";
+          }
+        }
+      }
     }
 
     function updateResearchMetrics() {
@@ -921,7 +998,7 @@
       document.getElementById("h-index").textContent = hIndex;
     }
 
-    initializeSmartImages();
+    initializeProfileImage();
     initializeCarousels();
     updateResearchMetrics();
   </script>
