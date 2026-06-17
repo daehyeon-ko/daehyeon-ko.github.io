@@ -29,14 +29,13 @@
       text-align: center;
     }
 
-    /* 새롭게 추가된 내부 컨테이너 (이미지가 표시될 가운데 영역) */
     .header-inner {
       position: relative;
-      max-width: 1040px; /* 본문 영역과 동일한 너비 제한 */
+      max-width: 1040px;
       margin: 0 auto;
       padding: 76px 20px;
       overflow: hidden;
-      border-radius: 20px; /* 아래 카드 영역들과 어울리도록 살짝 둥근 모서리 추가 (원치 않으시면 0으로 변경) */
+      border-radius: 20px;
     }
 
     .header-inner::before {
@@ -47,7 +46,8 @@
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
-      opacity: 0.55;
+      /* 이미지가 조금 더 잘 보이도록 투명도 조정 */
+      opacity: 0.65; 
       z-index: 0;
     }
 
@@ -55,9 +55,10 @@
       content: "";
       position: absolute;
       inset: 0;
+      /* 이미지가 너무 가려지지 않도록 그라데이션 강도 조절 */
       background: linear-gradient(
-        rgba(15, 23, 42, 0.78),
-        rgba(15, 23, 42, 0.78)
+        rgba(15, 23, 42, 0.6),
+        rgba(15, 23, 42, 0.85)
       );
       z-index: 1;
     }
@@ -984,10 +985,9 @@
         <h3>Research Interests</h3>
         <span class="tag">Micro/nanoscale fabrication</span>
         <span class="tag">Advanced materials</span>
-        <span class="tag">Laser-based manufacturing</span>
         <span class="tag">Electronic devices</span>
         <span class="tag">Functional materials</span>
-        <span class="tag">Device integration</span>
+        <span class="tag">Optics</span>
       </div>
     </div>
   </section>
@@ -1334,13 +1334,13 @@
     }
 
     async function initializeHeaderBackground() {
-      const header = document.getElementById("hero-header");
-      if (!header) return;
+      const headerInner = document.querySelector(".header-inner");
+      if (!headerInner) return;
 
       const src = await findImageSource("images/header");
 
       if (src) {
-        header.style.setProperty("--header-bg", `url("${src}")`);
+        headerInner.style.setProperty("--header-bg", `url("${src}")`);
       }
     }
 
