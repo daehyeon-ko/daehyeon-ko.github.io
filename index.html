@@ -26,13 +26,20 @@
     header {
       background: #0f172a;
       color: white;
-      padding: 76px 20px;
       text-align: center;
-      position: relative;
-      overflow: hidden;
     }
 
-    header::before {
+    /* 새롭게 추가된 내부 컨테이너 (이미지가 표시될 가운데 영역) */
+    .header-inner {
+      position: relative;
+      max-width: 1040px; /* 본문 영역과 동일한 너비 제한 */
+      margin: 0 auto;
+      padding: 76px 20px;
+      overflow: hidden;
+      border-radius: 20px; /* 아래 카드 영역들과 어울리도록 살짝 둥근 모서리 추가 (원치 않으시면 0으로 변경) */
+    }
+
+    .header-inner::before {
       content: "";
       position: absolute;
       inset: 0;
@@ -44,7 +51,7 @@
       z-index: 0;
     }
 
-    header::after {
+    .header-inner::after {
       content: "";
       position: absolute;
       inset: 0;
@@ -55,8 +62,8 @@
       z-index: 1;
     }
 
-    header h1,
-    header p {
+    .header-inner h1,
+    .header-inner p {
       position: relative;
       z-index: 2;
     }
@@ -816,13 +823,15 @@
 <body>
 
   <header id="hero-header">
-    <h1>Daehyeon Kim</h1>
-    <p class="hero-role">
-      Ph.D. Student at Mechanical, Aerospace, and Nuclear Engineering
-    </p>
-    <p class="hero-school">
-      Rensselaer Polytechnic Institute
-    </p>
+    <div class="header-inner">
+      <h1>Daehyeon Kim</h1>
+      <p class="hero-role">
+        Ph.D. Student at Mechanical, Aerospace, and Nuclear Engineering
+      </p>
+      <p class="hero-school">
+        Rensselaer Polytechnic Institute
+      </p>
+    </div>
   </header>
 
   <nav>
