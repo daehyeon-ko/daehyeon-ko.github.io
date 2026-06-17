@@ -784,10 +784,10 @@
     </div>
 
     <div class="card research-card">
-      <div class="carousel" data-carousel data-prefix="images/ink" data-count="6">
+      <div class="carousel" data-carousel data-prefix="images/ink" data-count="7">
         <div class="carousel-placeholder">
           Upload images as<br>
-          images/ink1~ink6.(png/jpg/jpeg/gif/webp)
+          images/ink1~ink7.(png/jpg/jpeg/gif/webp)
         </div>
 
         <button class="carousel-btn prev" type="button" data-prev>‹</button>
@@ -924,6 +924,8 @@
 
   <script>
     const imageExtensions = ["png", "jpg", "jpeg", "gif", "webp"];
+    const normalImageDuration = 3000;
+    const gifImageDuration = 5000;
 
     function findImageSource(basePath) {
       return new Promise(function(resolve) {
@@ -953,6 +955,16 @@
 
         tryNext();
       });
+    }
+
+    function getImageDuration(src) {
+      const cleanSrc = src.split("?")[0].toLowerCase();
+
+      if (cleanSrc.endsWith(".gif")) {
+        return gifImageDuration;
+      }
+
+      return normalImageDuration;
     }
 
     function openImageModal(src, altText) {
@@ -1119,6 +1131,7 @@
         const images = carousel.querySelectorAll("img");
         const dots = carousel.querySelectorAll(".dot");
         let currentIndex = 0;
+        let carouselTimer = null;
 
         function showImage(index) {
           images[currentIndex].classList.remove("active");
@@ -1130,12 +1143,28 @@
           dots[currentIndex].classList.add("active");
         }
 
+        function scheduleNextImage() {
+          if (carouselTimer) {
+            clearTimeout(carouselTimer);
+          }
+
+          const currentImage = images[currentIndex];
+          const duration = getImageDuration(currentImage.src);
+
+          carouselTimer = setTimeout(function() {
+            showImage(currentIndex + 1);
+            scheduleNextImage();
+          }, duration);
+        }
+
         function nextImage() {
           showImage(currentIndex + 1);
+          scheduleNextImage();
         }
 
         function prevImage() {
           showImage(currentIndex - 1);
+          scheduleNextImage();
         }
 
         if (images.length > 1) {
@@ -1149,7 +1178,7 @@
             nextButton.addEventListener("click", nextImage);
           }
 
-          setInterval(nextImage, 3000);
+          scheduleNextImage();
         } else {
           if (prevButton) {
             prevButton.style.display = "none";
