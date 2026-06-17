@@ -283,13 +283,14 @@
       box-shadow: 0 6px 14px rgba(15, 23, 42, 0.16);
     }
 
-    .social-icon.scholar {
-      background: #e5e7eb;
-      color: #6b7280;
-      border: 1px solid #d1d5db;
-      filter: grayscale(1);
-      cursor: not-allowed;
-      pointer-events: none;
+    /* 비활성화 상태를 위한 클래스 */
+    .social-icon.inactive {
+      background: #e5e7eb !important;
+      color: #6b7280 !important;
+      border: 1px solid #d1d5db !important;
+      filter: grayscale(1) !important;
+      cursor: not-allowed !important;
+      pointer-events: none !important;
     }
 
     .social-icon.linkedin {
@@ -884,9 +885,9 @@
           </div>
 
           <div class="social-icons">
-            <a class="social-icon scholar" href="#" title="Google Scholar profile not available yet" aria-label="Google Scholar profile not available yet">GS</a>
+            <a class="social-icon scholar inactive" href="#" title="Google Scholar profile not available yet" aria-label="Google Scholar profile not available yet">GS</a>
             <a class="social-icon linkedin" href="https://www.linkedin.com/in/daehyeon-k-1b838725a/" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn">in</a>
-            <a class="social-icon github" href="https://github.com/daehyeon-ko" target="_blank" rel="noopener noreferrer" title="GitHub" aria-label="GitHub">GH</a>
+            <a class="social-icon github inactive" href="#" title="GitHub profile not available yet" aria-label="GitHub profile not available yet">GH</a>
           </div>
         </div>
 
@@ -1166,7 +1167,6 @@
     <h2>Contact</h2>
     <div class="card">
       <p><strong>Email:</strong> <a href="mailto:kimd30@rpi.edu">kimd30@rpi.edu</a></p>
-      <p><strong>GitHub:</strong> <a href="https://github.com/daehyeon-ko" target="_blank" rel="noopener noreferrer">https://github.com/daehyeon-ko</a></p>
       <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/daehyeon-k-1b838725a/" target="_blank" rel="noopener noreferrer">https://www.linkedin.com/in/daehyeon-k-1b838725a/</a></p>
     </div>
   </section>
