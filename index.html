@@ -150,6 +150,56 @@
       gap: 22px;
     }
 
+    .research-card {
+      background: white;
+      padding: 26px;
+      margin-bottom: 22px;
+      border-radius: 16px;
+      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 26px;
+      align-items: center;
+    }
+
+    .research-image {
+      width: 100%;
+      height: 280px;
+      background: #e5e7eb;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #6b7280;
+      font-size: 14px;
+      overflow: hidden;
+    }
+
+    .research-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .research-content h3 {
+      color: #111827;
+      margin-bottom: 15px;
+      font-size: 21px;
+      line-height: 1.4;
+    }
+
+    .research-content p {
+      color: #4b5563;
+      margin-bottom: 15px;
+      line-height: 1.6;
+    }
+
+    .research-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
     .button {
       display: inline-block;
       margin-top: 16px;
@@ -179,6 +229,16 @@
 
     li {
       margin-bottom: 8px;
+    }
+
+    @media (max-width: 768px) {
+      .research-card {
+        grid-template-columns: 1fr;
+      }
+
+      .research-image {
+        height: 200px;
+      }
     }
   </style>
 </head>
@@ -232,30 +292,46 @@
   <section id="research">
     <h2>Research</h2>
 
-    <div class="card">
-      <h3>Laser-Induced Photothermal Reduction for Microscale Electrode Patterning on Single Microfiber</h3>
-      <p>
-        Developed a laser-induced fabrication strategy for forming conductive silver
-        pathways on individual nylon microfibers using a laser-reactive composite coating.
-        This work aims to enable fiber-shaped electronic devices with localized,
-        mask-free, and designable electrode patterns.
-      </p>
-      <span class="tag">Laser direct writing</span>
-      <span class="tag">Silver electrodes</span>
-      <span class="tag">Microfiber electronics</span>
-      <span class="tag">Soft electronics</span>
+    <div class="research-card">
+      <div class="research-image">
+        <!-- Replace src with your research image path -->
+        <img src="images/research1.jpg" alt="Laser-Induced Photothermal Reduction" />
+      </div>
+      <div class="research-content">
+        <h3>Laser-Induced Photothermal Reduction for Microscale Electrode Patterning on Single Microfiber</h3>
+        <p>
+          Developed a laser-induced fabrication strategy for forming conductive silver
+          pathways on individual nylon microfibers using a laser-reactive composite coating.
+          This work aims to enable fiber-shaped electronic devices with localized,
+          mask-free, and designable electrode patterns.
+        </p>
+        <div class="research-tags">
+          <span class="tag">Laser direct writing</span>
+          <span class="tag">Silver electrodes</span>
+          <span class="tag">Microfiber electronics</span>
+          <span class="tag">Soft electronics</span>
+        </div>
+      </div>
     </div>
 
-    <div class="card">
-      <h3>Fast Synthesis of Metal Nanoparticle Ink and Flexible Electrode</h3>
-      <p>
-        Developed a rapid synthesis strategy for metal nanoparticle-based conductive ink
-        and flexible electrodes, aiming to support scalable fabrication of soft and flexible
-        electronic devices.
-      </p>
-      <span class="tag">Metal nanoparticle ink</span>
-      <span class="tag">Flexible electrode</span>
-      <span class="tag">Conductive materials</span>
+    <div class="research-card">
+      <div class="research-image">
+        <!-- Replace src with your research image path -->
+        <img src="images/research2.jpg" alt="Fast Synthesis of Metal Nanoparticle Ink" />
+      </div>
+      <div class="research-content">
+        <h3>Fast Synthesis of Metal Nanoparticle Ink and Flexible Electrode</h3>
+        <p>
+          Developed a rapid synthesis strategy for metal nanoparticle-based conductive ink
+          and flexible electrodes, aiming to support scalable fabrication of soft and flexible
+          electronic devices.
+        </p>
+        <div class="research-tags">
+          <span class="tag">Metal nanoparticle ink</span>
+          <span class="tag">Flexible electrode</span>
+          <span class="tag">Conductive materials</span>
+        </div>
+      </div>
     </div>
   </section>
 
