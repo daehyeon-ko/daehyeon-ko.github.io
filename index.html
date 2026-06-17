@@ -34,7 +34,7 @@
     header p {
       font-size: 18px;
       color: #cbd5e1;
-      max-width: 760px;
+      max-width: 800px;
       margin: 0 auto;
     }
 
@@ -89,16 +89,6 @@
       line-height: 1.4;
     }
 
-    .card h3 a {
-      color: #111827;
-      text-decoration: none;
-      transition: color 0.3s;
-    }
-
-    .card h3 a:hover {
-      color: #2563eb;
-    }
-
     .tag {
       display: inline-block;
       background: #e0f2fe;
@@ -142,271 +132,16 @@
       font-weight: 500;
     }
 
-    .publication-status {
-      display: inline-block;
-      background: #fef08a;
-      color: #854d0e;
-      padding: 4px 8px;
-      border-radius: 6px;
-      font-size: 12px;
-      font-weight: 600;
-      margin-left: 8px;
-    }
-
-    .publication-status.published {
-      background: #d1fae5;
-      color: #065f46;
-    }
-
     .authors {
       color: #4b5563;
       font-size: 15px;
       margin-bottom: 12px;
-      line-height: 1.6;
+      line-height: 1.5;
     }
 
     .my-name {
       color: #2563eb;
       font-weight: 700;
-    }
-
-    .first-author::before {
-      content: "†";
-      color: #2563eb;
-      font-weight: 700;
-    }
-
-    .corresponding-author::after {
-      content: "*";
-      color: #2563eb;
-      font-weight: 700;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 22px;
-    }
-
-    .research-card {
-      background: white;
-      padding: 26px;
-      margin-bottom: 22px;
-      border-radius: 16px;
-      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08);
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 26px;
-      align-items: center;
-    }
-
-    .research-image-container {
-      position: relative;
-      width: 100%;
-      height: 280px;
-      background: #e5e7eb;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #6b7280;
-      font-size: 14px;
-      overflow: hidden;
-    }
-
-    .carousel {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .carousel-slide {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      opacity: 0;
-      transition: opacity 0.5s ease-in-out;
-    }
-
-    .carousel-slide.active {
-      opacity: 1;
-    }
-
-    .carousel-slide img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      cursor: pointer;
-      transition: transform 0.2s ease;
-    }
-
-    .carousel-slide img:hover {
-      transform: scale(1.02);
-    }
-
-    .carousel-controls {
-      position: absolute;
-      bottom: 10px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      gap: 8px;
-      z-index: 10;
-    }
-
-    .carousel-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.5);
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-
-    .carousel-dot.active {
-      background: rgba(255, 255, 255, 1);
-    }
-
-    .carousel-arrow {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(0, 0, 0, 0.5);
-      color: white;
-      border: none;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      cursor: pointer;
-      font-size: 18px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background 0.3s;
-      z-index: 10;
-    }
-
-    .carousel-arrow:hover {
-      background: rgba(0, 0, 0, 0.8);
-    }
-
-    .carousel-arrow.prev {
-      left: 10px;
-    }
-
-    .carousel-arrow.next {
-      right: 10px;
-    }
-
-    /* Modal for image enlargement */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 1000;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.8);
-      animation: fadeIn 0.3s;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    .modal-content {
-      position: relative;
-      margin: auto;
-      width: 90%;
-      max-width: 900px;
-      height: 90vh;
-      top: 50%;
-      transform: translateY(-50%);
-      animation: zoomIn 0.3s;
-    }
-
-    @keyframes zoomIn {
-      from {
-        transform: translateY(-50%) scale(0.8);
-      }
-      to {
-        transform: translateY(-50%) scale(1);
-      }
-    }
-
-    .modal-content img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
-
-    .modal-close {
-      position: absolute;
-      top: 20px;
-      right: 35px;
-      color: white;
-      font-size: 40px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: color 0.3s;
-    }
-
-    .modal-close:hover {
-      color: #ccc;
-    }
-
-    .modal-arrow {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      color: white;
-      border: none;
-      background: rgba(0, 0, 0, 0.5);
-      font-size: 30px;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background 0.3s;
-    }
-
-    .modal-arrow:hover {
-      background: rgba(0, 0, 0, 0.8);
-    }
-
-    .modal-arrow.prev {
-      left: 20px;
-    }
-
-    .modal-arrow.next {
-      right: 20px;
-    }
-
-    .research-content h3 {
-      color: #111827;
-      margin-bottom: 15px;
-      font-size: 21px;
-      line-height: 1.4;
-    }
-
-    .research-content p {
-      color: #4b5563;
-      margin-bottom: 15px;
-      line-height: 1.6;
-    }
-
-    .research-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
     }
 
     .button {
@@ -439,28 +174,6 @@
     li {
       margin-bottom: 8px;
     }
-
-    @media (max-width: 768px) {
-      .research-card {
-        grid-template-columns: 1fr;
-      }
-
-      .research-image-container {
-        height: 200px;
-      }
-
-      .carousel-arrow {
-        width: 35px;
-        height: 35px;
-        font-size: 16px;
-      }
-
-      .modal-arrow {
-        width: 40px;
-        height: 40px;
-        font-size: 24px;
-      }
-    }
   </style>
 </head>
 
@@ -469,8 +182,9 @@
   <header>
     <h1>Daehyeon Kim</h1>
     <p>
-      Mechanical Engineering Researcher interested in soft electronics,
-      laser-based microfabrication, fiber-shaped devices, and wearable electronic systems.
+      Mechanical Engineering Researcher interested in micro/nanoscale fabrication,
+      advanced materials for electronic devices, laser-based manufacturing,
+      and functional electronic systems.
     </p>
   </header>
 
@@ -486,16 +200,17 @@
     <h2>About</h2>
     <div class="card">
       <p>
-        I am a mechanical engineering researcher with experience in advanced materials,
-        soft electronic devices, and laser-based microfabrication. My research focuses on
-        developing micro/nanoscale conductive structures on flexible and fiber-shaped
-        platforms for next-generation wearable and soft electronic systems.
+        I am a mechanical engineering researcher with a background in advanced materials,
+        micro/nanoscale fabrication, and laser-based manufacturing. My research focuses on
+        developing functional material structures and electronic device platforms through
+        controlled fabrication, materials processing, and device integration.
       </p>
       <br>
       <p>
-        My current work explores laser-written silver electrodes on single microfibers,
-        material design for soft electronic interfaces, and functional device integration
-        using flexible conductive materials.
+        My recent work includes laser-induced electrode patterning, metal nanoparticle-based
+        conductive materials, and soft electronic device integration. I am interested in
+        exploring how advanced materials and micro/nanoscale fabrication strategies can be
+        used to develop next-generation electronic, energy, and multifunctional device systems.
       </p>
     </div>
   </section>
@@ -513,113 +228,41 @@
   <section id="research">
     <h2>Research</h2>
 
-    <!-- Research 1 -->
-    <div class="research-card">
-      <div class="research-image-container">
-        <div class="carousel" id="carousel1">
-          <div class="carousel-slide active">
-            <img src="images/research1_1.jpg" alt="Laser-Induced Photothermal Reduction 1" />
-          </div>
-          <div class="carousel-slide">
-            <img src="images/research1_2.jpg" alt="Laser-Induced Photothermal Reduction 2" />
-          </div>
-          <div class="carousel-slide">
-            <img src="images/research1_3.jpg" alt="Laser-Induced Photothermal Reduction 3" />
-          </div>
-          <button class="carousel-arrow prev" onclick="previousSlide(1)">&#10094;</button>
-          <button class="carousel-arrow next" onclick="nextSlide(1)">&#10095;</button>
-          <div class="carousel-controls" id="carousel1-controls"></div>
-        </div>
-      </div>
-      <div class="research-content">
-        <h3>Laser-Induced Photothermal Reduction for Microscale Electrode Patterning on Single Microfiber</h3>
-        <p>
-          Developed a laser-induced fabrication strategy for forming conductive silver
-          pathways on individual nylon microfibers using a laser-reactive composite coating.
-          This work aims to enable fiber-shaped electronic devices with localized,
-          mask-free, and designable electrode patterns.
-        </p>
-        <div class="research-tags">
-          <span class="tag">Laser direct writing</span>
-          <span class="tag">Silver electrodes</span>
-          <span class="tag">Microfiber electronics</span>
-          <span class="tag">Soft electronics</span>
-        </div>
-      </div>
+    <div class="card">
+      <h3>Laser-Induced Photothermal Reduction for Microscale Electrode Patterning on Single Microfibers</h3>
+      <p>
+        Developed a laser-induced fabrication strategy for forming conductive silver pathways
+        on individual nylon microfibers using a laser-reactive composite coating. This work
+        focuses on localized materials processing, mask-free electrode patterning, and
+        microscale device fabrication on curved and one-dimensional substrates.
+      </p>
+      <span class="tag">Laser processing</span>
+      <span class="tag">Micro/nanoscale fabrication</span>
+      <span class="tag">Silver electrodes</span>
+      <span class="tag">Functional materials</span>
     </div>
 
-    <!-- Research 2 -->
-    <div class="research-card">
-      <div class="research-image-container">
-        <div class="carousel" id="carousel2">
-          <div class="carousel-slide active">
-            <img src="images/research2_1.jpg" alt="Fast Synthesis of Metal Nanoparticle Ink 1" />
-          </div>
-          <div class="carousel-slide">
-            <img src="images/research2_2.jpg" alt="Fast Synthesis of Metal Nanoparticle Ink 2" />
-          </div>
-          <div class="carousel-slide">
-            <img src="images/research2_3.jpg" alt="Fast Synthesis of Metal Nanoparticle Ink 3" />
-          </div>
-          <button class="carousel-arrow prev" onclick="previousSlide(2)">&#10094;</button>
-          <button class="carousel-arrow next" onclick="nextSlide(2)">&#10095;</button>
-          <div class="carousel-controls" id="carousel2-controls"></div>
-        </div>
-      </div>
-      <div class="research-content">
-        <h3>Fast Synthesis of Metal Nanoparticle Ink and Flexible Electrode</h3>
-        <p>
-          Developed a rapid synthesis strategy for metal nanoparticle-based conductive ink
-          and flexible electrodes, aiming to support scalable fabrication of soft and flexible
-          electronic devices.
-        </p>
-        <div class="research-tags">
-          <span class="tag">Metal nanoparticle ink</span>
-          <span class="tag">Flexible electrode</span>
-          <span class="tag">Conductive materials</span>
-        </div>
-      </div>
+    <div class="card">
+      <h3>Fast Synthesis of Metal Nanoparticle Ink and Flexible Electrodes</h3>
+      <p>
+        Developed a rapid synthesis strategy for metal nanoparticle-based conductive ink
+        and flexible electrodes. This work aims to support scalable materials processing
+        and electronic device fabrication using solution-processable conductive materials.
+      </p>
+      <span class="tag">Metal nanoparticle ink</span>
+      <span class="tag">Conductive materials</span>
+      <span class="tag">Materials processing</span>
+      <span class="tag">Electronic devices</span>
     </div>
   </section>
 
   <section id="publications">
     <h2>Publications</h2>
 
-    <!-- Publication 1 - In Preparation -->
     <div class="card">
-      <h3>Laser-Induced Photothermal Reduction for Microscale Electrode Patterning on Single Microfiber
-        <span class="publication-status">In preparation</span>
-      </h3>
+      <h3>Advances and Perspectives in Fiber-Based Electronic Devices for Next-Generation Systems</h3>
       <div class="authors">
-        <span class="my-name">Daehyeon Kim<span class="first-author"></span></span>, Minchang Shin, and Jaehong Lee<span class="corresponding-author"></span>
-      </div>
-      <p>
-        Research on laser-induced photothermal reduction for patterning conductive electrodes on single microfibers, 
-        aimed at enabling advanced fiber-shaped electronic devices with designable electrode architectures.
-      </p>
-    </div>
-
-    <!-- Publication 2 - Submitted -->
-    <div class="card">
-      <h3>Deformation invariant biodegradable fibre electrodes enabled by compliant coordination bridges reinforcing percolation network
-        <span class="publication-status">Submitted (2026)</span>
-      </h3>
-      <div class="authors">
-        <span class="my-name">Jinho Kim<span class="first-author"></span></span>, Yukye Lee, Huidam Woo, Hwajoong Kim, <span class="my-name">Daehyeon Kim</span>, Minchang Shin, Jimin Kim, Sangwon Seo, and Jaehong Lee<span class="corresponding-author"></span>
-      </div>
-      <p>
-        Development of biodegradable fiber electrodes with enhanced mechanical stability through compliant coordination bridges, 
-        enabling robust electrical performance under deformation for sustainable wearable electronics applications.
-      </p>
-    </div>
-
-    <!-- Publication 3 - Published 2025 -->
-    <div class="card">
-      <h3><a href="https://www.nature.com/articles/s41528-025-00465-w" target="_blank">Advances and Perspectives in Fiber-Based Electronic Devices for Next-Generation Systems</a>
-        <span class="publication-status published">Published</span>
-      </h3>
-      <div class="authors">
-        Hwajoong Kim<span class="first-author"></span>, <span class="my-name">Daehyeon Kim<span class="first-author"></span></span> (Co-first author), Jinho Kim, Yukye Lee, and Jaehong Lee<span class="corresponding-author"></span>
+        Hwajoong Kim†, <span class="my-name">Daehyeon Kim†</span> (Co-first author), Jinho Kim, Yukye Lee, and Jaehong Lee*
       </div>
       <div class="publication-meta">npj Flexible Electronics, Vol. 9, 84 (2025)</div>
       
@@ -636,18 +279,15 @@
 
       <p>
         A comprehensive review on advances and perspectives in fiber-based electronic devices,
-        covering design principles, fabrication strategies, and applications in next-generation
-        wearable and soft electronic systems.
+        covering design principles, fabrication strategies, materials platforms, and applications
+        in next-generation wearable and soft electronic systems.
       </p>
     </div>
 
-    <!-- Publication 4 - Published 2024 -->
     <div class="card">
-      <h3><a href="https://advanced.onlinelibrary.wiley.com/doi/10.1002/adfm.202406651" target="_blank">Progresses and Perspective of One-Dimensional Soft Sensing Device for Healthcare Application</a>
-        <span class="publication-status published">Published</span>
-      </h3>
+      <h3>Progresses and Perspective of One-Dimensional Soft Sensing Device for Healthcare Application</h3>
       <div class="authors">
-        Jinho Kim<span class="first-author"></span>, Hwajoong Kim<span class="first-author"></span>, Muguen Lee, Junyeong Lee, Yukye Lee, <span class="my-name">Daehyeon Kim</span>, and Jaehong Lee<span class="corresponding-author"></span>
+        Jinho Kim†, Hwajoong Kim†, Muguen Lee, Junyeong Lee, Yukye Lee, <span class="my-name">Daehyeon Kim</span>, and Jaehong Lee*
       </div>
       <div class="publication-meta">Advanced Functional Materials, Vol. 34, 2406651 (2024)</div>
       
@@ -664,8 +304,8 @@
 
       <p>
         A comprehensive overview of one-dimensional soft sensing devices for healthcare applications,
-        discussing recent progresses in materials, device design, and their potential for
-        real-world wearable health monitoring systems.
+        discussing recent progress in materials, device design, fabrication strategies, and their
+        potential for wearable health monitoring systems.
       </p>
     </div>
   </section>
@@ -680,146 +320,9 @@
     </div>
   </section>
 
-  <!-- Image Modal -->
-  <div id="imageModal" class="modal">
-    <span class="modal-close" onclick="closeModal()">&times;</span>
-    <div class="modal-content">
-      <img id="modalImage" src="" alt="" />
-      <button class="modal-arrow prev" onclick="previousModalImage()">&#10094;</button>
-      <button class="modal-arrow next" onclick="nextModalImage()">&#10095;</button>
-    </div>
-  </div>
-
   <footer>
     © 2026 Daehyeon Kim. All rights reserved.
   </footer>
-
-  <script>
-    const carouselData = {
-      1: { current: 0, total: 3, interval: null },
-      2: { current: 0, total: 3, interval: null }
-    };
-
-    let currentModalCarousel = null;
-    let currentModalIndex = 0;
-
-    // Initialize carousels on page load
-    document.addEventListener('DOMContentLoaded', function() {
-      initializeCarousel(1);
-      initializeCarousel(2);
-    });
-
-    function initializeCarousel(carouselId) {
-      updateCarousel(carouselId);
-      startAutoSlide(carouselId);
-    }
-
-    function updateCarousel(carouselId) {
-      const slides = document.querySelectorAll(`#carousel${carouselId} .carousel-slide`);
-      const controls = document.getElementById(`carousel${carouselId}-controls`);
-
-      // Clear and recreate controls
-      controls.innerHTML = '';
-
-      slides.forEach((slide, index) => {
-        slide.classList.remove('active');
-        if (index === carouselData[carouselId].current) {
-          slide.classList.add('active');
-        }
-
-        // Create dot
-        const dot = document.createElement('div');
-        dot.className = 'carousel-dot' + (index === carouselData[carouselId].current ? ' active' : '');
-        dot.onclick = () => goToSlide(carouselId, index);
-        controls.appendChild(dot);
-      });
-
-      // Add click to image for enlargement
-      slides.forEach((slide, index) => {
-        const img = slide.querySelector('img');
-        img.onclick = (e) => {
-          e.stopPropagation();
-          openModal(carouselId, index);
-        };
-      });
-    }
-
-    function nextSlide(carouselId) {
-      clearInterval(carouselData[carouselId].interval);
-      carouselData[carouselId].current = (carouselData[carouselId].current + 1) % carouselData[carouselId].total;
-      updateCarousel(carouselId);
-      startAutoSlide(carouselId);
-    }
-
-    function previousSlide(carouselId) {
-      clearInterval(carouselData[carouselId].interval);
-      carouselData[carouselId].current = (carouselData[carouselId].current - 1 + carouselData[carouselId].total) % carouselData[carouselId].total;
-      updateCarousel(carouselId);
-      startAutoSlide(carouselId);
-    }
-
-    function goToSlide(carouselId, index) {
-      clearInterval(carouselData[carouselId].interval);
-      carouselData[carouselId].current = index;
-      updateCarousel(carouselId);
-      startAutoSlide(carouselId);
-    }
-
-    function startAutoSlide(carouselId) {
-      carouselData[carouselId].interval = setInterval(() => {
-        carouselData[carouselId].current = (carouselData[carouselId].current + 1) % carouselData[carouselId].total;
-        updateCarousel(carouselId);
-      }, 3000);
-    }
-
-    // Modal functions
-    function openModal(carouselId, imageIndex) {
-      currentModalCarousel = carouselId;
-      currentModalIndex = imageIndex;
-      clearInterval(carouselData[carouselId].interval);
-
-      const img = document.querySelector(`#carousel${carouselId} .carousel-slide:nth-child(${imageIndex + 1}) img`);
-      document.getElementById('modalImage').src = img.src;
-      document.getElementById('imageModal').style.display = 'block';
-    }
-
-    function closeModal() {
-      document.getElementById('imageModal').style.display = 'none';
-      if (currentModalCarousel) {
-        startAutoSlide(currentModalCarousel);
-      }
-    }
-
-    function nextModalImage() {
-      currentModalIndex = (currentModalIndex + 1) % carouselData[currentModalCarousel].total;
-      const img = document.querySelector(`#carousel${currentModalCarousel} .carousel-slide:nth-child(${currentModalIndex + 1}) img`);
-      document.getElementById('modalImage').src = img.src;
-    }
-
-    function previousModalImage() {
-      currentModalIndex = (currentModalIndex - 1 + carouselData[currentModalCarousel].total) % carouselData[currentModalCarousel].total;
-      const img = document.querySelector(`#carousel${currentModalCarousel} .carousel-slide:nth-child(${currentModalIndex + 1}) img`);
-      document.getElementById('modalImage').src = img.src;
-    }
-
-    // Close modal when clicking outside the image
-    window.onclick = function(event) {
-      const modal = document.getElementById('imageModal');
-      if (event.target === modal) {
-        closeModal();
-      }
-    }
-
-    // Keyboard navigation for modal
-    document.addEventListener('keydown', function(e) {
-      const modal = document.getElementById('imageModal');
-      if (modal.style.display === 'block') {
-        if (e.key === 'ArrowRight') nextModalImage();
-        if (e.key === 'ArrowLeft') previousModalImage();
-        if (e.key === 'Escape') closeModal();
-      }
-    });
-  </script>
 
 </body>
 </html>
