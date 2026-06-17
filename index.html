@@ -89,6 +89,16 @@
       line-height: 1.4;
     }
 
+    .card h3 a {
+      color: #111827;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .card h3 a:hover {
+      color: #2563eb;
+    }
+
     .tag {
       display: inline-block;
       background: #e0f2fe;
@@ -141,6 +151,11 @@
       font-size: 12px;
       font-weight: 600;
       margin-left: 8px;
+    }
+
+    .publication-status.published {
+      background: #d1fae5;
+      color: #065f46;
     }
 
     .authors {
@@ -570,9 +585,39 @@
   <section id="publications">
     <h2>Publications</h2>
 
-    <!-- Publication 1 - Published -->
+    <!-- Publication 1 - In Preparation -->
     <div class="card">
-      <h3>Advances and Perspectives in Fiber-Based Electronic Devices for Next-Generation Systems</h3>
+      <h3>Laser-Induced Photothermal Reduction for Microscale Electrode Patterning on Single Microfiber
+        <span class="publication-status">In preparation</span>
+      </h3>
+      <div class="authors">
+        <span class="my-name">Daehyeon Kim<span class="first-author"></span></span>, Minchang Shin, and Jaehong Lee<span class="corresponding-author"></span>
+      </div>
+      <p>
+        Research on laser-induced photothermal reduction for patterning conductive electrodes on single microfibers, 
+        aimed at enabling advanced fiber-shaped electronic devices with designable electrode architectures.
+      </p>
+    </div>
+
+    <!-- Publication 2 - Submitted -->
+    <div class="card">
+      <h3>Deformation invariant biodegradable fibre electrodes enabled by compliant coordination bridges reinforcing percolation network
+        <span class="publication-status">Submitted (2026)</span>
+      </h3>
+      <div class="authors">
+        <span class="my-name">Jinho Kim<span class="first-author"></span></span>, Yukye Lee, Huidam Woo, Hwajoong Kim, <span class="my-name">Daehyeon Kim</span>, Minchang Shin, Jimin Kim, Sangwon Seo, and Jaehong Lee<span class="corresponding-author"></span>
+      </div>
+      <p>
+        Development of biodegradable fiber electrodes with enhanced mechanical stability through compliant coordination bridges, 
+        enabling robust electrical performance under deformation for sustainable wearable electronics applications.
+      </p>
+    </div>
+
+    <!-- Publication 3 - Published 2025 -->
+    <div class="card">
+      <h3><a href="https://www.nature.com/articles/s41528-025-00465-w" target="_blank">Advances and Perspectives in Fiber-Based Electronic Devices for Next-Generation Systems</a>
+        <span class="publication-status published">Published</span>
+      </h3>
       <div class="authors">
         Hwajoong Kim<span class="first-author"></span>, <span class="my-name">Daehyeon Kim<span class="first-author"></span></span> (Co-first author), Jinho Kim, Yukye Lee, and Jaehong Lee<span class="corresponding-author"></span>
       </div>
@@ -596,9 +641,11 @@
       </p>
     </div>
 
-    <!-- Publication 2 - Published -->
+    <!-- Publication 4 - Published 2024 -->
     <div class="card">
-      <h3>Progresses and Perspective of One-Dimensional Soft Sensing Device for Healthcare Application</h3>
+      <h3><a href="https://advanced.onlinelibrary.wiley.com/doi/10.1002/adfm.202406651" target="_blank">Progresses and Perspective of One-Dimensional Soft Sensing Device for Healthcare Application</a>
+        <span class="publication-status published">Published</span>
+      </h3>
       <div class="authors">
         Jinho Kim<span class="first-author"></span>, Hwajoong Kim<span class="first-author"></span>, Muguen Lee, Junyeong Lee, Yukye Lee, <span class="my-name">Daehyeon Kim</span>, and Jaehong Lee<span class="corresponding-author"></span>
       </div>
@@ -619,34 +666,6 @@
         A comprehensive overview of one-dimensional soft sensing devices for healthcare applications,
         discussing recent progresses in materials, device design, and their potential for
         real-world wearable health monitoring systems.
-      </p>
-    </div>
-
-    <!-- Publication 3 - In Preparation -->
-    <div class="card">
-      <h3>Laser-Induced Photothermal Reduction for Microscale Electrode Patterning on Single Microfiber
-        <span class="publication-status">In preparation</span>
-      </h3>
-      <div class="authors">
-        <span class="my-name">Daehyeon Kim<span class="first-author"></span></span>, Minchang Shin, and Jaehong Lee<span class="corresponding-author"></span>
-      </div>
-      <p>
-        Research on laser-induced photothermal reduction for patterning conductive electrodes on single microfibers, 
-        aimed at enabling advanced fiber-shaped electronic devices with designable electrode architectures.
-      </p>
-    </div>
-
-    <!-- Publication 4 - Submitted -->
-    <div class="card">
-      <h3>Deformation invariant biodegradable fibre electrodes enabled by compliant coordination bridges reinforcing percolation network
-        <span class="publication-status">Submitted (2026)</span>
-      </h3>
-      <div class="authors">
-        Jinho Kim, Yukye Lee, Huidam Woo, Hwajoong Kim, <span class="my-name">Daehyeon Kim</span>, Minchang Shin, Jimin Kim, Sangwon Seo, and Jaehong Lee<span class="corresponding-author"></span>
-      </div>
-      <p>
-        Development of biodegradable fiber electrodes with enhanced mechanical stability through compliant coordination bridges, 
-        enabling robust electrical performance under deformation for sustainable wearable electronics applications.
       </p>
     </div>
   </section>
