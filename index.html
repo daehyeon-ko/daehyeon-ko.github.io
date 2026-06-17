@@ -346,7 +346,11 @@
 
     .about-content {
       min-width: 0;
-      padding-right: 8px;
+      padding-right: 0;
+    }
+
+    .about-content p {
+      text-align: justify;
     }
 
     .about-content h3 {
@@ -448,7 +452,11 @@
 
     .research-text {
       min-width: 0;
-      padding-right: 8px;
+      padding-right: 0;
+    }
+
+    .research-text p {
+      text-align: justify;
     }
 
     .carousel {
@@ -633,14 +641,20 @@
       z-index: 1002;
     }
 
+    .tags-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
     .tag {
-      display: inline-block;
       background: #e0f2fe;
       color: #0369a1;
-      padding: 5px 10px;
+      padding: 5px 12px;
       border-radius: 999px;
       font-size: 13px;
-      margin: 5px 5px 5px 0;
+      font-weight: 500;
     }
 
     .status {
@@ -691,6 +705,10 @@
     .journal-metric-value {
       color: #2563eb;
       font-weight: bold;
+    }
+
+    .publication-card p {
+      text-align: justify;
     }
 
     .publication-meta {
@@ -981,11 +999,13 @@
         <br>
 
         <h3>Research Interests</h3>
-        <span class="tag">Micro/nanoscale fabrication</span>
-        <span class="tag">Advanced materials</span>
-        <span class="tag">Electronic devices</span>
-        <span class="tag">Functional materials</span>
-        <span class="tag">Optics</span>
+        <div class="tags-container">
+          <span class="tag">Micro/nanoscale fabrication</span>
+          <span class="tag">Advanced materials</span>
+          <span class="tag">Electronic devices</span>
+          <span class="tag">Functional materials</span>
+          <span class="tag">Optics</span>
+        </div>
       </div>
     </div>
   </section>
@@ -1011,13 +1031,14 @@
         <p>
           Developed a laser-based fabrication strategy for creating high-precision microscale silver electrodes on highly curved single nylon microfibers using a photo-reactive composite coating. This work focuses on overcoming the geometric challenges of electrode patterning on one-dimensional curved substrates through localized laser processing and mask-free conductive pathway formation.
         </p>
-        <br>
-        <span class="tag">Laser fabrication</span>
-        <span class="tag">Photothermal effect</span>
-        <span class="tag">Curved substrate</span>
-        <span class="tag">Microscale electrode patterning</span>
-        <span class="tag">Mask-free fabrication</span>
-        <span class="tag">Single-fiber electronics</span>
+        <div class="tags-container">
+          <span class="tag">Laser fabrication</span>
+          <span class="tag">Photothermal effect</span>
+          <span class="tag">Curved substrate</span>
+          <span class="tag">Microscale electrode patterning</span>
+          <span class="tag">Mask-free fabrication</span>
+          <span class="tag">Single-fiber electronics</span>
+        </div>
       </div>
     </div>
 
@@ -1039,12 +1060,13 @@
         <p>
           Developed a facile synthesis approach for nickel- and copper-based nanoparticles and applied them to conductive inks for flexible electrode fabrication through laser processing. This work focuses on scalable nanomaterial synthesis, solution-processable conductive materials, and laser-based fabrication of nanomaterial-based electronic devices.
         </p>
-        <br>
-        <span class="tag">Ni/Cu nanoparticles</span>
-        <span class="tag">Conductive nanomaterial ink</span>
-        <span class="tag">Laser-processed electrodes</span>
-        <span class="tag">Flexible electronics</span>
-        <span class="tag">Scalable nanomaterial synthesis</span>
+        <div class="tags-container">
+          <span class="tag">Ni/Cu nanoparticles</span>
+          <span class="tag">Conductive nanomaterial ink</span>
+          <span class="tag">Laser-processed electrodes</span>
+          <span class="tag">Flexible electronics</span>
+          <span class="tag">Scalable nanomaterial synthesis</span>
+        </div>
       </div>
     </div>
   </section>
