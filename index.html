@@ -162,7 +162,8 @@
       align-items: center;
     }
 
-    .research-image {
+    .research-image-container {
+      position: relative;
       width: 100%;
       height: 280px;
       background: #e5e7eb;
@@ -175,10 +176,180 @@
       overflow: hidden;
     }
 
-    .research-image img {
+    .carousel {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .carousel-slide {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+    }
+
+    .carousel-slide.active {
+      opacity: 1;
+    }
+
+    .carousel-slide img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .carousel-slide img:hover {
+      transform: scale(1.02);
+    }
+
+    .carousel-controls {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 8px;
+      z-index: 10;
+    }
+
+    .carousel-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.5);
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .carousel-dot.active {
+      background: rgba(255, 255, 255, 1);
+    }
+
+    .carousel-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.5);
+      color: white;
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s;
+      z-index: 10;
+    }
+
+    .carousel-arrow:hover {
+      background: rgba(0, 0, 0, 0.8);
+    }
+
+    .carousel-arrow.prev {
+      left: 10px;
+    }
+
+    .carousel-arrow.next {
+      right: 10px;
+    }
+
+    /* Modal for image enlargement */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      animation: fadeIn 0.3s;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .modal-content {
+      position: relative;
+      margin: auto;
+      width: 90%;
+      max-width: 900px;
+      height: 90vh;
+      top: 50%;
+      transform: translateY(-50%);
+      animation: zoomIn 0.3s;
+    }
+
+    @keyframes zoomIn {
+      from {
+        transform: translateY(-50%) scale(0.8);
+      }
+      to {
+        transform: translateY(-50%) scale(1);
+      }
+    }
+
+    .modal-content img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 20px;
+      right: 35px;
+      color: white;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+
+    .modal-close:hover {
+      color: #ccc;
+    }
+
+    .modal-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      color: white;
+      border: none;
+      background: rgba(0, 0, 0, 0.5);
+      font-size: 30px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s;
+    }
+
+    .modal-arrow:hover {
+      background: rgba(0, 0, 0, 0.8);
+    }
+
+    .modal-arrow.prev {
+      left: 20px;
+    }
+
+    .modal-arrow.next {
+      right: 20px;
     }
 
     .research-content h3 {
@@ -236,8 +407,20 @@
         grid-template-columns: 1fr;
       }
 
-      .research-image {
+      .research-image-container {
         height: 200px;
+      }
+
+      .carousel-arrow {
+        width: 35px;
+        height: 35px;
+        font-size: 16px;
+      }
+
+      .modal-arrow {
+        width: 40px;
+        height: 40px;
+        font-size: 24px;
       }
     }
   </style>
@@ -292,10 +475,23 @@
   <section id="research">
     <h2>Research</h2>
 
+    <!-- Research 1 -->
     <div class="research-card">
-      <div class="research-image">
-        <!-- Replace src with your research image path -->
-        <img src="images/research1.jpg" alt="Laser-Induced Photothermal Reduction" />
+      <div class="research-image-container">
+        <div class="carousel" id="carousel1">
+          <div class="carousel-slide active">
+            <img src="images/research1_1.jpg" alt="Laser-Induced Photothermal Reduction 1" />
+          </div>
+          <div class="carousel-slide">
+            <img src="images/research1_2.jpg" alt="Laser-Induced Photothermal Reduction 2" />
+          </div>
+          <div class="carousel-slide">
+            <img src="images/research1_3.jpg" alt="Laser-Induced Photothermal Reduction 3" />
+          </div>
+          <button class="carousel-arrow prev" onclick="previousSlide(1)">&#10094;</button>
+          <button class="carousel-arrow next" onclick="nextSlide(1)">&#10095;</button>
+          <div class="carousel-controls" id="carousel1-controls"></div>
+        </div>
       </div>
       <div class="research-content">
         <h3>Laser-Induced Photothermal Reduction for Microscale Electrode Patterning on Single Microfiber</h3>
@@ -314,10 +510,23 @@
       </div>
     </div>
 
+    <!-- Research 2 -->
     <div class="research-card">
-      <div class="research-image">
-        <!-- Replace src with your research image path -->
-        <img src="images/research2.jpg" alt="Fast Synthesis of Metal Nanoparticle Ink" />
+      <div class="research-image-container">
+        <div class="carousel" id="carousel2">
+          <div class="carousel-slide active">
+            <img src="images/research2_1.jpg" alt="Fast Synthesis of Metal Nanoparticle Ink 1" />
+          </div>
+          <div class="carousel-slide">
+            <img src="images/research2_2.jpg" alt="Fast Synthesis of Metal Nanoparticle Ink 2" />
+          </div>
+          <div class="carousel-slide">
+            <img src="images/research2_3.jpg" alt="Fast Synthesis of Metal Nanoparticle Ink 3" />
+          </div>
+          <button class="carousel-arrow prev" onclick="previousSlide(2)">&#10094;</button>
+          <button class="carousel-arrow next" onclick="nextSlide(2)">&#10095;</button>
+          <div class="carousel-controls" id="carousel2-controls"></div>
+        </div>
       </div>
       <div class="research-content">
         <h3>Fast Synthesis of Metal Nanoparticle Ink and Flexible Electrode</h3>
@@ -399,9 +608,146 @@
     </div>
   </section>
 
+  <!-- Image Modal -->
+  <div id="imageModal" class="modal">
+    <span class="modal-close" onclick="closeModal()">&times;</span>
+    <div class="modal-content">
+      <img id="modalImage" src="" alt="" />
+      <button class="modal-arrow prev" onclick="previousModalImage()">&#10094;</button>
+      <button class="modal-arrow next" onclick="nextModalImage()">&#10095;</button>
+    </div>
+  </div>
+
   <footer>
     © 2026 Daehyeon Kim. All rights reserved.
   </footer>
+
+  <script>
+    const carouselData = {
+      1: { current: 0, total: 3, interval: null },
+      2: { current: 0, total: 3, interval: null }
+    };
+
+    let currentModalCarousel = null;
+    let currentModalIndex = 0;
+
+    // Initialize carousels on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      initializeCarousel(1);
+      initializeCarousel(2);
+    });
+
+    function initializeCarousel(carouselId) {
+      updateCarousel(carouselId);
+      startAutoSlide(carouselId);
+    }
+
+    function updateCarousel(carouselId) {
+      const slides = document.querySelectorAll(`#carousel${carouselId} .carousel-slide`);
+      const controls = document.getElementById(`carousel${carouselId}-controls`);
+
+      // Clear and recreate controls
+      controls.innerHTML = '';
+
+      slides.forEach((slide, index) => {
+        slide.classList.remove('active');
+        if (index === carouselData[carouselId].current) {
+          slide.classList.add('active');
+        }
+
+        // Create dot
+        const dot = document.createElement('div');
+        dot.className = 'carousel-dot' + (index === carouselData[carouselId].current ? ' active' : '');
+        dot.onclick = () => goToSlide(carouselId, index);
+        controls.appendChild(dot);
+      });
+
+      // Add click to image for enlargement
+      slides.forEach((slide, index) => {
+        const img = slide.querySelector('img');
+        img.onclick = (e) => {
+          e.stopPropagation();
+          openModal(carouselId, index);
+        };
+      });
+    }
+
+    function nextSlide(carouselId) {
+      clearInterval(carouselData[carouselId].interval);
+      carouselData[carouselId].current = (carouselData[carouselId].current + 1) % carouselData[carouselId].total;
+      updateCarousel(carouselId);
+      startAutoSlide(carouselId);
+    }
+
+    function previousSlide(carouselId) {
+      clearInterval(carouselData[carouselId].interval);
+      carouselData[carouselId].current = (carouselData[carouselId].current - 1 + carouselData[carouselId].total) % carouselData[carouselId].total;
+      updateCarousel(carouselId);
+      startAutoSlide(carouselId);
+    }
+
+    function goToSlide(carouselId, index) {
+      clearInterval(carouselData[carouselId].interval);
+      carouselData[carouselId].current = index;
+      updateCarousel(carouselId);
+      startAutoSlide(carouselId);
+    }
+
+    function startAutoSlide(carouselId) {
+      carouselData[carouselId].interval = setInterval(() => {
+        carouselData[carouselId].current = (carouselData[carouselId].current + 1) % carouselData[carouselId].total;
+        updateCarousel(carouselId);
+      }, 3000);
+    }
+
+    // Modal functions
+    function openModal(carouselId, imageIndex) {
+      currentModalCarousel = carouselId;
+      currentModalIndex = imageIndex;
+      clearInterval(carouselData[carouselId].interval);
+
+      const img = document.querySelector(`#carousel${carouselId} .carousel-slide:nth-child(${imageIndex + 1}) img`);
+      document.getElementById('modalImage').src = img.src;
+      document.getElementById('imageModal').style.display = 'block';
+    }
+
+    function closeModal() {
+      document.getElementById('imageModal').style.display = 'none';
+      if (currentModalCarousel) {
+        startAutoSlide(currentModalCarousel);
+      }
+    }
+
+    function nextModalImage() {
+      currentModalIndex = (currentModalIndex + 1) % carouselData[currentModalCarousel].total;
+      const img = document.querySelector(`#carousel${currentModalCarousel} .carousel-slide:nth-child(${currentModalIndex + 1}) img`);
+      document.getElementById('modalImage').src = img.src;
+    }
+
+    function previousModalImage() {
+      currentModalIndex = (currentModalIndex - 1 + carouselData[currentModalCarousel].total) % carouselData[currentModalCarousel].total;
+      const img = document.querySelector(`#carousel${currentModalCarousel} .carousel-slide:nth-child(${currentModalIndex + 1}) img`);
+      document.getElementById('modalImage').src = img.src;
+    }
+
+    // Close modal when clicking outside the image
+    window.onclick = function(event) {
+      const modal = document.getElementById('imageModal');
+      if (event.target === modal) {
+        closeModal();
+      }
+    }
+
+    // Keyboard navigation for modal
+    document.addEventListener('keydown', function(e) {
+      const modal = document.getElementById('imageModal');
+      if (modal.style.display === 'block') {
+        if (e.key === 'ArrowRight') nextModalImage();
+        if (e.key === 'ArrowLeft') previousModalImage();
+        if (e.key === 'Escape') closeModal();
+      }
+    });
+  </script>
 
 </body>
 </html>
