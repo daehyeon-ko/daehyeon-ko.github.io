@@ -132,14 +132,37 @@
       font-weight: 500;
     }
 
+    .publication-status {
+      display: inline-block;
+      background: #fef08a;
+      color: #854d0e;
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-left: 8px;
+    }
+
     .authors {
       color: #4b5563;
       font-size: 15px;
       margin-bottom: 12px;
-      line-height: 1.5;
+      line-height: 1.6;
     }
 
     .my-name {
+      color: #2563eb;
+      font-weight: 700;
+    }
+
+    .first-author::before {
+      content: "†";
+      color: #2563eb;
+      font-weight: 700;
+    }
+
+    .corresponding-author::after {
+      content: "*";
       color: #2563eb;
       font-weight: 700;
     }
@@ -547,10 +570,11 @@
   <section id="publications">
     <h2>Publications</h2>
 
+    <!-- Publication 1 - Published -->
     <div class="card">
       <h3>Advances and Perspectives in Fiber-Based Electronic Devices for Next-Generation Systems</h3>
       <div class="authors">
-        Hwajoong Kim†, <span class="my-name">Daehyeon Kim†</span> (Co-first author), Jinho Kim, Yukye Lee, and Jaehong Lee*
+        Hwajoong Kim<span class="first-author"></span>, <span class="my-name">Daehyeon Kim<span class="first-author"></span></span> (Co-first author), Jinho Kim, Yukye Lee, and Jaehong Lee<span class="corresponding-author"></span>
       </div>
       <div class="publication-meta">npj Flexible Electronics, Vol. 9, 84 (2025)</div>
       
@@ -572,10 +596,11 @@
       </p>
     </div>
 
+    <!-- Publication 2 - Published -->
     <div class="card">
       <h3>Progresses and Perspective of One-Dimensional Soft Sensing Device for Healthcare Application</h3>
       <div class="authors">
-        Jinho Kim†, Hwajoong Kim†, Muguen Lee, Junyeong Lee, Yukye Lee, <span class="my-name">Daehyeon Kim</span>, and Jaehong Lee*
+        Jinho Kim<span class="first-author"></span>, Hwajoong Kim<span class="first-author"></span>, Muguen Lee, Junyeong Lee, Yukye Lee, <span class="my-name">Daehyeon Kim</span>, and Jaehong Lee<span class="corresponding-author"></span>
       </div>
       <div class="publication-meta">Advanced Functional Materials, Vol. 34, 2406651 (2024)</div>
       
@@ -594,6 +619,34 @@
         A comprehensive overview of one-dimensional soft sensing devices for healthcare applications,
         discussing recent progresses in materials, device design, and their potential for
         real-world wearable health monitoring systems.
+      </p>
+    </div>
+
+    <!-- Publication 3 - In Preparation -->
+    <div class="card">
+      <h3>Laser-Induced Photothermal Reduction for Microscale Electrode Patterning on Single Microfiber
+        <span class="publication-status">In preparation</span>
+      </h3>
+      <div class="authors">
+        <span class="my-name">Daehyeon Kim<span class="first-author"></span></span>, Minchang Shin, and Jaehong Lee<span class="corresponding-author"></span>
+      </div>
+      <p>
+        Research on laser-induced photothermal reduction for patterning conductive electrodes on single microfibers, 
+        aimed at enabling advanced fiber-shaped electronic devices with designable electrode architectures.
+      </p>
+    </div>
+
+    <!-- Publication 4 - Submitted -->
+    <div class="card">
+      <h3>Deformation invariant biodegradable fibre electrodes enabled by compliant coordination bridges reinforcing percolation network
+        <span class="publication-status">Submitted (2026)</span>
+      </h3>
+      <div class="authors">
+        Jinho Kim, Yukye Lee, Huidam Woo, Hwajoong Kim, <span class="my-name">Daehyeon Kim</span>, Minchang Shin, Jimin Kim, Sangwon Seo, and Jaehong Lee<span class="corresponding-author"></span>
+      </div>
+      <p>
+        Development of biodegradable fiber electrodes with enhanced mechanical stability through compliant coordination bridges, 
+        enabling robust electrical performance under deformation for sustainable wearable electronics applications.
       </p>
     </div>
   </section>
