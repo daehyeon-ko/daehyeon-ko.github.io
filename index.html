@@ -332,6 +332,7 @@
       object-fit: contain;
       background: #ffffff;
       padding: 8px;
+      cursor: zoom-in;
     }
 
     .carousel img.active {
@@ -398,6 +399,62 @@
     .dot.active {
       background: #2563eb;
       border-color: #2563eb;
+    }
+
+    .image-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.92);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 36px;
+    }
+
+    .image-modal.active {
+      display: flex;
+    }
+
+    .image-modal img {
+      max-width: 92vw;
+      max-height: 86vh;
+      object-fit: contain;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+    }
+
+    .modal-close {
+      position: fixed;
+      top: 22px;
+      right: 26px;
+      width: 42px;
+      height: 42px;
+      border: none;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.16);
+      color: white;
+      font-size: 28px;
+      cursor: pointer;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-close:hover {
+      background: rgba(255, 255, 255, 0.28);
+    }
+
+    .modal-caption {
+      position: fixed;
+      left: 24px;
+      right: 24px;
+      bottom: 18px;
+      color: #e2e8f0;
+      text-align: center;
+      font-size: 14px;
     }
 
     .tag {
@@ -558,6 +615,15 @@
       .about-card,
       .research-card {
         padding: 22px;
+      }
+
+      .image-modal {
+        padding: 18px;
+      }
+
+      .modal-close {
+        top: 14px;
+        right: 14px;
       }
     }
   </style>
@@ -850,6 +916,12 @@
     © 2026 Daehyeon Kim. All rights reserved.
   </footer>
 
+  <div class="image-modal" id="image-modal">
+    <button class="modal-close" type="button" id="modal-close" aria-label="Close image">×</button>
+    <img id="modal-image" src="" alt="">
+    <div class="modal-caption" id="modal-caption"></div>
+  </div>
+
   <script>
     const imageExtensions = ["png", "jpg", "jpeg", "gif", "webp"];
 
@@ -880,6 +952,61 @@
         }
 
         tryNext();
+      });
+    }
+
+    function openImageModal(src, altText) {
+      const modal = document.getElementById("image-modal");
+      const modalImage = document.getElementById("modal-image");
+      const modalCaption = document.getElementById("modal-caption");
+
+      if (!modal || !modalImage) return;
+
+      modalImage.src = src;
+      modalImage.alt = altText || "Research image";
+
+      if (modalCaption) {
+        modalCaption.textContent = altText || "";
+      }
+
+      modal.classList.add("active");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeImageModal() {
+      const modal = document.getElementById("image-modal");
+      const modalImage = document.getElementById("modal-image");
+
+      if (!modal) return;
+
+      modal.classList.remove("active");
+      document.body.style.overflow = "";
+
+      if (modalImage) {
+        modalImage.src = "";
+      }
+    }
+
+    function initializeImageModal() {
+      const modal = document.getElementById("image-modal");
+      const closeButton = document.getElementById("modal-close");
+
+      if (closeButton) {
+        closeButton.addEventListener("click", closeImageModal);
+      }
+
+      if (modal) {
+        modal.addEventListener("click", function(event) {
+          if (event.target === modal) {
+            closeImageModal();
+          }
+        });
+      }
+
+      document.addEventListener("keydown", function(event) {
+        if (event.key === "Escape") {
+          closeImageModal();
+        }
       });
     }
 
@@ -966,6 +1093,10 @@
           if (index === 0) {
             img.classList.add("active");
           }
+
+          img.addEventListener("click", function() {
+            openImageModal(src, img.alt);
+          });
 
           carousel.insertBefore(img, prevButton);
         });
@@ -1058,6 +1189,7 @@
       document.getElementById("h-index").textContent = hIndex;
     }
 
+    initializeImageModal();
     initializeHeaderBackground();
     initializeProfileImage();
     initializeCarousels();
