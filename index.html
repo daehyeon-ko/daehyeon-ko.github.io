@@ -216,7 +216,7 @@
 
     .stats-grid {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 14px;
       margin: 18px 0 24px 0;
     }
@@ -248,9 +248,16 @@
 
     .research-card {
       display: grid;
-      grid-template-columns: 42% 58%;
-      gap: 24px;
+      grid-template-columns: minmax(300px, 0.9fr) minmax(0, 1.25fr);
+      gap: 28px;
       align-items: center;
+      padding: 32px 42px;
+      overflow: hidden;
+    }
+
+    .research-text {
+      min-width: 0;
+      padding-right: 8px;
     }
 
     .carousel {
@@ -463,7 +470,7 @@
       }
 
       .stats-grid {
-        grid-template-columns: repeat(2, minmax(120px, 1fr));
+        grid-template-columns: repeat(3, minmax(120px, 1fr));
       }
 
       .education-top {
@@ -475,13 +482,18 @@
         text-align: left;
         white-space: normal;
       }
+
+      .research-card {
+        grid-template-columns: 1fr;
+        padding: 28px;
+      }
+
+      .research-text {
+        padding-right: 0;
+      }
     }
 
     @media (max-width: 820px) {
-      .research-card {
-        grid-template-columns: 1fr;
-      }
-
       .carousel {
         height: 230px;
       }
@@ -492,12 +504,13 @@
       }
     }
 
-    @media (max-width: 520px) {
+    @media (max-width: 620px) {
       .stats-grid {
         grid-template-columns: 1fr;
       }
 
-      .about-card {
+      .about-card,
+      .research-card {
         padding: 22px;
       }
     }
@@ -517,7 +530,6 @@
 
   <nav>
     <a href="#about">About</a>
-    <a href="#cv">CV</a>
     <a href="#research">Research</a>
     <a href="#publications">Publications</a>
     <a href="#contact">Contact</a>
@@ -584,13 +596,8 @@
         <h3>Research Metrics</h3>
         <div class="stats-grid">
           <div class="stat-card">
-            <div class="stat-number" id="journal-paper-count">—</div>
-            <div class="stat-label">Journal Papers</div>
-          </div>
-
-          <div class="stat-card">
-            <div class="stat-number" id="conference-count">—</div>
-            <div class="stat-label">Conferences</div>
+            <div class="stat-number" id="publication-count">—</div>
+            <div class="stat-label">Publications</div>
           </div>
 
           <div class="stat-card">
@@ -632,16 +639,6 @@
     </div>
   </section>
 
-  <section id="cv">
-    <h2>CV</h2>
-    <div class="card">
-      <p>
-        My curriculum vitae will be available here.
-      </p>
-      <a class="button" href="#">Download CV</a>
-    </div>
-  </section>
-
   <section id="research">
     <h2>Research</h2>
 
@@ -661,7 +658,7 @@
         </div>
       </div>
 
-      <div>
+      <div class="research-text">
         <h3>Laser-Induced Photothermal Reduction for Microscale Electrode Patterning on Single Microfibers</h3>
         <p>
           Developed a laser-induced fabrication strategy for forming conductive silver pathways
@@ -693,7 +690,7 @@
         </div>
       </div>
 
-      <div>
+      <div class="research-text">
         <h3>Fast Synthesis of Metal Nanoparticle Ink and Flexible Electrodes</h3>
         <p>
           Developed a rapid synthesis strategy for metal nanoparticle-based conductive ink
@@ -847,13 +844,9 @@
     });
 
     function updateResearchMetrics() {
-      const conferenceCount = 6;
       const publicationCards = Array.from(document.querySelectorAll(".publication-card"));
-      const journalCards = publicationCards.filter(function(card) {
-        return card.dataset.publicationType === "journal";
-      });
 
-      const citationCounts = journalCards.map(function(card) {
+      const citationCounts = publicationCards.map(function(card) {
         return Number(card.dataset.citations || 0);
       });
 
@@ -872,8 +865,7 @@
         }
       }
 
-      document.getElementById("journal-paper-count").textContent = journalCards.length;
-      document.getElementById("conference-count").textContent = conferenceCount;
+      document.getElementById("publication-count").textContent = publicationCards.length;
       document.getElementById("citation-total").textContent = totalCitations;
       document.getElementById("h-index").textContent = hIndex;
     }
