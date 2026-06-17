@@ -89,14 +89,82 @@
       line-height: 1.4;
     }
 
-    .title-link {
-      color: #111827;
-      text-decoration: none;
+    .research-card {
+      display: grid;
+      grid-template-columns: 42% 58%;
+      gap: 24px;
+      align-items: center;
     }
 
-    .title-link:hover {
-      color: #2563eb;
-      text-decoration: underline;
+    .carousel {
+      position: relative;
+      width: 100%;
+      height: 260px;
+      overflow: hidden;
+      border-radius: 14px;
+      border: 1px solid #e5e7eb;
+      background: #f1f5f9;
+    }
+
+    .carousel img {
+      display: none;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .carousel img.active {
+      display: block;
+    }
+
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 34px;
+      height: 34px;
+      border: none;
+      border-radius: 50%;
+      background: rgba(15, 23, 42, 0.65);
+      color: white;
+      font-size: 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .carousel-btn:hover {
+      background: rgba(15, 23, 42, 0.85);
+    }
+
+    .carousel-btn.prev {
+      left: 10px;
+    }
+
+    .carousel-btn.next {
+      right: 10px;
+    }
+
+    .carousel-dots {
+      position: absolute;
+      bottom: 10px;
+      left: 0;
+      right: 0;
+      text-align: center;
+    }
+
+    .dot {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      margin: 0 3px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.55);
+    }
+
+    .dot.active {
+      background: white;
     }
 
     .tag {
@@ -178,6 +246,16 @@
       font-weight: 700;
     }
 
+    .title-link {
+      color: #111827;
+      text-decoration: none;
+    }
+
+    .title-link:hover {
+      color: #2563eb;
+      text-decoration: underline;
+    }
+
     .button {
       display: inline-block;
       margin-top: 16px;
@@ -207,6 +285,21 @@
 
     li {
       margin-bottom: 8px;
+    }
+
+    @media (max-width: 760px) {
+      .research-card {
+        grid-template-columns: 1fr;
+      }
+
+      .carousel {
+        height: 230px;
+      }
+
+      nav a {
+        display: inline-block;
+        margin: 6px 8px;
+      }
     }
   </style>
 </head>
@@ -262,33 +355,67 @@
   <section id="research">
     <h2>Research</h2>
 
-    <div class="card">
-      <h3>Laser-Induced Photothermal Reduction for Microscale Electrode Patterning on Single Microfibers</h3>
-      <span class="status status-submitted">Submitted</span>
-      <p>
-        Developed a laser-induced fabrication strategy for forming conductive silver pathways
-        on individual nylon microfibers using a laser-reactive composite coating. This work
-        focuses on localized materials processing, mask-free electrode patterning, and
-        microscale device fabrication on curved and one-dimensional substrates.
-      </p>
-      <span class="tag">Laser processing</span>
-      <span class="tag">Micro/nanoscale fabrication</span>
-      <span class="tag">Silver electrodes</span>
-      <span class="tag">Functional materials</span>
+    <div class="card research-card">
+      <div class="carousel" data-carousel>
+        <img src="images/laser1.jpg" alt="Laser-induced electrode patterning image 1" class="active">
+        <img src="images/laser2.jpg" alt="Laser-induced electrode patterning image 2">
+        <img src="images/laser3.jpg" alt="Laser-induced electrode patterning image 3">
+
+        <button class="carousel-btn prev" type="button" data-prev>‹</button>
+        <button class="carousel-btn next" type="button" data-next>›</button>
+
+        <div class="carousel-dots">
+          <span class="dot active"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+        </div>
+      </div>
+
+      <div>
+        <h3>Laser-Induced Photothermal Reduction for Microscale Electrode Patterning on Single Microfibers</h3>
+        <p>
+          Developed a laser-induced fabrication strategy for forming conductive silver pathways
+          on individual nylon microfibers using a laser-reactive composite coating. This work
+          focuses on localized materials processing, mask-free electrode patterning, and
+          microscale device fabrication on curved and one-dimensional substrates.
+        </p>
+        <br>
+        <span class="tag">Laser processing</span>
+        <span class="tag">Micro/nanoscale fabrication</span>
+        <span class="tag">Silver electrodes</span>
+        <span class="tag">Functional materials</span>
+      </div>
     </div>
 
-    <div class="card">
-      <h3>Fast Synthesis of Metal Nanoparticle Ink and Flexible Electrodes</h3>
-      <span class="status status-preparation">In preparation</span>
-      <p>
-        Developed a rapid synthesis strategy for metal nanoparticle-based conductive ink
-        and flexible electrodes. This work aims to support scalable materials processing
-        and electronic device fabrication using solution-processable conductive materials.
-      </p>
-      <span class="tag">Metal nanoparticle ink</span>
-      <span class="tag">Conductive materials</span>
-      <span class="tag">Materials processing</span>
-      <span class="tag">Electronic devices</span>
+    <div class="card research-card">
+      <div class="carousel" data-carousel>
+        <img src="images/ink1.jpg" alt="Metal nanoparticle ink image 1" class="active">
+        <img src="images/ink2.jpg" alt="Metal nanoparticle ink image 2">
+        <img src="images/ink3.jpg" alt="Metal nanoparticle ink image 3">
+
+        <button class="carousel-btn prev" type="button" data-prev>‹</button>
+        <button class="carousel-btn next" type="button" data-next>›</button>
+
+        <div class="carousel-dots">
+          <span class="dot active"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+        </div>
+      </div>
+
+      <div>
+        <h3>Fast Synthesis of Metal Nanoparticle Ink and Flexible Electrodes</h3>
+        <p>
+          Developed a rapid synthesis strategy for metal nanoparticle-based conductive ink
+          and flexible electrodes. This work aims to support scalable materials processing
+          and electronic device fabrication using solution-processable conductive materials.
+        </p>
+        <br>
+        <span class="tag">Metal nanoparticle ink</span>
+        <span class="tag">Conductive materials</span>
+        <span class="tag">Materials processing</span>
+        <span class="tag">Electronic devices</span>
+      </div>
     </div>
   </section>
 
@@ -310,11 +437,11 @@
 
     <div class="card">
       <h3>Deformation Invariant Biodegradable Fibre Electrodes Enabled by Compliant Coordination Bridges Reinforcing Percolation Network</h3>
-      <span class="status status-submitted">Submitted</span>
+      <span class="status status-submitted">Submitted (2026)</span>
       <div class="authors">
         Jinho Kim, Yukye Lee, Huidam Woo, Hwajoong Kim, <span class="my-name">Daehyeon Kim</span>, Minchang Shin, Jimin Kim, Sangwon Seo, and Jaehong Lee*
       </div>
-      <div class="publication-meta">Submitted manuscript, 2026</div>
+      <div class="publication-meta">Submitted manuscript</div>
       <p>
         This manuscript presents biodegradable fibre electrodes designed to maintain
         electrical functionality under deformation through compliant coordination bridges
@@ -396,6 +523,39 @@
   <footer>
     © 2026 Daehyeon Kim. All rights reserved.
   </footer>
+
+  <script>
+    document.querySelectorAll('[data-carousel]').forEach(function(carousel) {
+      const images = carousel.querySelectorAll('img');
+      const dots = carousel.querySelectorAll('.dot');
+      const prevButton = carousel.querySelector('[data-prev]');
+      const nextButton = carousel.querySelector('[data-next]');
+      let currentIndex = 0;
+
+      function showImage(index) {
+        images[currentIndex].classList.remove('active');
+        dots[currentIndex].classList.remove('active');
+
+        currentIndex = (index + images.length) % images.length;
+
+        images[currentIndex].classList.add('active');
+        dots[currentIndex].classList.add('active');
+      }
+
+      function nextImage() {
+        showImage(currentIndex + 1);
+      }
+
+      function prevImage() {
+        showImage(currentIndex - 1);
+      }
+
+      nextButton.addEventListener('click', nextImage);
+      prevButton.addEventListener('click', prevImage);
+
+      setInterval(nextImage, 3000);
+    });
+  </script>
 
 </body>
 </html>
