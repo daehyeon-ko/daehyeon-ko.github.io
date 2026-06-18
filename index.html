@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Daehyeon Kim | Personal Website</title>
 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
   <style>
     * {
       box-sizing: border-box;
@@ -272,8 +274,7 @@
       align-items: center;
       justify-content: center;
       text-decoration: none;
-      font-size: 13px;
-      font-weight: 800;
+      font-size: 18px; /* 텍스트(13px)에서 아이콘 크기에 맞춰 18px로 조정 */
       transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
@@ -290,6 +291,12 @@
       filter: grayscale(1) !important;
       cursor: not-allowed !important;
       pointer-events: none !important;
+    }
+
+    .social-icon.scholar {
+      background: #e5e7eb;
+      color: #6b7280;
+      border: 1px solid #d1d5db;
     }
 
     .social-icon.linkedin {
@@ -927,9 +934,9 @@
           </div>
 
           <div class="social-icons">
-            <a class="social-icon scholar inactive" href="#" title="Google Scholar profile not available yet" aria-label="Google Scholar profile not available yet">GS</a>
-            <a class="social-icon linkedin" href="https://www.linkedin.com/in/daehyeon-k-1b838725a/" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn">in</a>
-            <a class="social-icon github inactive" href="#" title="GitHub profile not available yet" aria-label="GitHub profile not available yet">GH</a>
+            <a class="social-icon scholar inactive" href="#" title="Google Scholar profile not available yet" aria-label="Google Scholar profile not available yet"><i class="fa-solid fa-graduation-cap"></i></a>
+            <a class="social-icon linkedin" href="https://www.linkedin.com/in/daehyeon-k-1b838725a/" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a class="social-icon github inactive" href="#" title="GitHub profile not available yet" aria-label="GitHub profile not available yet"><i class="fa-brands fa-github"></i></a>
           </div>
         </div>
 
