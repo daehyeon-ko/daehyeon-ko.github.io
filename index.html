@@ -149,6 +149,20 @@
       padding-bottom: 10px;
     }
 
+    /* 외부로 빼낸 소제목 스타일 추가 */
+    .section-subheading {
+      font-size: 22px;
+      color: #0f172a;
+      margin-top: 36px;
+      margin-bottom: 14px;
+      font-weight: 700;
+    }
+
+    /* h2 바로 다음에 오는 소제목은 위쪽 여백을 조금 줄임 */
+    h2 + .section-subheading {
+      margin-top: 10px;
+    }
+
     .card {
       background: white;
       padding: 32px 42px;
@@ -274,7 +288,7 @@
       align-items: center;
       justify-content: center;
       text-decoration: none;
-      font-size: 18px; /* 텍스트(13px)에서 아이콘 크기에 맞춰 18px로 조정 */
+      font-size: 18px; 
       transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
@@ -1209,8 +1223,8 @@
   <section id="honors-patents">
     <h2>Honors & Patents</h2>
     
+    <h3 class="section-subheading">Honors & Awards</h3>
     <div class="card">
-      <h3>Honors & Awards</h3>
       <div class="honors-list">
         
         <div class="honor-item">
@@ -1263,8 +1277,8 @@
       </div>
     </div>
 
+    <h3 class="section-subheading">Patents</h3>
     <div class="card">
-      <h3>Patents</h3>
       <div class="patents-list">
         
         <div class="patent-item">
