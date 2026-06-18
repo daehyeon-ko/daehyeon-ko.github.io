@@ -147,7 +147,6 @@
       padding-bottom: 10px;
     }
 
-    /* 모든 카드의 여백을 32px 42px로 통일하여 웹사이트 전체 우측 끝선을 맞춤 */
     .card {
       background: white;
       padding: 32px 42px;
@@ -283,7 +282,6 @@
       box-shadow: 0 6px 14px rgba(15, 23, 42, 0.16);
     }
 
-    /* 비활성화 상태를 위한 클래스 */
     .social-icon.inactive {
       background: #e5e7eb !important;
       color: #6b7280 !important;
@@ -424,7 +422,6 @@
       padding: 18px 12px;
       text-align: center;
       box-shadow: 0 3px 12px rgba(37, 99, 235, 0.08);
-      /* 스탯 카드는 기존 내부 여백을 유지 */
     }
 
     .stat-number {
@@ -741,8 +738,46 @@
       text-decoration: underline;
     }
 
-    a {
+    /* Honors & Patents 관련 스타일 */
+    .honors-list, .patents-list {
+      list-style: none;
+    }
+
+    .honor-item, .patent-item {
+      margin-bottom: 16px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid #f1f5f9;
+    }
+
+    .honor-item:last-child, .patent-item:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    .honor-top, .patent-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 4px;
+    }
+
+    .honor-title, .patent-title {
+      font-weight: 700;
+      color: #0f172a;
+      font-size: 16px;
+    }
+
+    .honor-date, .patent-date {
       color: #2563eb;
+      font-weight: 700;
+      font-size: 14px;
+      white-space: nowrap;
+    }
+
+    .honor-org, .patent-desc {
+      font-size: 14px;
+      color: #64748b;
     }
 
     footer {
@@ -762,10 +797,6 @@
         grid-template-columns: 1fr;
       }
 
-      .about-content {
-        padding-right: 0;
-      }
-
       .profile-photo {
         height: 300px;
       }
@@ -774,7 +805,7 @@
         grid-template-columns: repeat(3, minmax(120px, 1fr));
       }
 
-      .education-top {
+      .education-top, .honor-top, .patent-top {
         flex-direction: column;
         gap: 2px;
       }
@@ -786,10 +817,6 @@
 
       .research-card {
         grid-template-columns: 1fr;
-      }
-
-      .research-text {
-        padding-right: 0;
       }
     }
 
@@ -827,14 +854,6 @@
         height: 40px;
         font-size: 28px;
       }
-
-      .modal-nav.prev {
-        left: 12px;
-      }
-
-      .modal-nav.next {
-        right: 12px;
-      }
     }
   </style>
 </head>
@@ -857,6 +876,7 @@
     <a href="#about">About</a>
     <a href="#research">Research</a>
     <a href="#publications">Publications</a>
+    <a href="#honors-patents">Honors & Patents</a>
     <a href="#contact">Contact</a>
   </nav>
 
@@ -1155,6 +1175,36 @@
         discussing recent progress in materials, device design, fabrication strategies, and their
         potential for wearable health monitoring systems.
       </p>
+    </div>
+  </section>
+
+  <section id="honors-patents">
+    <h2>Honors & Patents</h2>
+    
+    <div class="card">
+      <h3>Honors & Awards</h3>
+      <div class="honors-list">
+        <div class="honor-item">
+          <div class="honor-top">
+            <span class="honor-title">Example Honor or Scholarship Name</span>
+            <span class="honor-date">Month Year</span>
+          </div>
+          <div class="honor-org">Awarding Institution or Organization</div>
+        </div>
+        </div>
+    </div>
+
+    <div class="card">
+      <h3>Patents</h3>
+      <div class="patents-list">
+        <div class="patent-item">
+          <div class="patent-top">
+            <span class="patent-title">Example Patent Title or Application Name</span>
+            <span class="patent-date">Year</span>
+          </div>
+          <div class="patent-desc">Application No. or Registration No. (e.g., 10-202X-XXXXXXX)</div>
+        </div>
+        </div>
     </div>
   </section>
 
