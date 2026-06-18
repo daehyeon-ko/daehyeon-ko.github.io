@@ -760,6 +760,13 @@
       display: flex;
       justify-content: space-between;
       gap: 16px;
+      margin-bottom: 2px;
+    }
+
+    .honor-middle {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
       margin-bottom: 4px;
     }
 
@@ -779,6 +786,13 @@
     .honor-org, .patent-desc {
       font-size: 14px;
       color: #64748b;
+    }
+
+    .honor-location {
+      font-size: 13px;
+      color: #64748b;
+      white-space: nowrap;
+      text-align: right;
     }
 
     .honor-desc {
@@ -812,12 +826,12 @@
         grid-template-columns: repeat(3, minmax(120px, 1fr));
       }
 
-      .education-top, .honor-top, .patent-top {
+      .education-top, .honor-top, .honor-middle, .patent-top {
         flex-direction: column;
         gap: 2px;
       }
 
-      .education-location {
+      .education-location, .honor-location {
         text-align: left;
         white-space: normal;
       }
@@ -1197,7 +1211,10 @@
             <span class="honor-title">Excellent Poster Presentation Award, Micro/Nano Technology Division</span>
             <span class="honor-date">May 2023</span>
           </div>
-          <div class="honor-org">The Korean Society of Mechanical Engineers, Seoul, South Korea</div>
+          <div class="honor-middle">
+            <span class="honor-org">The Korean Society of Mechanical Engineers</span>
+            <span class="honor-location">Seoul, South Korea</span>
+          </div>
           <div class="honor-desc">Research title: “Research of the Bending Mechanism of PDMS Actuator and Its Application.”</div>
         </div>
         
@@ -1206,7 +1223,10 @@
             <span class="honor-title">Grand Prize, EATED Research Competition</span>
             <span class="honor-date">February 2022</span>
           </div>
-          <div class="honor-org">College of Engineering, Incheon National University, Incheon, South Korea</div>
+          <div class="honor-middle">
+            <span class="honor-org">College of Engineering, Incheon National University</span>
+            <span class="honor-location">Incheon, South Korea</span>
+          </div>
           <div class="honor-desc">Research title: “Fabrication of Multi-Scale Functional Structures Using Laser Processing.”</div>
         </div>
 
@@ -1215,7 +1235,10 @@
             <span class="honor-title">Excellent Research Prize, Undergraduate Student Research Competition</span>
             <span class="honor-date">December 2021</span>
           </div>
-          <div class="honor-org">Department of Mechanical Engineering, Incheon National University, Incheon, South Korea</div>
+          <div class="honor-middle">
+            <span class="honor-org">Department of Mechanical Engineering, Incheon National University</span>
+            <span class="honor-location">Incheon, South Korea</span>
+          </div>
           <div class="honor-desc">Research title: “Flexible Substrate Fabricated by Laser Processing for Soft Robot.”</div>
         </div>
 
@@ -1224,7 +1247,10 @@
             <span class="honor-title">Academic Excellence Scholarship</span>
             <span class="honor-date">September 2016</span>
           </div>
-          <div class="honor-org">Incheon National University, Incheon, South Korea</div>
+          <div class="honor-middle">
+            <span class="honor-org">Incheon National University</span>
+            <span class="honor-location">Incheon, South Korea</span>
+          </div>
         </div>
 
       </div>
