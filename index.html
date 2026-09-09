@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Daehyeon Kim | Personal Website</title>
 
+  <!-- Font Awesome: 인터넷에서 아이콘을 불러오기 위한 링크 추가 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
@@ -696,6 +697,12 @@
       color: #92400e;
     }
 
+    /* 새로 추가된 Under revision 상태 색상 (보라색) */
+    .status-revision {
+      background: #f3e8ff;
+      color: #6b21a8;
+    }
+
     .status-published {
       background: #dcfce7;
       color: #166534;
@@ -1001,7 +1008,7 @@
             <div class="education-degree">
               Ph.D. Student, Mechanical, Aerospace, and Nuclear Engineering
             </div>
-            <div class="education-date">August 2026 — Incoming</div>
+            <div class="education-date">August 2026 — Current</div>
           </div>
 
           <div class="education-item">
@@ -1012,7 +1019,7 @@
             <div class="education-degree">
               M.S. in Robotics and Mechatronics Engineering
             </div>
-            <div class="education-date">August 2026 — Expected</div>
+            <div class="education-date">August 2026</div>
           </div>
 
           <div class="education-item">
@@ -1085,7 +1092,7 @@
       </div>
 
       <div class="research-text">
-        <h3>Laser-Induced Photothermal Reduction for Microscale Electrode Patterning on Single Microfibers</h3>
+        <h3>Spatially Programmable Microelectrode Patterning on Highly Curved Microfibers for Single-Fiber Electronics</h3>
         <p>
           Developed a laser-based fabrication strategy for creating high-precision microscale silver electrodes on highly curved single nylon microfibers using a photo-reactive composite coating. This work focuses on overcoming the geometric challenges of electrode patterning on one-dimensional curved substrates through localized laser processing and mask-free conductive pathway formation.
         </p>
@@ -1132,13 +1139,18 @@
   <section id="publications">
     <h2>Publications</h2>
 
+    <!-- 📌 [인용 횟수 업데이트 방법] 
+         GitHub Pages와 같은 정적 사이트에서는 구글 스칼라의 인용수를 실시간으로 가져올 수 없습니다.
+         논문의 인용수가 올랐을 때 아래 'data-citations="숫자"' 부분을 직접 변경해주시면, 
+         상단 Profile의 메트릭(Total Citations, h-index)이 코드를 통해 자동으로 계산되어 반영됩니다. -->
+
     <div class="card publication-card" data-publication-type="journal" data-citations="0">
-      <h3>Laser-Induced Photothermal Reduction for Microscale Electrode Patterning on Single Microfibers</h3>
-      <span class="status status-preparation">In preparation</span>
+      <h3>Spatially Programmable Microelectrode Patterning on Highly Curved Microfibers for Single-Fiber Electronics</h3>
+      <span class="status status-submitted">Submitted (2026)</span>
       <div class="authors">
         <span class="my-name">Daehyeon Kim†</span>, Minchang Shin, and Jaehong Lee*
       </div>
-      <div class="publication-meta">Manuscript in preparation</div>
+      <div class="publication-meta">Submitted manuscript</div>
       <p>
         This manuscript reports a laser-induced photothermal strategy for microscale
         electrode patterning on single microfiber platforms.
@@ -1147,11 +1159,11 @@
 
     <div class="card publication-card" data-publication-type="journal" data-citations="0">
       <h3>Deformation Invariant Biodegradable Fibre Electrodes Enabled by Compliant Coordination Bridges Reinforcing Percolation Network</h3>
-      <span class="status status-submitted">Submitted (2026)</span>
+      <span class="status status-revision">Under revision</span>
       <div class="authors">
         Jinho Kim, Yukye Lee, Huidam Woo, Hwajoong Kim, <span class="my-name">Daehyeon Kim</span>, Minchang Shin, Jimin Kim, Sangwon Seo, and Jaehong Lee*
       </div>
-      <div class="publication-meta">Submitted manuscript</div>
+      <div class="publication-meta">Manuscript under revision</div>
       <p>
         This manuscript presents biodegradable fibre electrodes designed to maintain
         electrical functionality under deformation through compliant coordination bridges
@@ -1159,7 +1171,7 @@
       </p>
     </div>
 
-    <div class="card publication-card" data-publication-type="journal" data-citations="41">
+    <div class="card publication-card" data-publication-type="journal" data-citations="63">
       <h3>
         <a class="title-link" href="https://www.nature.com/articles/s41528-025-00465-w" target="_blank" rel="noopener noreferrer">
           Advances and Perspectives in Fiber-Based Electronic Devices for Next-Generation Soft Systems
