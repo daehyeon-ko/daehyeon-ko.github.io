@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="github-repository" content="" />
   <title>Daehyeon Kim | Personal Website</title>
 
   <!-- Font Awesome: 인터넷에서 아이콘을 불러오기 위한 링크 추가 -->
@@ -309,9 +310,27 @@
     }
 
     .social-icon.scholar {
-      background: #e5e7eb;
-      color: #6b7280;
-      border: 1px solid #d1d5db;
+      background: #4285f4;
+      color: #ffffff;
+      border: 1px solid #4285f4;
+    }
+
+    .metrics-source {
+      margin: -12px 0 24px;
+      color: #64748b;
+      font-size: 12px;
+      line-height: 1.6;
+      text-align: left !important;
+    }
+
+    .metrics-source a {
+      color: #2563eb;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .metrics-source a:hover {
+      text-decoration: underline;
     }
 
     .social-icon.linkedin {
@@ -904,6 +923,87 @@
         font-size: 28px;
       }
     }
+
+    /* Research 1 전용 스타일: Research 2에는 적용되지 않습니다. */
+    .research-one-gallery { min-width: 0; height: 260px; }
+    .research-one-carousel { padding-bottom: 28px; }
+    .research-one-stage { width: 100%; height: 100%; min-height: 0; }
+    .research-one-stage img,
+    .research-one-stage video {
+      display: none;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: #fff;
+    }
+    .research-one-stage .active { display: block; }
+    .research-one-stage video { background: #0f172a; }
+    .research-one-carousel .carousel-btn { display: flex; }
+    .research-one-carousel .carousel-dots {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      bottom: 2px;
+      height: 24px;
+    }
+    .research-one-carousel .dot {
+      width: 12px;
+      height: 12px;
+      padding: 0;
+      margin: 0 5px;
+      cursor: pointer;
+    }
+    .research-one-expand {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      z-index: 6;
+      width: 34px;
+      height: 34px;
+      border: 0;
+      border-radius: 50%;
+      background: rgba(15, 23, 42, 0.75);
+      color: #fff;
+      font-size: 23px;
+      cursor: pointer;
+    }
+    .research-one-message {
+      position: absolute;
+      top: 12px;
+      left: 48px;
+      right: 48px;
+      padding: 6px 10px;
+      border-radius: 6px;
+      background: rgba(15, 23, 42, 0.85);
+      color: #fff;
+      font-size: 12px;
+      text-align: center;
+      pointer-events: none;
+      z-index: 5;
+    }
+    .research-one-carousel.is-expanded {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100vh;
+      height: 100dvh;
+      padding: 64px 64px 56px;
+      border: 0;
+      border-radius: 0;
+      background: rgba(15, 23, 42, 0.96);
+      z-index: 1100;
+    }
+    .research-one-carousel.is-expanded .research-one-stage img { cursor: zoom-out; }
+    .research-one-carousel.is-expanded .research-one-expand { top: 16px; right: 16px; }
+    .research-one-carousel.is-expanded .carousel-dots { bottom: 16px; }
+    .research-one-carousel.is-expanded .dot { background: #64748b; border-color: #cbd5e1; }
+    .research-one-carousel.is-expanded .dot.active { background: #60a5fa; }
+    @media (max-width: 820px) {
+      .research-one-gallery { height: 230px; }
+    }
+    @media (max-width: 620px) {
+      .research-one-carousel.is-expanded { padding: 64px 18px 56px; }
+    }
   </style>
 </head>
 
@@ -955,7 +1055,7 @@
           </div>
 
           <div class="social-icons">
-            <a class="social-icon scholar inactive" href="#" title="Google Scholar profile not available yet" aria-label="Google Scholar profile not available yet"><i class="fa-solid fa-graduation-cap"></i></a>
+            <a class="social-icon scholar" href="https://scholar.google.com/citations?user=vbTD81EAAAAJ&amp;hl=en" target="_blank" rel="noopener noreferrer" title="Google Scholar" aria-label="Daehyeon Kim on Google Scholar"><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i></a>
             <a class="social-icon linkedin" href="https://www.linkedin.com/in/daehyeon-k-1b838725a/" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
             <a class="social-icon github inactive" href="#" title="GitHub profile not available yet" aria-label="GitHub profile not available yet"><i class="fa-brands fa-github"></i></a>
           </div>
@@ -1042,15 +1142,20 @@
           </div>
 
           <div class="stat-card">
-            <div class="stat-number" id="citation-total">—</div>
+            <div class="stat-number" id="citation-total">67</div>
             <div class="stat-label">Citations</div>
           </div>
 
           <div class="stat-card">
-            <div class="stat-number" id="h-index">—</div>
+            <div class="stat-number" id="h-index">2</div>
             <div class="stat-label">h-index</div>
           </div>
         </div>
+
+        <p class="metrics-source">
+          <span id="metrics-status" aria-live="polite">Google Scholar · Last checked: Sep 23, 2026.</span><br>
+          <a href="https://scholar.google.com/citations?user=vbTD81EAAAAJ&amp;hl=en" target="_blank" rel="noopener noreferrer">Google Scholar · All-time metrics ↗</a>
+        </p>
 
         <h3>Profile</h3>
         <p>
@@ -1079,30 +1184,31 @@
     <h2>Research</h2>
 
     <div class="card research-card">
-      <div class="carousel" data-carousel data-prefix="images/laser" data-count="6">
-        <div class="carousel-placeholder">
-          Upload images as<br>
-          images/laser1~laser6.(png/jpg/jpeg/gif/webp)
+      <!-- Research 1 전용: 사진 6개 + MP4 2개 -->
+      <div class="research-one-gallery">
+        <div class="carousel research-one-carousel" id="research-one-carousel"
+             tabindex="-1" aria-label="Research 1 media gallery">
+          <div class="research-one-stage"></div>
+          <button class="carousel-btn prev" type="button" data-prev aria-label="Previous media">‹</button>
+          <button class="carousel-btn next" type="button" data-next aria-label="Next media">›</button>
+          <button class="research-one-expand" type="button" aria-label="Expand media" title="Expand media">⛶</button>
+          <div class="carousel-dots" aria-label="Choose media"></div>
+          <div class="research-one-message" role="status" hidden></div>
         </div>
-
-        <button class="carousel-btn prev" type="button" data-prev>‹</button>
-        <button class="carousel-btn next" type="button" data-next>›</button>
-
-        <div class="carousel-dots"></div>
       </div>
 
       <div class="research-text">
         <h3>Spatially Programmable Microelectrode Patterning on Highly Curved Microfibers for Single-Fiber Electronics</h3>
         <p>
-          Developed a laser-based fabrication strategy for creating high-precision microscale silver electrodes on highly curved single nylon microfibers using a photo-reactive composite coating. This work focuses on overcoming the geometric challenges of electrode patterning on one-dimensional curved substrates through localized laser processing and mask-free conductive pathway formation.
+          Developed a mask-free laser-writing strategy for spatially programmable silver microelectrode patterning on highly curved nylon microfibers. Localized photothermal activation of a photo-reactive composite coating enables selective formation of conductive pathways, overcoming the geometric challenges of fabrication on single-fiber surfaces. Precise control of electrode geometry and electrical properties, together with robust mechanical performance, establishes a versatile platform for fiber-scale device integration. Demonstrations of passive circuits and multicolor micro-LEDs highlight its potential for multifunctional single-fiber electronics.
         </p>
         <div class="tags-container">
-          <span class="tag">Laser fabrication</span>
-          <span class="tag">Photothermal effect</span>
-          <span class="tag">Curved substrate</span>
-          <span class="tag">Microscale electrode patterning</span>
-          <span class="tag">Mask-free fabrication</span>
+          <span class="tag">Laser direct writing</span>
+          <span class="tag">Localized photothermal activation</span>
+          <span class="tag">Silver microelectrodes</span>
+          <span class="tag">Curved microfiber patterning</span>
           <span class="tag">Single-fiber electronics</span>
+          <span class="tag">Circuit &amp; micro-LED integration</span>
         </div>
       </div>
     </div>
@@ -1139,16 +1245,14 @@
   <section id="publications">
     <h2>Publications</h2>
 
-    <!-- 📌 [인용 횟수 업데이트 방법] 
-         GitHub Pages와 같은 정적 사이트에서는 구글 스칼라의 인용수를 실시간으로 가져올 수 없습니다.
-         논문의 인용수가 올랐을 때 아래 'data-citations="숫자"' 부분을 직접 변경해주시면, 
-         상단 Profile의 메트릭(Total Citations, h-index)이 코드를 통해 자동으로 계산되어 반영됩니다. -->
+    <!-- Citations와 h-index는 별도 자동 갱신 작업에서 가져옵니다.
+         아래 data-citations 값은 Scholar 수치 계산에 사용하지 않습니다. -->
 
     <div class="card publication-card" data-publication-type="journal" data-citations="0">
       <h3>Spatially Programmable Microelectrode Patterning on Highly Curved Microfibers for Single-Fiber Electronics</h3>
       <span class="status status-submitted">Submitted (2026)</span>
       <div class="authors">
-        <span class="my-name">Daehyeon Kim†</span>, Minchang Shin†, Byeongjun Jeon, Garam Park, Yuna Son, Minhu Jeon, Byeongmoon Lee*, and Jaehong Lee*
+        <span class="my-name">Daehyeon Kim†</span>, Minchang Shin†, Byeongjun Jeong, Garam Park, Yuna Son, Minhu Jeon, Byeongmoon Lee*, and Jaehong Lee*
       </div>
       <div class="publication-meta">Submitted manuscript</div>
       <p>
@@ -1327,6 +1431,18 @@
     <button class="modal-nav next" type="button" id="modal-next" aria-label="Next image">›</button>
     <div class="modal-caption" id="modal-caption"></div>
   </div>
+
+  <script type="application/json" id="scholar-initial-metrics">
+{
+  "profile_id": "vbTD81EAAAAJ",
+  "source": "Google Scholar",
+  "source_url": "https://scholar.google.com/citations?user=vbTD81EAAAAJ&hl=en",
+  "provider": "Public profile verified in browser",
+  "citations": 67,
+  "h_index": 2,
+  "updated_at": "2026-09-23T20:26:33.774760Z"
+}
+  </script>
 
   <script>
     const imageExtensions = ["png", "jpg", "jpeg", "gif", "webp"];
@@ -1665,38 +1781,314 @@
       }
     }
 
-    function updateResearchMetrics() {
-      const publicationCards = Array.from(document.querySelectorAll(".publication-card"));
+    const scholarProfileId = "vbTD81EAAAAJ";
+    const scholarCacheKey = "scholar-metrics-" + scholarProfileId;
+    let metricsRequestInProgress = false;
 
-      const citationCounts = publicationCards.map(function(card) {
-        return Number(card.dataset.citations || 0);
+    function validScholarMetrics(data) {
+      return data && data.profile_id === scholarProfileId &&
+        data.source === "Google Scholar" &&
+        Number.isSafeInteger(data.citations) && data.citations >= 0 &&
+        Number.isSafeInteger(data.h_index) && data.h_index >= 0 &&
+        data.h_index * data.h_index <= data.citations &&
+        typeof data.updated_at === "string" &&
+        Number.isFinite(Date.parse(data.updated_at));
+    }
+
+    function showScholarMetrics(data) {
+      document.getElementById("citation-total").textContent = data.citations.toLocaleString("en-US");
+      document.getElementById("h-index").textContent = data.h_index;
+      const checked = new Date(data.updated_at);
+      const dateText = checked.toLocaleDateString("en-US", {
+        year: "numeric", month: "short", day: "numeric"
+      });
+      const isOld = Date.now() - checked.getTime() > 3 * 24 * 60 * 60 * 1000;
+      document.getElementById("metrics-status").textContent =
+        (isOld ? "Last available Google Scholar data: " : "Google Scholar · Last checked: ") + dateText;
+    }
+
+    function scholarMetricsURLs() {
+      const urls = [new URL("scholar-metrics.json", document.baseURI).href];
+      const configured = document.querySelector('meta[name="github-repository"]').content.trim();
+      let repository = configured;
+      if (!repository && location.hostname.endsWith(".github.io")) {
+        const owner = location.hostname.slice(0, -".github.io".length);
+        const firstPath = location.pathname.split("/").filter(Boolean)[0];
+        const repo = !firstPath || firstPath.endsWith(".html") ? owner + ".github.io" : firstPath;
+        repository = owner + "/" + repo;
+      }
+      if (/^[A-Za-z0-9-]+\/[A-Za-z0-9_.-]+$/.test(repository)) {
+        // 저장소의 최신 JSON을 직접 읽으므로 Pages 재배포를 기다리지 않습니다.
+        urls.unshift("https://raw.githubusercontent.com/" + repository + "/HEAD/scholar-metrics.json");
+      }
+      return urls;
+    }
+
+    async function fetchScholarMetrics(url) {
+      const controller = new AbortController();
+      const timeout = setTimeout(function() { controller.abort(); }, 10000);
+      try {
+        const response = await fetch(url, { cache: "no-store", signal: controller.signal });
+        if (!response.ok) throw new Error("Metrics unavailable");
+        const data = await response.json();
+        if (!validScholarMetrics(data)) throw new Error("Invalid metrics");
+        return data;
+      } finally {
+        clearTimeout(timeout);
+      }
+    }
+
+    async function updateResearchMetrics() {
+      // Publications는 기존처럼 홈페이지에 등록된 항목 수입니다.
+      document.getElementById("publication-count").textContent =
+        document.querySelectorAll(".publication-card").length;
+      if (metricsRequestInProgress) return;
+      metricsRequestInProgress = true;
+      const candidates = [];
+      try {
+        // 공개 Scholar 프로필에서 확인한 최초 수치와 확인 날짜입니다.
+        const initial = JSON.parse(document.getElementById("scholar-initial-metrics").textContent);
+        if (validScholarMetrics(initial)) candidates.push(initial);
+      } catch (_) {}
+      try {
+        const saved = JSON.parse(localStorage.getItem(scholarCacheKey) || "null");
+        if (validScholarMetrics(saved)) {
+          candidates.push(saved);
+        }
+      } catch (_) {
+        // 브라우저 저장소를 사용할 수 없어도 온라인 조회는 계속합니다.
+      }
+      candidates.sort(function(a, b) { return Date.parse(b.updated_at) - Date.parse(a.updated_at); });
+      if (candidates.length > 0) showScholarMetrics(candidates[0]);
+      try {
+        const results = await Promise.allSettled(scholarMetricsURLs().map(fetchScholarMetrics));
+        results.forEach(function(result) {
+          if (result.status === "fulfilled") candidates.push(result.value);
+        });
+        candidates.sort(function(a, b) {
+          return Date.parse(b.updated_at) - Date.parse(a.updated_at);
+        });
+        if (candidates.length > 0) {
+          const latest = candidates[0];
+          showScholarMetrics(latest);
+          try { localStorage.setItem(scholarCacheKey, JSON.stringify(latest)); } catch (_) {}
+        } else {
+          document.getElementById("citation-total").textContent = "—";
+          document.getElementById("h-index").textContent = "—";
+          document.getElementById("metrics-status").textContent =
+            "Citation metrics are temporarily unavailable. Please view Google Scholar.";
+        }
+      } finally {
+        metricsRequestInProgress = false;
+      }
+    }
+
+    // Research 1 전용. Research 2의 기존 이미지 로직과 분리되어 있습니다.
+    function initializeResearchOne() {
+      const carousel = document.getElementById("research-one-carousel");
+      if (!carousel) return;
+      const stage = carousel.querySelector(".research-one-stage");
+      const dotsContainer = carousel.querySelector(".carousel-dots");
+      const expandButton = carousel.querySelector(".research-one-expand");
+      const message = carousel.querySelector(".research-one-message");
+
+      // 첨부하신 실제 파일명과 순서입니다. 모든 파일은 images 폴더에 둡니다.
+      const mediaFiles = [
+        "images/laser1.png",
+        "images/laser2.png",
+        "images/laser3.mp4",
+        "images/laser4.png",
+        "images/laser5.png",
+        "images/laser6.mp4",
+        "images/laser7.png",
+        "images/laser8.png"
+      ];
+
+      let currentIndex = -1;
+      let imageTimer = null;
+      let expanded = false;
+      let previousFocus = null;
+      let previousOverflow = "";
+
+      function setMessage(text) {
+        message.textContent = text;
+        message.hidden = !text;
+      }
+
+      function clearImageTimer() {
+        clearTimeout(imageTimer);
+        imageTimer = null;
+      }
+
+      function scheduleImage(index) {
+        if (index !== currentIndex) return;
+        clearImageTimer();
+        // 사진은 기존 3초, GIF로 변경한 경우 기존 8초를 유지합니다.
+        imageTimer = setTimeout(function() {
+          showMedia(currentIndex + 1);
+        }, getImageDuration(mediaFiles[index]));
+      }
+
+      const mediaElements = mediaFiles.map(function(src, index) {
+        const isVideo = /\.mp4$/i.test(src);
+        const element = document.createElement(isVideo ? "video" : "img");
+        const label = `Research 1 ${isVideo ? "video" : "image"} ${index + 1}`;
+        if (isVideo) {
+          element.controls = true;
+          element.muted = true;
+          element.defaultMuted = true;
+          element.playsInline = true;
+          element.preload = "none";
+          element.loop = false;
+          element.setAttribute("aria-label", label);
+          // 영상에는 시간제한을 걸지 않고, 재생이 끝나면 다음 항목으로 넘어갑니다.
+          element.addEventListener("ended", function() {
+            if (index === currentIndex) showMedia(currentIndex + 1);
+          });
+          element.addEventListener("playing", function() {
+            if (index === currentIndex) setMessage("");
+          });
+        } else {
+          element.alt = label;
+          element.addEventListener("load", function() {
+            if (index === currentIndex) {
+              setMessage("");
+              scheduleImage(index);
+            }
+          });
+          element.addEventListener("click", function() { setExpanded(!expanded); });
+        }
+        element.addEventListener("error", function() {
+          if (index === currentIndex) {
+            clearImageTimer();
+            setMessage("Unable to load this media. Use the arrows to continue.");
+          }
+        });
+        element.src = src;
+        stage.appendChild(element);
+        return element;
       });
 
-      const totalCitations = citationCounts.reduce(function(sum, count) {
-        return sum + count;
-      }, 0);
-
-      const sortedCounts = citationCounts.slice().sort(function(a, b) {
-        return b - a;
+      const dots = mediaFiles.map(function(_, index) {
+        const dot = document.createElement("button");
+        dot.type = "button";
+        dot.className = "dot";
+        dot.setAttribute("aria-label", `Show media ${index + 1}`);
+        dot.addEventListener("click", function() { showMedia(index); });
+        dotsContainer.appendChild(dot);
+        return dot;
       });
 
-      let hIndex = 0;
-      for (let i = 0; i < sortedCounts.length; i++) {
-        if (sortedCounts[i] >= i + 1) {
-          hIndex = i + 1;
+      function showMedia(index) {
+        clearImageTimer();
+        if (currentIndex >= 0) {
+          const previous = mediaElements[currentIndex];
+          previous.classList.remove("active");
+          if (previous.tagName === "VIDEO") previous.pause();
+          dots[currentIndex].classList.remove("active");
+          dots[currentIndex].removeAttribute("aria-current");
+        }
+        currentIndex = (index + mediaElements.length) % mediaElements.length;
+        const current = mediaElements[currentIndex];
+        current.classList.add("active");
+        dots[currentIndex].classList.add("active");
+        dots[currentIndex].setAttribute("aria-current", "true");
+        setMessage("");
+
+        if (current.tagName === "VIDEO") {
+          if (current.error) {
+            setMessage("Unable to load this video. Use the arrows to continue.");
+            return;
+          }
+          if (current.readyState > 0) current.currentTime = 0;
+          // 자동 재생이 차단되면 재생 버튼을 눌러 끝까지 볼 수 있습니다.
+          current.play().catch(function(error) {
+            if (mediaElements[currentIndex] !== current || error.name === "AbortError") return;
+            setMessage("Press play to watch this video.");
+          });
+        } else if (current.complete) {
+          if (current.naturalWidth > 0) scheduleImage(currentIndex);
+          else setMessage("Unable to load this image. Use the arrows to continue.");
         }
       }
 
-      document.getElementById("publication-count").textContent = publicationCards.length;
-      document.getElementById("citation-total").textContent = totalCitations;
-      document.getElementById("h-index").textContent = hIndex;
+      // 같은 미디어를 확대하므로 영상의 현재 재생 위치가 유지됩니다.
+      function setExpanded(open) {
+        if (open === expanded) return;
+        expanded = open;
+        carousel.classList.toggle("is-expanded", open);
+        expandButton.textContent = open ? "×" : "⛶";
+        expandButton.setAttribute("aria-label", open ? "Close expanded media" : "Expand media");
+        expandButton.title = open ? "Close expanded media" : "Expand media";
+        if (open) {
+          previousFocus = document.activeElement;
+          previousOverflow = document.body.style.overflow;
+          document.body.style.overflow = "hidden";
+          carousel.setAttribute("role", "dialog");
+          carousel.setAttribute("aria-modal", "true");
+          expandButton.focus({ preventScroll: true });
+        } else {
+          document.body.style.overflow = previousOverflow;
+          carousel.removeAttribute("role");
+          carousel.removeAttribute("aria-modal");
+          if (previousFocus) previousFocus.focus({ preventScroll: true });
+        }
+      }
+
+      carousel.querySelector("[data-prev]").addEventListener("click", function() {
+        showMedia(currentIndex - 1);
+      });
+      carousel.querySelector("[data-next]").addEventListener("click", function() {
+        showMedia(currentIndex + 1);
+      });
+      expandButton.addEventListener("click", function() { setExpanded(!expanded); });
+      carousel.addEventListener("click", function(event) {
+        if (expanded && event.target === carousel) setExpanded(false);
+      });
+      document.addEventListener("keydown", function(event) {
+        if (!expanded) return;
+        if (event.key === "Escape") {
+          event.preventDefault();
+          setExpanded(false);
+        } else if (event.key === "Tab") {
+          const focusable = Array.from(carousel.querySelectorAll("button, video[controls]"))
+            .filter(function(element) { return element.getClientRects().length > 0; });
+          const first = focusable[0];
+          const last = focusable[focusable.length - 1];
+          if (event.shiftKey && (document.activeElement === first || document.activeElement === carousel)) {
+            event.preventDefault();
+            last.focus();
+          } else if (!event.shiftKey && document.activeElement === last) {
+            event.preventDefault();
+            first.focus();
+          }
+        } else if (event.target.tagName !== "VIDEO") {
+          if (event.key === "ArrowRight" || event.key === "ArrowLeft") {
+            event.preventDefault();
+            showMedia(currentIndex + (event.key === "ArrowRight" ? 1 : -1));
+          }
+        }
+      });
+
+      showMedia(0);
     }
 
+    initializeResearchOne();
     initializeImageModal();
     initializeHeaderBackground();
     initializeProfileImage();
     initializeCarousels();
     updateResearchMetrics();
+
+    // 열린 페이지에서도 저장된 최신 수치를 5분마다 확인합니다.
+    // Google Scholar 원본 조회는 GitHub Actions가 하루 한 번 수행합니다.
+    setInterval(function() {
+      if (!document.hidden) updateResearchMetrics();
+    }, 5 * 60 * 1000);
+
+    document.addEventListener("visibilitychange", function() {
+      if (!document.hidden) updateResearchMetrics();
+    });
   </script>
 
 </body>
