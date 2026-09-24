@@ -1009,9 +1009,10 @@
     #research { max-width: 1240px; }
     #research .research-card {
       display: grid;
-      grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr);
+      grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
       grid-template-areas: "heading heading" "media summary";
-      gap: 24px;
+      row-gap: 24px;
+      column-gap: 36px;
       align-items: stretch;
       padding: 28px;
     }
@@ -1023,7 +1024,8 @@
     .research-project { font-size: 0.65em; font-weight: 500; color: #64748b; }
     #research .research-gallery {
       grid-area: media; position: relative;
-      min-width: 0; height: auto; aspect-ratio: 16 / 10;
+      width: 100%; max-width: 100%; min-width: 0;
+      height: auto; min-height: 0; aspect-ratio: 16 / 10;
     }
     #research .research-gallery .carousel:not(.is-expanded) {
       position: absolute; inset: 0; width: 100%; height: 100%;
@@ -1059,29 +1061,28 @@
       min-width: 0;
     }
     #research .research-keywords {
-      display: grid;
-      grid-template-columns: repeat(6, minmax(0, 1fr));
-      grid-auto-rows: 1fr;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      justify-content: flex-start;
       margin: 0;
       gap: 8px;
     }
     #research .research-keywords .tag {
-      grid-column: span 2;
-      display: flex;
+      display: inline-flex;
+      flex: 0 0 auto;
       align-items: center;
       justify-content: center;
-      min-width: 0;
-      text-align: center;
       box-sizing: border-box;
-      height: 56px;
-      min-height: 56px;
-      font-size: 13px;
-      line-height: 1.35;
-      padding: 4px 6px;
-      border-radius: 14px;
-      overflow-wrap: anywhere;
+      height: 28px;
+      min-height: 28px;
+      font-size: 12px;
+      line-height: 18px;
+      padding: 5px 10px;
+      border-radius: 999px;
+      white-space: nowrap;
+      text-align: center;
     }
-    #research .research-keywords .tag:nth-child(-n+2) { grid-column: span 3; }
     #research .is-expanded .research-one-stage { position: static; width: 100%; height: 100%; }
     @media (max-width: 800px) {
       #research .research-card {
@@ -1095,7 +1096,6 @@
       #research { padding-left: 12px; padding-right: 12px; }
       #research .research-card { padding: 16px; }
       #research .research-heading { font-size: 21px; }
-      #research .research-keywords .tag { font-size: 11px; padding: 4px; }
     }
   </style>
 </head>
