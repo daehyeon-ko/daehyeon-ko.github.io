@@ -1051,8 +1051,34 @@
       hyphens: auto; overflow-wrap: break-word;
       font-size: 16px; line-height: 1.65;
     }
-    #research .research-keywords { margin: 0; gap: 8px; }
-    #research .research-keywords .tag { font-size: 13px; padding: 5px 10px; }
+    #research .research-summary-group,
+    #research .research-keywords-group {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      min-width: 0;
+    }
+    #research .research-keywords {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      grid-auto-rows: 1fr;
+      margin: 0;
+      gap: 8px;
+    }
+    #research .research-keywords .tag {
+      grid-column: span 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 0;
+      text-align: center;
+      font-size: 13px;
+      line-height: 1.35;
+      padding: 8px 6px;
+      border-radius: 14px;
+      overflow-wrap: anywhere;
+    }
+    #research .research-keywords .tag:nth-child(-n+2) { grid-column: span 3; }
     #research .is-expanded .research-one-stage { position: static; width: 100%; height: 100%; }
     @media (max-width: 800px) {
       #research .research-card {
@@ -1261,14 +1287,19 @@
         </div>
       </div>
       <div class="research-text">
-        <h4 class="research-summary-heading">Research Summary</h4>
+        <div class="research-summary-group">
+          <h4 class="research-summary-heading">Research Summary</h4>
         <p>Developed a mask-free laser-writing method to form silver microelectrodes on highly curved nylon microfibers. Localized photothermal activation enables spatially selective patterning, with control over electrode geometry and electrical properties. The electrodes combine mechanical robustness with compatibility for device integration. Demonstrations of passive circuits and multicolor micro-LEDs establish a single-fiber platform for programmable electronics on curved, flexible surfaces.</p>
-        <div class="tags-container research-keywords" aria-label="Research categories">
+        </div>
+        <div class="research-keywords-group">
+          <h4 class="research-summary-heading">Research Keywords</h4>
+          <div class="tags-container research-keywords" aria-label="Research categories">
           <span class="tag">Micro/Nano fabrication</span>
           <span class="tag">Laser direct writing</span>
           <span class="tag">Single-fiber electronics</span>
           <span class="tag">Flexible electronics</span>
           <span class="tag">Device integration</span>
+        </div>
         </div>
       </div>
     </div>
@@ -1289,14 +1320,19 @@
       </div>
       </div>
       <div class="research-text">
-        <h4 class="research-summary-heading">Research Summary</h4>
+        <div class="research-summary-group">
+          <h4 class="research-summary-heading">Research Summary</h4>
         <p>Developed a facile synthesis approach for nickel- and copper-based nanoparticles and formulated conductive inks for flexible electrode fabrication. Laser processing converts the deposited materials into conductive patterns, connecting solution-based material preparation with electrode manufacturing. The project brings together scalable nanoparticle synthesis, conductive ink development, and laser-based fabrication as a materials-to-device approach for flexible electronics.</p>
-        <div class="tags-container research-keywords" aria-label="Research categories">
+        </div>
+        <div class="research-keywords-group">
+          <h4 class="research-summary-heading">Research Keywords</h4>
+          <div class="tags-container research-keywords" aria-label="Research categories">
           <span class="tag">Nanomaterials synthesis</span>
           <span class="tag">Conductive inks</span>
           <span class="tag">Laser processing</span>
           <span class="tag">Flexible electronics</span>
           <span class="tag">Electrode fabrication</span>
+        </div>
         </div>
       </div>
     </div>
