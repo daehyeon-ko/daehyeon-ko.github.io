@@ -1005,69 +1005,62 @@
       .research-one-carousel.is-expanded { padding: 64px 18px 56px; }
     }
 
-    /* Shared research layout: title / large media + summary / keywords. */
+    /* Research: full-width title, equally tall media and summary columns. */
     #research { max-width: 1240px; }
     #research .research-card {
-      --research-gap: 24px;
+      display: grid;
       grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr);
-      grid-template-areas: "heading heading" "media summary" "keywords keywords";
-      gap: var(--research-gap);
-      align-items: center;
+      grid-template-areas: "heading heading" "media summary";
+      gap: 24px;
+      align-items: stretch;
       padding: 28px;
     }
     #research .research-heading {
-      grid-area: heading;
-      margin: 0;
-      font-size: clamp(21px, 2.1vw, 27px);
-      line-height: 1.35;
+      grid-area: heading; margin: 0;
+      font-size: clamp(21px, 2.1vw, 27px); line-height: 1.35;
       text-wrap: pretty;
     }
-    .research-project {
-      display: inline;
-      font-size: 0.65em;
-      font-weight: 500;
-      color: #64748b;
+    .research-project { font-size: 0.65em; font-weight: 500; color: #64748b; }
+    #research .research-gallery {
+      grid-area: media; position: relative;
+      min-width: 0; height: auto; aspect-ratio: 16 / 10;
     }
-    #research .research-one-gallery { grid-area: media; height: auto; min-width: 0; }
-    #research .research-card > .carousel { grid-area: media; }
-    #research .carousel:not(.is-expanded) {
-      height: auto;
-      aspect-ratio: 16 / 10;
+    #research .research-gallery .carousel:not(.is-expanded) {
+      position: absolute; inset: 0; width: 100%; height: 100%;
       padding: 0 0 32px;
     }
     #research .research-one-stage { position: absolute; inset: 0 0 32px; height: auto; }
     #research .carousel:not(.is-expanded) img { padding: 0; }
-    #research .research-card > .carousel img {
-      position: absolute;
-      inset: 0 0 32px;
-      height: calc(100% - 32px);
+    #research [data-carousel] img {
+      position: absolute; inset: 0 0 32px; height: calc(100% - 32px);
     }
     #research .carousel:not(.is-expanded) .carousel-dots {
-      bottom: 0;
-      height: 32px;
-      align-content: center;
-      background: #fff;
+      bottom: 0; height: 32px; align-content: center; background: #fff;
     }
     #research .carousel:not(.is-expanded) .carousel-btn { top: calc(50% - 16px); }
-    #research .research-text { grid-area: summary; }
-    #research .research-text p {
-      margin: 0;
-      text-align: left;
-      font-size: 17px;
-      line-height: 1.7;
-      overflow-wrap: break-word;
+    #research .research-text {
+      grid-area: summary; min-width: 0;
+      display: flex; flex-direction: column; justify-content: space-between;
+      gap: 20px;
     }
-    #research .research-keywords { grid-area: keywords; margin: 0; gap: 8px; }
-    /* Keep the existing fullscreen player independent of card dimensions. */
+    #research .research-summary-heading {
+      margin: 0; font-size: 21px; line-height: 1.35; font-weight: 600; color: #111827;
+    }
+    #research .research-text p {
+      margin: 0; text-align: justify; text-align-last: left;
+      hyphens: auto; overflow-wrap: break-word;
+      font-size: 16px; line-height: 1.65;
+    }
+    #research .research-keywords { margin: 0; gap: 8px; }
+    #research .research-keywords .tag { font-size: 13px; padding: 5px 10px; }
     #research .is-expanded .research-one-stage { position: static; width: 100%; height: 100%; }
     @media (max-width: 800px) {
       #research .research-card {
         grid-template-columns: minmax(0, 1fr);
-        grid-template-areas: "heading" "media" "summary" "keywords";
-        --research-gap: 20px;
-        padding: 22px;
+        grid-template-areas: "heading" "media" "summary";
+        gap: 20px; padding: 22px;
       }
-      #research .research-text p { font-size: 16px; line-height: 1.65; }
+      #research .research-text { gap: 20px; }
     }
     @media (max-width: 480px) {
       #research { padding-left: 12px; padding-right: 12px; }
@@ -1256,7 +1249,7 @@
     <div class="card research-card">
       <h3 class="research-heading">Spatially Programmable Microelectrode Patterning on Highly Curved Microfibers for Single-Fiber Electronics <span class="research-project">(M.S. Research Project)</span></h3>
       <!-- Research 1 전용: 사진 6개 + MP4 2개 -->
-      <div class="research-one-gallery">
+      <div class="research-one-gallery research-gallery">
         <div class="carousel research-one-carousel" id="research-one-carousel"
              tabindex="-1" aria-label="Research 1 media gallery">
           <div class="research-one-stage"></div>
@@ -1268,20 +1261,21 @@
         </div>
       </div>
       <div class="research-text">
-        <p>Laser writing forms spatially programmable silver microelectrodes on curved nylon microfibers. Tunable electrode geometry and electrical properties, mechanical robustness, and demonstrations of passive circuits and multicolor micro-LEDs establish a platform for single-fiber electronics.</p>
-      </div>
-        <div class="tags-container research-keywords">
+        <h4 class="research-summary-heading">Research Summary</h4>
+        <p>Developed a mask-free laser-writing method to form silver microelectrodes on highly curved nylon microfibers. Localized photothermal activation enables spatially selective patterning, with control over electrode geometry and electrical properties. The electrodes combine mechanical robustness with compatibility for device integration. Demonstrations of passive circuits and multicolor micro-LEDs establish a single-fiber platform for programmable electronics on curved, flexible surfaces.</p>
+        <div class="tags-container research-keywords" aria-label="Research categories">
+          <span class="tag">Micro/Nano fabrication</span>
           <span class="tag">Laser direct writing</span>
-          <span class="tag">Localized photothermal activation</span>
-          <span class="tag">Silver microelectrodes</span>
-          <span class="tag">Curved microfiber patterning</span>
           <span class="tag">Single-fiber electronics</span>
-          <span class="tag">Circuit &amp; micro-LED integration</span>
+          <span class="tag">Flexible electronics</span>
+          <span class="tag">Device integration</span>
         </div>
+      </div>
     </div>
 
     <div class="card research-card">
       <h3 class="research-heading">Metal Nanoparticles Synthesis and Flexible Electrode Fabrication <span class="research-project">(Undergraduate Research Project)</span></h3>
+      <div class="research-gallery">
       <div class="carousel" data-carousel data-prefix="images/ink" data-count="7">
         <div class="carousel-placeholder">
           Upload images as<br>
@@ -1293,16 +1287,18 @@
 
         <div class="carousel-dots"></div>
       </div>
-      <div class="research-text">
-        <p>Synthesized nickel- and copper-based nanoparticles for conductive inks and fabricated flexible electrodes through laser processing. This work connects scalable nanoparticle synthesis with solution-processable materials for flexible electronics.</p>
       </div>
-        <div class="tags-container research-keywords">
-          <span class="tag">Ni/Cu nanoparticles</span>
-          <span class="tag">Conductive nanomaterial ink</span>
-          <span class="tag">Laser-processed electrodes</span>
+      <div class="research-text">
+        <h4 class="research-summary-heading">Research Summary</h4>
+        <p>Developed a facile synthesis approach for nickel- and copper-based nanoparticles and formulated conductive inks for flexible electrode fabrication. Laser processing converts the deposited materials into conductive patterns, connecting solution-based material preparation with electrode manufacturing. The project brings together scalable nanoparticle synthesis, conductive ink development, and laser-based fabrication as a materials-to-device approach for flexible electronics.</p>
+        <div class="tags-container research-keywords" aria-label="Research categories">
+          <span class="tag">Nanomaterials synthesis</span>
+          <span class="tag">Conductive inks</span>
+          <span class="tag">Laser processing</span>
           <span class="tag">Flexible electronics</span>
-          <span class="tag">Scalable nanomaterial synthesis</span>
+          <span class="tag">Electrode fabrication</span>
         </div>
+      </div>
     </div>
 
   </section>
@@ -1481,7 +1477,6 @@
     <h2>Contact</h2>
     <div class="card">
       <p><strong>Email:</strong> <a href="mailto:kimd30@rpi.edu">kimd30@rpi.edu</a></p>
-      <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/daehyeon-k-1b838725a/" target="_blank" rel="noopener noreferrer">https://www.linkedin.com/in/daehyeon-k-1b838725a/</a></p>
     </div>
   </section>
 
