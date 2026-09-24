@@ -1311,10 +1311,9 @@
     <div class="card research-card">
       <h3 class="research-heading">Metal Nanoparticles Synthesis and Flexible Electrode Fabrication <span class="research-project">(Undergraduate Research Project)</span></h3>
       <div class="research-gallery">
-      <div class="carousel" data-carousel data-prefix="images/ink" data-count="7">
+      <div class="carousel" data-carousel data-sources='["images/ink1.png","images/ink2.png","images/ink3.png","images/ink4.gif","images/ink5.png","images/ink6.gif"]' aria-label="Research 2 image gallery">
         <div class="carousel-placeholder">
-          Upload images as<br>
-          images/ink1~ink7.(png/jpg/jpeg/gif/webp)
+          Loading research images…
         </div>
 
         <button class="carousel-btn prev" type="button" data-prev>‹</button>
@@ -1353,7 +1352,7 @@
       <h3>Spatially Programmable Microelectrode Patterning on Highly Curved Microfibers for Single-Fiber Electronics</h3>
       <span class="status status-submitted">Submitted (2026)</span>
       <div class="authors">
-        <span class="my-name">Daehyeon Kim†</span>, Minchang Shin†, Byeongjun Jeong, Garam Park, Yuna Son, Minhu Jeon, Byeongmoon Lee*, and Jaehong Lee*
+        <span class="my-name">Daehyeon Kim†</span>, Minchang Shin†, Byeongjun Jeong, Garam Park, Yuna Son, Minhu Jeon, Byeongmoon Lee, and Jaehong Lee*
       </div>
       <div class="publication-meta">Submitted manuscript</div>
       <p>
@@ -1757,14 +1756,11 @@
         const nextButton = carousel.querySelector("[data-next]");
         const dotsContainer = carousel.querySelector(".carousel-dots");
 
-        const imageSources = [];
-
-        for (let i = 1; i <= count; i++) {
-          const src = await findImageSource(`${prefix}${i}`);
-          if (src) {
-            imageSources.push(src);
-          }
-        }
+        // Known filenames render immediately; no extension probing or missing ink7.
+        const imageSources = carousel.dataset.sources
+          ? JSON.parse(carousel.dataset.sources)
+          : (await Promise.all(Array.from({ length: count }, (_, i) =>
+              findImageSource(`${prefix}${i + 1}`)))).filter(Boolean);
 
         if (imageSources.length === 0) {
           if (placeholder) {
