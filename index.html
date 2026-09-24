@@ -1004,6 +1004,76 @@
     @media (max-width: 620px) {
       .research-one-carousel.is-expanded { padding: 64px 18px 56px; }
     }
+
+    /* Shared research layout: title / large media + summary / keywords. */
+    #research { max-width: 1240px; }
+    #research .research-card {
+      --research-gap: 24px;
+      grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr);
+      grid-template-areas: "heading heading" "media summary" "keywords keywords";
+      gap: var(--research-gap);
+      align-items: center;
+      padding: 28px;
+    }
+    #research .research-heading {
+      grid-area: heading;
+      margin: 0;
+      font-size: clamp(21px, 2.1vw, 27px);
+      line-height: 1.35;
+      text-wrap: pretty;
+    }
+    .research-project {
+      display: inline;
+      font-size: 0.65em;
+      font-weight: 500;
+      color: #64748b;
+    }
+    #research .research-one-gallery { grid-area: media; height: auto; min-width: 0; }
+    #research .research-card > .carousel { grid-area: media; }
+    #research .carousel:not(.is-expanded) {
+      height: auto;
+      aspect-ratio: 16 / 10;
+      padding: 0 0 32px;
+    }
+    #research .research-one-stage { position: absolute; inset: 0 0 32px; height: auto; }
+    #research .carousel:not(.is-expanded) img { padding: 0; }
+    #research .research-card > .carousel img {
+      position: absolute;
+      inset: 0 0 32px;
+      height: calc(100% - 32px);
+    }
+    #research .carousel:not(.is-expanded) .carousel-dots {
+      bottom: 0;
+      height: 32px;
+      align-content: center;
+      background: #fff;
+    }
+    #research .carousel:not(.is-expanded) .carousel-btn { top: calc(50% - 16px); }
+    #research .research-text { grid-area: summary; }
+    #research .research-text p {
+      margin: 0;
+      text-align: left;
+      font-size: 17px;
+      line-height: 1.7;
+      overflow-wrap: break-word;
+    }
+    #research .research-keywords { grid-area: keywords; margin: 0; gap: 8px; }
+    /* Keep the existing fullscreen player independent of card dimensions. */
+    #research .is-expanded .research-one-stage { position: static; width: 100%; height: 100%; }
+    @media (max-width: 800px) {
+      #research .research-card {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-areas: "heading" "media" "summary" "keywords";
+        --research-gap: 20px;
+        padding: 22px;
+      }
+      #research .research-text p { font-size: 16px; line-height: 1.65; }
+    }
+    @media (max-width: 480px) {
+      #research { padding-left: 12px; padding-right: 12px; }
+      #research .research-card { padding: 16px; }
+      #research .research-heading { font-size: 21px; }
+    }
   </style>
 </head>
 
@@ -1184,6 +1254,7 @@
     <h2>Research</h2>
 
     <div class="card research-card">
+      <h3 class="research-heading">Spatially Programmable Microelectrode Patterning on Highly Curved Microfibers for Single-Fiber Electronics <span class="research-project">(M.S. Research Project)</span></h3>
       <!-- Research 1 전용: 사진 6개 + MP4 2개 -->
       <div class="research-one-gallery">
         <div class="carousel research-one-carousel" id="research-one-carousel"
@@ -1196,13 +1267,10 @@
           <div class="research-one-message" role="status" hidden></div>
         </div>
       </div>
-
       <div class="research-text">
-        <h3>Spatially Programmable Microelectrode Patterning on Highly Curved Microfibers for Single-Fiber Electronics</h3>
-        <p>
-          Developed a mask-free laser-writing strategy for spatially programmable silver microelectrode patterning on highly curved nylon microfibers. Localized photothermal activation of a photo-reactive composite coating enables selective formation of conductive pathways, overcoming the geometric challenges of fabrication on single-fiber surfaces. Precise control of electrode geometry and electrical properties, together with robust mechanical performance, establishes a versatile platform for fiber-scale device integration. Demonstrations of passive circuits and multicolor micro-LEDs highlight its potential for multifunctional single-fiber electronics.
-        </p>
-        <div class="tags-container">
+        <p>Laser writing forms spatially programmable silver microelectrodes on curved nylon microfibers. Tunable electrode geometry and electrical properties, mechanical robustness, and demonstrations of passive circuits and multicolor micro-LEDs establish a platform for single-fiber electronics.</p>
+      </div>
+        <div class="tags-container research-keywords">
           <span class="tag">Laser direct writing</span>
           <span class="tag">Localized photothermal activation</span>
           <span class="tag">Silver microelectrodes</span>
@@ -1210,10 +1278,10 @@
           <span class="tag">Single-fiber electronics</span>
           <span class="tag">Circuit &amp; micro-LED integration</span>
         </div>
-      </div>
     </div>
 
     <div class="card research-card">
+      <h3 class="research-heading">Metal Nanoparticles Synthesis and Flexible Electrode Fabrication <span class="research-project">(Undergraduate Research Project)</span></h3>
       <div class="carousel" data-carousel data-prefix="images/ink" data-count="7">
         <div class="carousel-placeholder">
           Upload images as<br>
@@ -1225,21 +1293,18 @@
 
         <div class="carousel-dots"></div>
       </div>
-
       <div class="research-text">
-        <h3>Metal Nanoparticles Synthesis and Flexible Electrode Fabrication</h3>
-        <p>
-          Developed a facile synthesis approach for nickel- and copper-based nanoparticles and applied them to conductive inks for flexible electrode fabrication through laser processing. This work focuses on scalable nanomaterial synthesis, solution-processable conductive materials, and laser-based fabrication of nanomaterial-based electronic devices.
-        </p>
-        <div class="tags-container">
+        <p>Synthesized nickel- and copper-based nanoparticles for conductive inks and fabricated flexible electrodes through laser processing. This work connects scalable nanoparticle synthesis with solution-processable materials for flexible electronics.</p>
+      </div>
+        <div class="tags-container research-keywords">
           <span class="tag">Ni/Cu nanoparticles</span>
           <span class="tag">Conductive nanomaterial ink</span>
           <span class="tag">Laser-processed electrodes</span>
           <span class="tag">Flexible electronics</span>
           <span class="tag">Scalable nanomaterial synthesis</span>
         </div>
-      </div>
     </div>
+
   </section>
 
   <section id="publications">
