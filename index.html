@@ -5,34 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="github-repository" content="" />
   <title>Daehyeon Kim | Personal Website</title>
-
   <!-- Font Awesome: 인터넷에서 아이콘을 불러오기 위한 링크 추가 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
   <style>
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
-
     html {
       scroll-behavior: smooth;
     }
-
     body {
       font-family: Arial, Helvetica, sans-serif;
       line-height: 1.6;
       color: #1f2937;
       background: #f8fafc;
     }
-
     header {
       background: #0f172a;
       color: white;
       text-align: center;
     }
-
     .header-inner {
       position: relative;
       max-width: 1040px;
@@ -41,7 +35,6 @@
       overflow: hidden;
       border-radius: 20px;
     }
-
     .header-inner::before {
       content: "";
       position: absolute;
@@ -53,7 +46,6 @@
       opacity: 0.65; 
       z-index: 0;
     }
-
     .header-inner::after {
       content: "";
       position: absolute;
@@ -64,20 +56,17 @@
       );
       z-index: 1;
     }
-
     .header-inner h1,
     .header-inner p {
       position: relative;
       z-index: 2;
     }
-
     header h1 {
       font-size: 48px;
       margin-bottom: 14px;
       font-weight: 800;
       letter-spacing: 0.2px;
     }
-
     .hero-role {
       font-size: 18px;
       color: #f8fafc;
@@ -85,7 +74,6 @@
       margin: 0 auto 4px auto;
       font-weight: 500;
     }
-
     .hero-school {
       font-size: 17px;
       color: #cbd5e1;
@@ -93,7 +81,6 @@
       margin: 0 auto;
       font-weight: 500;
     }
-
     nav {
       background: white;
       border-bottom: 1px solid #e5e7eb;
@@ -103,7 +90,6 @@
       top: 0;
       z-index: 100;
     }
-
     nav a {
       color: #334155;
       text-decoration: none;
@@ -114,7 +100,6 @@
       padding: 6px 0;
       transition: color 0.2s ease;
     }
-
     nav a::after {
       content: "";
       position: absolute;
@@ -128,21 +113,17 @@
       transition: transform 0.25s ease;
       border-radius: 999px;
     }
-
     nav a:hover {
       color: #2563eb;
     }
-
     nav a:hover::after {
       transform: scaleX(1);
     }
-
     section {
       max-width: 1040px;
       margin: 0 auto;
       padding: 55px 20px;
     }
-
     h2 {
       font-size: 28px;
       margin-bottom: 20px;
@@ -150,7 +131,6 @@
       border-bottom: 2px solid #e5e7eb;
       padding-bottom: 10px;
     }
-
     /* 외부로 빼낸 소제목 스타일 추가 */
     .section-subheading {
       font-size: 22px;
@@ -159,12 +139,10 @@
       margin-bottom: 14px;
       font-weight: 700;
     }
-
     /* h2 바로 다음에 오는 소제목은 위쪽 여백을 조금 줄임 */
     h2 + .section-subheading {
       margin-top: 10px;
     }
-
     .card {
       background: white;
       padding: 32px 42px;
@@ -172,14 +150,12 @@
       border-radius: 16px;
       box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08);
     }
-
     .card h3 {
       color: #111827;
       margin-bottom: 10px;
       font-size: 21px;
       line-height: 1.4;
     }
-
     .about-card {
       display: grid;
       grid-template-columns: 260px minmax(0, 1fr);
@@ -187,11 +163,9 @@
       align-items: start;
       overflow: hidden;
     }
-
     .profile-column {
       text-align: center;
     }
-
     .profile-photo {
       width: 100%;
       max-width: 260px;
@@ -206,14 +180,12 @@
       align-items: center;
       justify-content: center;
     }
-
     .profile-photo img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: none;
     }
-
     .photo-placeholder {
       width: 100%;
       height: 100%;
@@ -225,20 +197,17 @@
       justify-content: center;
       padding: 18px;
     }
-
     .profile-name {
       font-size: 20px;
       font-weight: 700;
       color: #0f172a;
       margin-bottom: 4px;
     }
-
     .profile-title {
       font-size: 14px;
       color: #64748b;
       line-height: 1.5;
     }
-
     .contact-box {
       margin-top: 24px;
       text-align: left;
@@ -248,7 +217,6 @@
       padding: 16px;
       box-shadow: 0 3px 12px rgba(37, 99, 235, 0.08);
     }
-
     .contact-title {
       font-size: 16px;
       font-weight: 800;
@@ -256,7 +224,6 @@
       margin-bottom: 10px;
       text-align: center;
     }
-
     .contact-email {
       font-size: 13px;
       color: #334155;
@@ -264,24 +231,20 @@
       margin-bottom: 12px;
       word-break: break-word;
     }
-
     .contact-email a {
       color: #2563eb;
       text-decoration: none;
       font-weight: 700;
     }
-
     .contact-email a:hover {
       text-decoration: underline;
     }
-
     .social-icons {
       display: flex;
       justify-content: center;
       gap: 10px;
       align-items: center;
     }
-
     .social-icon {
       width: 38px;
       height: 38px;
@@ -293,12 +256,10 @@
       font-size: 18px; 
       transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
-
     .social-icon:hover {
       transform: translateY(-2px);
       box-shadow: 0 6px 14px rgba(15, 23, 42, 0.16);
     }
-
     /* 비활성화 상태를 위한 클래스 */
     .social-icon.inactive {
       background: #e5e7eb !important;
@@ -308,13 +269,11 @@
       cursor: not-allowed !important;
       pointer-events: none !important;
     }
-
     .social-icon.scholar {
       background: #4285f4;
       color: #ffffff;
       border: 1px solid #4285f4;
     }
-
     .metrics-source {
       margin: -12px 0 24px;
       color: #64748b;
@@ -322,27 +281,22 @@
       line-height: 1.6;
       text-align: left !important;
     }
-
     .metrics-source a {
       color: #2563eb;
       text-decoration: none;
       font-weight: 600;
     }
-
     .metrics-source a:hover {
       text-decoration: underline;
     }
-
     .social-icon.linkedin {
       background: #0a66c2;
       color: white;
     }
-
     .social-icon.github {
       background: #111827;
       color: white;
     }
-
     .skills-box {
       margin-top: 18px;
       text-align: left;
@@ -351,7 +305,6 @@
       border-radius: 14px;
       padding: 16px;
     }
-
     .skills-title {
       font-size: 16px;
       font-weight: 800;
@@ -359,15 +312,12 @@
       margin-bottom: 12px;
       text-align: center;
     }
-
     .skill-item {
       margin-bottom: 11px;
     }
-
     .skill-item:last-child {
       margin-bottom: 0;
     }
-
     .skill-label {
       display: block;
       font-size: 12px;
@@ -377,37 +327,31 @@
       text-transform: uppercase;
       letter-spacing: 0.4px;
     }
-
     .skill-text {
       display: block;
       font-size: 13px;
       color: #334155;
       line-height: 1.45;
     }
-
     .about-content {
       min-width: 0;
       padding-right: 0;
     }
-
     .about-content p {
       text-align: justify;
     }
-
     .about-content h3 {
       margin-top: 4px;
       margin-bottom: 12px;
       font-size: 19px;
       color: #111827;
     }
-
     .education-list {
       display: flex;
       flex-direction: column;
       gap: 12px;
       margin-bottom: 22px;
     }
-
     .education-item {
       background: #f8fafc;
       border: 1px solid #e5e7eb;
@@ -415,7 +359,6 @@
       border-radius: 12px;
       padding: 14px 16px;
     }
-
     .education-top {
       display: flex;
       justify-content: space-between;
@@ -423,40 +366,34 @@
       margin-bottom: 5px;
       align-items: flex-start;
     }
-
     .education-school {
       font-weight: 800;
       color: #0f172a;
       font-size: 15px;
     }
-
     .education-location {
       color: #64748b;
       font-size: 13px;
       white-space: nowrap;
       text-align: right;
     }
-
     .education-degree {
       color: #334155;
       font-size: 14px;
       line-height: 1.45;
     }
-
     .education-date {
       color: #2563eb;
       font-size: 13px;
       font-weight: 700;
       margin-top: 4px;
     }
-
     .stats-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 14px;
       margin: 18px 0 24px 0;
     }
-
     .stat-card {
       background: #ffffff;
       border: 1px solid #dbeafe;
@@ -465,7 +402,6 @@
       text-align: center;
       box-shadow: 0 3px 12px rgba(37, 99, 235, 0.08);
     }
-
     .stat-number {
       font-size: 30px;
       font-weight: 800;
@@ -473,7 +409,6 @@
       line-height: 1.1;
       margin-bottom: 8px;
     }
-
     .stat-label {
       font-size: 11px;
       color: #64748b;
@@ -481,7 +416,6 @@
       letter-spacing: 1.2px;
       text-transform: uppercase;
     }
-
     .research-card {
       display: grid;
       grid-template-columns: minmax(300px, 0.9fr) minmax(0, 1.25fr);
@@ -489,16 +423,13 @@
       align-items: center;
       overflow: hidden;
     }
-
     .research-text {
       min-width: 0;
       padding-right: 0;
     }
-
     .research-text p {
       text-align: justify;
     }
-
     .carousel {
       position: relative;
       width: 100%;
@@ -511,7 +442,6 @@
       align-items: center;
       justify-content: center;
     }
-
     .carousel img {
       display: none;
       width: 100%;
@@ -521,18 +451,15 @@
       padding: 8px;
       cursor: zoom-in;
     }
-
     .carousel img.active {
       display: block;
     }
-
     .carousel-placeholder {
       color: #64748b;
       font-size: 14px;
       text-align: center;
       padding: 18px;
     }
-
     .carousel-btn {
       position: absolute;
       top: 50%;
@@ -550,19 +477,15 @@
       justify-content: center;
       z-index: 5;
     }
-
     .carousel-btn:hover {
       background: rgba(15, 23, 42, 0.85);
     }
-
     .carousel-btn.prev {
       left: 10px;
     }
-
     .carousel-btn.next {
       right: 10px;
     }
-
     .carousel-dots {
       position: absolute;
       bottom: 10px;
@@ -572,7 +495,6 @@
       z-index: 5;
       display: none;
     }
-
     .dot {
       display: inline-block;
       width: 8px;
@@ -582,12 +504,10 @@
       background: rgba(37, 99, 235, 0.25);
       border: 1px solid rgba(37, 99, 235, 0.35);
     }
-
     .dot.active {
       background: #2563eb;
       border-color: #2563eb;
     }
-
     .image-modal {
       display: none;
       position: fixed;
@@ -598,11 +518,9 @@
       justify-content: center;
       padding: 36px;
     }
-
     .image-modal.active {
       display: flex;
     }
-
     .image-modal img {
       max-width: 92vw;
       max-height: 86vh;
@@ -611,7 +529,6 @@
       border-radius: 12px;
       box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
     }
-
     .modal-close {
       position: fixed;
       top: 22px;
@@ -630,11 +547,9 @@
       justify-content: center;
       z-index: 1002;
     }
-
     .modal-close:hover {
       background: rgba(255, 255, 255, 0.28);
     }
-
     .modal-nav {
       position: fixed;
       top: 50%;
@@ -653,23 +568,18 @@
       z-index: 1002;
       line-height: 1;
     }
-
     .modal-nav:hover {
       background: rgba(255, 255, 255, 0.28);
     }
-
     .modal-nav.prev {
       left: 26px;
     }
-
     .modal-nav.next {
       right: 26px;
     }
-
     .modal-nav.active {
       display: flex;
     }
-
     .modal-caption {
       position: fixed;
       left: 24px;
@@ -680,14 +590,12 @@
       font-size: 14px;
       z-index: 1002;
     }
-
     .tags-container {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
       margin-top: 14px;
     }
-
     .tag {
       background: #e0f2fe;
       color: #0369a1;
@@ -696,7 +604,6 @@
       font-size: 13px;
       font-weight: 500;
     }
-
     .status {
       display: inline-block;
       padding: 5px 11px;
@@ -705,28 +612,23 @@
       font-weight: 700;
       margin: 2px 0 14px 0;
     }
-
     .status-submitted {
       background: #e0f2fe;
       color: #0369a1;
     }
-
     .status-preparation {
       background: #fef3c7;
       color: #92400e;
     }
-
     /* 새로 추가된 Under revision 상태 색상 (보라색) */
     .status-revision {
       background: #f3e8ff;
       color: #6b21a8;
     }
-
     .status-published {
       background: #dcfce7;
       color: #166534;
     }
-
     .journal-info {
       background: #f3f4f6;
       padding: 12px 14px;
@@ -736,118 +638,98 @@
       color: #374151;
       border-left: 4px solid #2563eb;
     }
-
     .journal-metric {
       display: inline-block;
       margin-right: 16px;
       margin-bottom: 8px;
     }
-
     .journal-metric-label {
       font-weight: 600;
       color: #111827;
     }
-
     .journal-metric-value {
       color: #2563eb;
       font-weight: bold;
     }
-
     .publication-card p {
       text-align: justify;
     }
-
     .publication-meta {
       color: #6b7280;
       font-size: 14px;
       margin-bottom: 10px;
       font-weight: 500;
     }
-
     .authors {
       color: #4b5563;
       font-size: 15px;
       margin-bottom: 12px;
       line-height: 1.5;
     }
-
     .my-name {
       color: #2563eb;
       font-weight: 700;
     }
-
     .title-link {
       color: #111827;
       text-decoration: none;
     }
-
     .title-link:hover {
       color: #2563eb;
       text-decoration: underline;
     }
-
     /* Honors & Patents 관련 스타일 */
     .honors-list, .patents-list {
       list-style: none;
     }
-
     .honor-item, .patent-item {
       margin-bottom: 16px;
       padding-bottom: 14px;
       border-bottom: 1px solid #f1f5f9;
     }
-
     .honor-item:last-child, .patent-item:last-child {
       margin-bottom: 0;
       padding-bottom: 0;
       border-bottom: none;
     }
-
     .honor-top, .patent-top {
       display: flex;
       justify-content: space-between;
       gap: 16px;
       margin-bottom: 2px;
     }
-
     .honor-middle {
       display: flex;
       justify-content: space-between;
       gap: 16px;
       margin-bottom: 4px;
     }
-
     .honor-title, .patent-title {
       font-weight: 700;
       color: #0f172a;
       font-size: 16px;
     }
-
     .honor-date, .patent-date {
       color: #2563eb;
       font-weight: 700;
       font-size: 14px;
       white-space: nowrap;
     }
-
     .honor-org, .patent-desc {
       font-size: 14px;
       color: #64748b;
     }
-
     .honor-location {
       font-size: 13px;
       color: #64748b;
       white-space: nowrap;
       text-align: right;
     }
-
     .honor-desc {
       font-size: 14px;
       color: #4b5563;
       margin-top: 4px;
     }
-
     footer {
       text-align: center;
       padding: 35px 20px;
@@ -855,75 +737,60 @@
       color: #cbd5e1;
       font-size: 14px;
     }
-
     @media (max-width: 960px) {
       .card {
         padding: 28px;
       }
-
       .about-card {
         grid-template-columns: 1fr;
       }
-
       .profile-photo {
         height: 300px;
       }
-
       .stats-grid {
         grid-template-columns: repeat(3, minmax(120px, 1fr));
       }
-
       .education-top, .honor-top, .honor-middle, .patent-top {
         flex-direction: column;
         gap: 2px;
       }
-
       .education-location, .honor-location {
         text-align: left;
         white-space: normal;
       }
-
       .research-card {
         grid-template-columns: 1fr;
       }
     }
-
     @media (max-width: 820px) {
       .carousel {
         height: 230px;
       }
-
       nav a {
         display: inline-block;
         margin: 6px 8px;
       }
     }
-
     @media (max-width: 620px) {
       .card {
         padding: 22px;
       }
-
       .stats-grid {
         grid-template-columns: 1fr;
       }
-
       .image-modal {
         padding: 18px;
       }
-
       .modal-close {
         top: 14px;
         right: 14px;
       }
-
       .modal-nav {
         width: 40px;
         height: 40px;
         font-size: 28px;
       }
     }
-
     /* Research 1 전용 스타일: Research 2에는 적용되지 않습니다. */
     .research-one-gallery { min-width: 0; height: 260px; }
     .research-one-carousel { padding-bottom: 28px; }
@@ -1004,7 +871,6 @@
     @media (max-width: 620px) {
       .research-one-carousel.is-expanded { padding: 64px 18px 56px; }
     }
-
     /* Research: full-width title, equally tall media and summary columns. */
     #research { max-width: 1240px; }
     #research .research-card {
@@ -1099,9 +965,7 @@
     }
   </style>
 </head>
-
 <body>
-
   <header id="hero-header">
     <div class="header-inner">
       <h1>Daehyeon Kim</h1>
@@ -1113,7 +977,6 @@
       </p>
     </div>
   </header>
-
   <nav>
     <a href="#about">About</a>
     <a href="#research">Research</a>
@@ -1121,10 +984,8 @@
     <a href="#honors-patents">Honors & Patents</a>
     <a href="#contact">Contact</a>
   </nav>
-
   <section id="about">
     <h2>About</h2>
-
     <div class="card about-card">
       <div class="profile-column">
         <div class="profile-photo">
@@ -1134,64 +995,52 @@
             images/profile.(png/jpg/jpeg/gif/webp)
           </div>
         </div>
-
         <div class="profile-name">Daehyeon Kim</div>
         <div class="profile-title">
           Mechanical Engineering Researcher<br>
           Micro/nanoscale Fabrication · Advanced Materials · Electronic Devices
         </div>
-
         <div class="contact-box">
           <div class="contact-title">Contact</div>
           <div class="contact-email">
             Email: <a href="mailto:kimd30@rpi.edu">kimd30@rpi.edu</a>
           </div>
-
           <div class="social-icons">
             <a class="social-icon scholar" href="https://scholar.google.com/citations?user=vbTD81EAAAAJ&amp;hl=en" target="_blank" rel="noopener noreferrer" title="Google Scholar" aria-label="Daehyeon Kim on Google Scholar"><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i></a>
             <a class="social-icon linkedin" href="https://www.linkedin.com/in/daehyeon-k-1b838725a/" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
             <a class="social-icon github inactive" href="#" title="GitHub profile not available yet" aria-label="GitHub profile not available yet"><i class="fa-brands fa-github"></i></a>
           </div>
         </div>
-
         <div class="skills-box">
           <div class="skills-title">Research Skills</div>
-
           <div class="skill-item">
             <span class="skill-label">Optics</span>
             <span class="skill-text">Optical alignment &amp; set-up</span>
           </div>
-
           <div class="skill-item">
             <span class="skill-label">Simulation</span>
             <span class="skill-text">COMSOL (thermal &amp; mechanical simulation), ANSYS HFSS</span>
           </div>
-
           <div class="skill-item">
             <span class="skill-label">Material Synthesis</span>
             <span class="skill-text">Nanoparticles, Nanowires</span>
           </div>
-
           <div class="skill-item">
             <span class="skill-label">Characterization</span>
             <span class="skill-text">SEM-EDS, XPS, FT-IR, UV-VIS spectrometer</span>
           </div>
-
           <div class="skill-item">
             <span class="skill-label">Measurement Instruments</span>
             <span class="skill-text">Function generator, Oscilloscope, Network analyzer</span>
           </div>
-
           <div class="skill-item">
             <span class="skill-label">Programming & Design</span>
             <span class="skill-text">MATLAB, Illustrator, Photoshop, CAD (3D modeling), Rhino 3D, KeyShot</span>
           </div>
         </div>
       </div>
-
       <div class="about-content">
         <h3>Education</h3>
-
         <div class="education-list">
           <div class="education-item">
             <div class="education-top">
@@ -1203,7 +1052,6 @@
             </div>
             <div class="education-date">August 2026 — Current</div>
           </div>
-
           <div class="education-item">
             <div class="education-top">
               <div class="education-school">Daegu Gyeongbuk Institute of Science and Technology</div>
@@ -1214,7 +1062,6 @@
             </div>
             <div class="education-date">August 2026</div>
           </div>
-
           <div class="education-item">
             <div class="education-top">
               <div class="education-school">Incheon National University</div>
@@ -1226,30 +1073,25 @@
             <div class="education-date">August 2022</div>
           </div>
         </div>
-
         <h3>Research Metrics</h3>
         <div class="stats-grid">
           <div class="stat-card">
             <div class="stat-number" id="publication-count">—</div>
             <div class="stat-label">Publications</div>
           </div>
-
           <div class="stat-card">
             <div class="stat-number" id="citation-total">67</div>
             <div class="stat-label">Citations</div>
           </div>
-
           <div class="stat-card">
             <div class="stat-number" id="h-index">2</div>
             <div class="stat-label">h-index</div>
           </div>
         </div>
-
         <p class="metrics-source">
           <span id="metrics-status" aria-live="polite">Google Scholar · Last checked: Sep 23, 2026.</span><br>
           <a href="https://scholar.google.com/citations?user=vbTD81EAAAAJ&amp;hl=en" target="_blank" rel="noopener noreferrer">Google Scholar · All-time metrics ↗</a>
         </p>
-
         <h3>Profile</h3>
         <p>
           My research interests span micro/nanoscale fabrication, advanced materials, and electronic devices. I am particularly interested in how materials synthesis, processing, and structural design influence material properties and device performance, and how these relationships can guide the development of functional micro/nanosystems.
@@ -1258,9 +1100,7 @@
         <p>
           My previous research includes metal nanoparticle synthesis, conductive ink development, laser-assisted fabrication of flexible electrodes, and microelectrode patterning on curved microfibers for single-fiber electronics. These experiences have shaped my broader interest in connecting materials development with device fabrication, characterization, and integration. Building on this background, I aim to explore new materials and fabrication approaches for electronic, optical, and electromechanical devices.
         </p>
-
         <br>
-
         <h3>Research Interests</h3>
         <div class="tags-container">
           <span class="tag">Micro/Nano fabrication</span>
@@ -1272,10 +1112,8 @@
       </div>
     </div>
   </section>
-
   <section id="research">
     <h2>Research</h2>
-
     <div class="card research-card">
       <h3 class="research-heading">Spatially Programmable Microelectrode Patterning on Highly Curved Microfibers for Single-Fiber Electronics <span class="research-project">(M.S. Research Project)</span></h3>
       <!-- Research 1 전용: 사진 6개 + MP4 2개 -->
@@ -1307,7 +1145,6 @@
         </div>
       </div>
     </div>
-
     <div class="card research-card">
       <h3 class="research-heading">Metal Nanoparticles Synthesis and Flexible Electrode Fabrication <span class="research-project">(Undergraduate Research Project)</span></h3>
       <div class="research-gallery">
@@ -1315,10 +1152,8 @@
         <div class="carousel-placeholder">
           Loading research images…
         </div>
-
         <button class="carousel-btn prev" type="button" data-prev>‹</button>
         <button class="carousel-btn next" type="button" data-next>›</button>
-
         <div class="carousel-dots"></div>
       </div>
       </div>
@@ -1339,15 +1174,11 @@
         </div>
       </div>
     </div>
-
   </section>
-
   <section id="publications">
     <h2>Publications</h2>
-
     <!-- Citations와 h-index는 별도 자동 갱신 작업에서 가져옵니다.
          아래 data-citations 값은 Scholar 수치 계산에 사용하지 않습니다. -->
-
     <div class="card publication-card" data-publication-type="journal" data-citations="0">
       <h3>Spatially Programmable Microelectrode Patterning on Highly Curved Microfibers for Single-Fiber Electronics</h3>
       <span class="status status-submitted">Submitted (2026)</span>
@@ -1359,12 +1190,12 @@
         This study presents a mask-free laser-writing strategy for spatially selective formation of silver microelectrodes on highly curved microfibers. It demonstrates tunable electrode geometry and electrical properties, mechanical robustness, and integration of passive circuits and multicolor micro-LEDs, establishing a versatile platform for single-fiber electronics.
       </p>
     </div>
-
     <div class="card publication-card" data-publication-type="journal" data-citations="0">
       <h3>Deformation Invariant Biodegradable Fibre Electrodes Enabled by Compliant Coordination Bridges Reinforcing Percolation Network</h3>
       <span class="status status-revision">Under revision</span>
       <div class="authors">
         Jinho Kim (First author), Yukye Lee, Huidam Woo, Hwajoong Kim, <span class="my-name">Daehyeon Kim</span>, Minchang Shin, Jimin Kim, Sangwon Seo, and Jaehong Lee*
+        Jinho Kim†, Yukye Lee, Huidam Woo, Hwajoong Kim, <span class="my-name">Daehyeon Kim</span>, Minchang Shin, Jimin Kim, Sangwon Seo, and Jaehong Lee*
       </div>
       <div class="publication-meta">Manuscript under revision</div>
       <p>
@@ -1373,7 +1204,6 @@
         that reinforce the conductive percolation network.
       </p>
     </div>
-
     <div class="card publication-card" data-publication-type="journal" data-citations="63">
       <h3>
         <a class="title-link" href="https://www.nature.com/articles/s41528-025-00465-w" target="_blank" rel="noopener noreferrer">
@@ -1396,14 +1226,12 @@
           <span class="journal-metric-value">Q1 / 98.4%</span>
         </div>
       </div>
-
       <p>
         A comprehensive review on advances and perspectives in fiber-based electronic devices,
         covering design principles, fabrication strategies, materials platforms, and applications
         in next-generation soft electronic systems.
       </p>
     </div>
-
     <div class="card publication-card" data-publication-type="journal" data-citations="7">
       <h3>
         <a class="title-link" href="https://advanced.onlinelibrary.wiley.com/doi/10.1002/adfm.202406651" target="_blank" rel="noopener noreferrer">
@@ -1426,7 +1254,6 @@
           <span class="journal-metric-value">Q1 / 95%</span>
         </div>
       </div>
-
       <p>
         A comprehensive overview of one-dimensional soft sensing devices for healthcare applications,
         discussing recent progress in materials, device design, fabrication strategies, and their
@@ -1434,7 +1261,6 @@
       </p>
     </div>
   </section>
-
   <section id="honors-patents">
     <h2>Honors & Patents</h2>
     
@@ -1465,7 +1291,6 @@
           </div>
           <div class="honor-desc">Research title: “Fabrication of Multi-Scale Functional Structures Using Laser Processing.”</div>
         </div>
-
         <div class="honor-item">
           <div class="honor-top">
             <span class="honor-title">Excellent Research Prize, Undergraduate Student Research Competition</span>
@@ -1477,7 +1302,6 @@
           </div>
           <div class="honor-desc">Research title: “Flexible Substrate Fabricated by Laser Processing for Soft Robot.”</div>
         </div>
-
         <div class="honor-item">
           <div class="honor-top">
             <span class="honor-title">Academic Excellence Scholarship</span>
@@ -1488,10 +1312,8 @@
             <span class="honor-location">Incheon, South Korea</span>
           </div>
         </div>
-
       </div>
     </div>
-
     <h3 class="section-subheading">Patents</h3>
     <div class="card">
       <div class="patents-list">
@@ -1506,22 +1328,18 @@
             Inventors: Jaehong Lee, <span class="my-name">Daehyeon Kim</span>, and Minchang Shin
           </div>
         </div>
-
       </div>
     </div>
   </section>
-
   <section id="contact">
     <h2>Contact</h2>
     <div class="card">
       <p><strong>Email:</strong> <a href="mailto:kimd30@rpi.edu">kimd30@rpi.edu</a></p>
     </div>
   </section>
-
   <footer>
     © 2026 Daehyeon Kim. All rights reserved.
   </footer>
-
   <div class="image-modal" id="image-modal">
     <button class="modal-close" type="button" id="modal-close" aria-label="Close image">×</button>
     <button class="modal-nav prev" type="button" id="modal-prev" aria-label="Previous image">‹</button>
@@ -1529,7 +1347,6 @@
     <button class="modal-nav next" type="button" id="modal-next" aria-label="Next image">›</button>
     <div class="modal-caption" id="modal-caption"></div>
   </div>
-
   <script type="application/json" id="scholar-initial-metrics">
 {
   "profile_id": "vbTD81EAAAAJ",
@@ -1541,72 +1358,54 @@
   "updated_at": "2026-09-23T20:26:33.774760Z"
 }
   </script>
-
   <script>
     const imageExtensions = ["png", "jpg", "jpeg", "gif", "webp"];
     const normalImageDuration = 3000;
     const gifImageDuration = 8000;
-
     let modalGallery = [];
     let modalIndex = 0;
-
     function findImageSource(basePath) {
       return new Promise(function(resolve) {
         let attemptIndex = 0;
-
         function tryNext() {
           if (attemptIndex >= imageExtensions.length) {
             resolve(null);
             return;
           }
-
           const ext = imageExtensions[attemptIndex];
           const testSrc = `${basePath}.${ext}`;
           const tester = new Image();
-
           tester.onload = function() {
             resolve(testSrc);
           };
-
           tester.onerror = function() {
             attemptIndex++;
             tryNext();
           };
-
           tester.src = testSrc;
         }
-
         tryNext();
       });
     }
-
     function getImageDuration(src) {
       const cleanSrc = src.split("?")[0].toLowerCase();
-
       if (cleanSrc.endsWith(".gif")) {
         return gifImageDuration;
       }
-
       return normalImageDuration;
     }
-
     function updateModalImage() {
       const modalImage = document.getElementById("modal-image");
       const modalCaption = document.getElementById("modal-caption");
       const modalPrev = document.getElementById("modal-prev");
       const modalNext = document.getElementById("modal-next");
-
       if (!modalImage || modalGallery.length === 0) return;
-
       const currentSrc = modalGallery[modalIndex];
-
       modalImage.src = currentSrc;
       modalImage.alt = `Research image ${modalIndex + 1}`;
-
       if (modalCaption) {
         modalCaption.textContent = `Research image ${modalIndex + 1} / ${modalGallery.length}`;
       }
-
       if (modalGallery.length > 1) {
         if (modalPrev) modalPrev.classList.add("active");
         if (modalNext) modalNext.classList.add("active");
@@ -1615,74 +1414,57 @@
         if (modalNext) modalNext.classList.remove("active");
       }
     }
-
     function openImageModal(gallerySources, startIndex) {
       const modal = document.getElementById("image-modal");
-
       if (!modal || !gallerySources || gallerySources.length === 0) return;
-
       modalGallery = gallerySources.slice();
       modalIndex = startIndex;
-
       updateModalImage();
-
       modal.classList.add("active");
       document.body.style.overflow = "hidden";
     }
-
     function closeImageModal() {
       const modal = document.getElementById("image-modal");
       const modalImage = document.getElementById("modal-image");
-
       if (!modal) return;
-
       modal.classList.remove("active");
       document.body.style.overflow = "";
-
       if (modalImage) {
         modalImage.src = "";
       }
-
       modalGallery = [];
       modalIndex = 0;
     }
-
     function showNextModalImage() {
       if (modalGallery.length <= 1) return;
       modalIndex = (modalIndex + 1) % modalGallery.length;
       updateModalImage();
     }
-
     function showPreviousModalImage() {
       if (modalGallery.length <= 1) return;
       modalIndex = (modalIndex - 1 + modalGallery.length) % modalGallery.length;
       updateModalImage();
     }
-
     function initializeImageModal() {
       const modal = document.getElementById("image-modal");
       const closeButton = document.getElementById("modal-close");
       const modalPrev = document.getElementById("modal-prev");
       const modalNext = document.getElementById("modal-next");
-
       if (closeButton) {
         closeButton.addEventListener("click", closeImageModal);
       }
-
       if (modalPrev) {
         modalPrev.addEventListener("click", function(event) {
           event.stopPropagation();
           showPreviousModalImage();
         });
       }
-
       if (modalNext) {
         modalNext.addEventListener("click", function(event) {
           event.stopPropagation();
           showNextModalImage();
         });
       }
-
       if (modal) {
         modal.addEventListener("click", function(event) {
           if (event.target === modal) {
@@ -1690,64 +1472,48 @@
           }
         });
       }
-
       document.addEventListener("keydown", function(event) {
         const modalIsOpen = modal && modal.classList.contains("active");
-
         if (!modalIsOpen) return;
-
         if (event.key === "Escape") {
           closeImageModal();
         }
-
         if (event.key === "ArrowRight") {
           showNextModalImage();
         }
-
         if (event.key === "ArrowLeft") {
           showPreviousModalImage();
         }
       });
     }
-
     async function initializeHeaderBackground() {
       const headerInner = document.querySelector(".header-inner");
       if (!headerInner) return;
-
       const src = await findImageSource("images/header");
-
       if (src) {
         headerInner.style.setProperty("--header-bg", `url("${src}")`);
       }
     }
-
     async function initializeProfileImage() {
       const profileImage = document.getElementById("profile-image");
       const profilePlaceholder = document.getElementById("profile-placeholder");
-
       if (!profileImage) return;
-
       const src = await findImageSource("images/profile");
-
       if (src) {
         profileImage.src = src;
         profileImage.style.display = "block";
-
         if (profilePlaceholder) {
           profilePlaceholder.style.display = "none";
         }
       } else {
         profileImage.style.display = "none";
-
         if (profilePlaceholder) {
           profilePlaceholder.style.display = "flex";
         }
       }
     }
-
     async function initializeCarousels() {
       const carousels = document.querySelectorAll("[data-carousel]");
-
       for (const carousel of carousels) {
         const prefix = carousel.dataset.prefix;
         const count = Number(carousel.dataset.count || 6);
@@ -1755,13 +1521,11 @@
         const prevButton = carousel.querySelector("[data-prev]");
         const nextButton = carousel.querySelector("[data-next]");
         const dotsContainer = carousel.querySelector(".carousel-dots");
-
         // Known filenames render immediately; no extension probing or missing ink7.
         const imageSources = carousel.dataset.sources
           ? JSON.parse(carousel.dataset.sources)
           : (await Promise.all(Array.from({ length: count }, (_, i) =>
               findImageSource(`${prefix}${i + 1}`)))).filter(Boolean);
-
         if (imageSources.length === 0) {
           if (placeholder) {
             placeholder.style.display = "block";
@@ -1777,30 +1541,23 @@
           }
           continue;
         }
-
         if (placeholder) {
           placeholder.style.display = "none";
         }
-
         imageSources.forEach(function(src, index) {
           const img = document.createElement("img");
           img.src = src;
           img.alt = `Research image ${index + 1}`;
-
           if (index === 0) {
             img.classList.add("active");
           }
-
           img.addEventListener("click", function() {
             openImageModal(imageSources, index);
           });
-
           carousel.insertBefore(img, prevButton);
         });
-
         if (dotsContainer) {
           dotsContainer.innerHTML = "";
-
           imageSources.forEach(function(_, index) {
             const dot = document.createElement("span");
             dot.className = "dot";
@@ -1809,77 +1566,61 @@
             }
             dotsContainer.appendChild(dot);
           });
-
           dotsContainer.style.display = "block";
         }
-
         const images = carousel.querySelectorAll("img");
         const dots = carousel.querySelectorAll(".dot");
         let currentIndex = 0;
         let carouselTimer = null;
-
         function showImage(index) {
           images[currentIndex].classList.remove("active");
           dots[currentIndex].classList.remove("active");
-
           currentIndex = (index + images.length) % images.length;
-
           images[currentIndex].classList.add("active");
           dots[currentIndex].classList.add("active");
         }
-
         function scheduleNextImage() {
           if (carouselTimer) {
             clearTimeout(carouselTimer);
           }
-
           const currentImage = images[currentIndex];
           const duration = getImageDuration(currentImage.src);
-
           carouselTimer = setTimeout(function() {
             showImage(currentIndex + 1);
             scheduleNextImage();
           }, duration);
         }
-
         function nextImage() {
           showImage(currentIndex + 1);
           scheduleNextImage();
         }
-
         function prevImage() {
           showImage(currentIndex - 1);
           scheduleNextImage();
         }
-
         if (images.length > 1) {
           if (prevButton) {
             prevButton.style.display = "flex";
             prevButton.addEventListener("click", prevImage);
           }
-
           if (nextButton) {
             nextButton.style.display = "flex";
             nextButton.addEventListener("click", nextImage);
           }
-
           scheduleNextImage();
         } else {
           if (prevButton) {
             prevButton.style.display = "none";
           }
-
           if (nextButton) {
             nextButton.style.display = "none";
           }
         }
       }
     }
-
     const scholarProfileId = "vbTD81EAAAAJ";
     const scholarCacheKey = "scholar-metrics-" + scholarProfileId;
     let metricsRequestInProgress = false;
-
     function validScholarMetrics(data) {
       return data && data.profile_id === scholarProfileId &&
         data.source === "Google Scholar" &&
@@ -1889,7 +1630,6 @@
         typeof data.updated_at === "string" &&
         Number.isFinite(Date.parse(data.updated_at));
     }
-
     function showScholarMetrics(data) {
       document.getElementById("citation-total").textContent = data.citations.toLocaleString("en-US");
       document.getElementById("h-index").textContent = data.h_index;
@@ -1901,7 +1641,6 @@
       document.getElementById("metrics-status").textContent =
         (isOld ? "Last available Google Scholar data: " : "Google Scholar · Last checked: ") + dateText;
     }
-
     function scholarMetricsURLs() {
       const urls = [new URL("scholar-metrics.json", document.baseURI).href];
       const configured = document.querySelector('meta[name="github-repository"]').content.trim();
@@ -1918,7 +1657,6 @@
       }
       return urls;
     }
-
     async function fetchScholarMetrics(url) {
       const controller = new AbortController();
       const timeout = setTimeout(function() { controller.abort(); }, 10000);
@@ -1932,7 +1670,6 @@
         clearTimeout(timeout);
       }
     }
-
     async function updateResearchMetrics() {
       // Publications는 기존처럼 홈페이지에 등록된 항목 수입니다.
       document.getElementById("publication-count").textContent =
@@ -1977,7 +1714,6 @@
         metricsRequestInProgress = false;
       }
     }
-
     // Research 1 전용. Research 2의 기존 이미지 로직과 분리되어 있습니다.
     function initializeResearchOne() {
       const carousel = document.getElementById("research-one-carousel");
@@ -1986,7 +1722,6 @@
       const dotsContainer = carousel.querySelector(".carousel-dots");
       const expandButton = carousel.querySelector(".research-one-expand");
       const message = carousel.querySelector(".research-one-message");
-
       // 첨부하신 실제 파일명과 순서입니다. 모든 파일은 images 폴더에 둡니다.
       const mediaFiles = [
         "images/laser1.png",
@@ -1998,23 +1733,19 @@
         "images/laser7.mp4",
         "images/laser8.png"
       ];
-
       let currentIndex = -1;
       let imageTimer = null;
       let expanded = false;
       let previousFocus = null;
       let previousOverflow = "";
-
       function setMessage(text) {
         message.textContent = text;
         message.hidden = !text;
       }
-
       function clearImageTimer() {
         clearTimeout(imageTimer);
         imageTimer = null;
       }
-
       function scheduleImage(index) {
         if (index !== currentIndex) return;
         clearImageTimer();
@@ -2023,7 +1754,6 @@
           showMedia(currentIndex + 1);
         }, getImageDuration(mediaFiles[index]));
       }
-
       const mediaElements = mediaFiles.map(function(src, index) {
         const isVideo = /\.mp4$/i.test(src);
         const element = document.createElement(isVideo ? "video" : "img");
@@ -2063,7 +1793,6 @@
         stage.appendChild(element);
         return element;
       });
-
       const dots = mediaFiles.map(function(_, index) {
         const dot = document.createElement("button");
         dot.type = "button";
@@ -2073,7 +1802,6 @@
         dotsContainer.appendChild(dot);
         return dot;
       });
-
       function showMedia(index) {
         clearImageTimer();
         if (currentIndex >= 0) {
@@ -2089,7 +1817,6 @@
         dots[currentIndex].classList.add("active");
         dots[currentIndex].setAttribute("aria-current", "true");
         setMessage("");
-
         if (current.tagName === "VIDEO") {
           if (current.error) {
             setMessage("Unable to load this video. Use the arrows to continue.");
@@ -2106,7 +1833,6 @@
           else setMessage("Unable to load this image. Use the arrows to continue.");
         }
       }
-
       // 같은 미디어를 확대하므로 영상의 현재 재생 위치가 유지됩니다.
       function setExpanded(open) {
         if (open === expanded) return;
@@ -2129,7 +1855,6 @@
           if (previousFocus) previousFocus.focus({ preventScroll: true });
         }
       }
-
       carousel.querySelector("[data-prev]").addEventListener("click", function() {
         showMedia(currentIndex - 1);
       });
@@ -2164,27 +1889,22 @@
           }
         }
       });
-
       showMedia(0);
     }
-
     initializeResearchOne();
     initializeImageModal();
     initializeHeaderBackground();
     initializeProfileImage();
     initializeCarousels();
     updateResearchMetrics();
-
     // 열린 페이지에서도 저장된 최신 수치를 5분마다 확인합니다.
     // Google Scholar 원본 조회는 GitHub Actions가 하루 한 번 수행합니다.
     setInterval(function() {
       if (!document.hidden) updateResearchMetrics();
     }, 5 * 60 * 1000);
-
     document.addEventListener("visibilitychange", function() {
       if (!document.hidden) updateResearchMetrics();
     });
   </script>
-
 </body>
 </html>
