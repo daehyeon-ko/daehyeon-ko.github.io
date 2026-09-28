@@ -1352,7 +1352,7 @@
       <h3>Spatially Programmable Microelectrode Patterning on Highly Curved Microfibers for Single-Fiber Electronics</h3>
       <span class="status status-submitted">Submitted (2026)</span>
       <div class="authors">
-        <span class="my-name">Daehyeon Kim†</span>, Minchang Shin†, Byeongjun Jeong, Garam Park, Yuna Son, Minhu Jeon, Byeongmoon Lee, and Jaehong Lee*
+        <span class="my-name">Daehyeon Kim<sup>†</sup></span>, Minchang Shin<sup>†</sup>, Byeongjun Jeong, Garam Park, Yuna Son, Minhu Jeon, Byeongmoon Lee, and Jaehong Lee<sup>*</sup>
       </div>
       <div class="publication-meta">Submitted manuscript</div>
       <p>
@@ -1364,7 +1364,7 @@
       <h3>Deformation Invariant Biodegradable Fibre Electrodes Enabled by Compliant Coordination Bridges Reinforcing Percolation Network</h3>
       <span class="status status-revision">Under revision</span>
       <div class="authors">
-        Jinho Kim<sup>†</sup>, Yukye Lee, Huidam Woo, Hwajoong Kim, <span class="my-name">Daehyeon Kim</span>, Minchang Shin, Jimin Kim, Sangwon Seo, and Jaehong Lee*
+        Jinho Kim<sup>†</sup>, Yukye Lee, Huidam Woo, Hwajoong Kim, <span class="my-name">Daehyeon Kim</span>, Minchang Shin, Jimin Kim, Sangwon Seo, and Jaehong Lee<sup>*</sup>
       </div>
       <div class="publication-meta">Manuscript under revision</div>
       <p>
@@ -1382,7 +1382,7 @@
       </h3>
       <span class="status status-published">Published</span>
       <div class="authors">
-        Hwajoong Kim†, <span class="my-name">Daehyeon Kim†</span> (Co-first author), Jinho Kim, Yukye Lee, Minchang Shin, Jimin Kim, Fransiska M. Bossuyt, Gun-Hee Lee, Byeongmoon Lee, William R. Taylor, and Jaehong Lee*
+        Hwajoong Kim<sup>†</sup>, <span class="my-name">Daehyeon Kim<sup>†</sup></span> (Co-first author), Jinho Kim, Yukye Lee, Minchang Shin, Jimin Kim, Fransiska M. Bossuyt, Gun-Hee Lee, Byeongmoon Lee, William R. Taylor, and Jaehong Lee<sup>*</sup>
       </div>
       <div class="publication-meta">npj Flexible Electronics, Vol. 9, 84 (2025)</div>
       
@@ -1412,7 +1412,7 @@
       </h3>
       <span class="status status-published">Published</span>
       <div class="authors">
-        Jinho Kim†, Hwajoong Kim†, Muguen Lee, Junyeong Lee, Yukye Lee, <span class="my-name">Daehyeon Kim</span>, and Jaehong Lee*
+        Jinho Kim<sup>†</sup>, Hwajoong Kim<sup>†</sup>, Muguen Lee, Junyeong Lee, Yukye Lee, <span class="my-name">Daehyeon Kim</span>, and Jaehong Lee<sup>*</sup>
       </div>
       <div class="publication-meta">Advanced Functional Materials, Vol. 34, 2406651 (2024)</div>
       
@@ -1986,131 +1986,134 @@
       const dotsContainer = carousel.querySelector(".carousel-dots");
       const expandButton = carousel.querySelector(".research-one-expand");
       const message = carousel.querySelector(".research-one-message");
-
-      // 첨부하신 실제 파일명과 순서입니다. 모든 파일은 images 폴더에 둡니다.
       const mediaFiles = [
         "images/laser1.png",
         "images/laser2.png",
         "images/laser3.mp4",
         "images/laser4.png",
-        "images/laser5.png",
+        "images/laser5.mp4",
         "images/laser6.png",
-        "images/laser7.mp4",
-        "images/laser8.png"
+        "images/laser7.png",
+        "images/laser8.mp4",
+        "images/laser9.png"
       ];
-
       let currentIndex = -1;
       let imageTimer = null;
       let expanded = false;
       let previousFocus = null;
       let previousOverflow = "";
+      let visit = 0;
+      let playRequest = null;
+      let wantsPlayback = false;
+      let resumeVideo = false;
+      let wasPlaying = false;
+      let previouslyVisible = false;
 
       function setMessage(text) {
         message.textContent = text;
         message.hidden = !text;
       }
-
       function clearImageTimer() {
         clearTimeout(imageTimer);
         imageTimer = null;
       }
-
       function scheduleImage(index) {
         if (index !== currentIndex) return;
         clearImageTimer();
-        // 사진은 기존 3초, GIF로 변경한 경우 기존 8초를 유지합니다.
         imageTimer = setTimeout(function() {
           showMedia(currentIndex + 1);
         }, getImageDuration(mediaFiles[index]));
       }
 
-      const mediaElements = mediaFiles.map(function(src, index) {
-        const isVideo = /\.mp4$/i.test(src);
-        const element = document.createElement(isVideo ? "video" : "img");
-        const label = `Research 1 ${isVideo ? "video" : "image"} ${index + 1}`;
-        if (isVideo) {
-          element.controls = true;
-          element.muted = true;
-          element.defaultMuted = true;
-          element.playsInline = true;
-          element.setAttribute("muted", "");
-          element.setAttribute("playsinline", "");
-          element.setAttribute("webkit-playsinline", "");
-          element.preload = "auto";
-          element.loop = false;
-          element.setAttribute("aria-label", label);
-          // 영상에는 시간제한을 걸지 않고, 재생이 끝나면 다음 항목으로 넘어갑니다.
-          element.addEventListener("ended", function() {
-            if (index === currentIndex) showMedia(currentIndex + 1);
-          });
-          let starting = false;
-          let needsAutoStart = false;
-          let visit = 0;
-          function tryAutoStart() {
-            if (!needsAutoStart || starting || index !== currentIndex || element.error) return;
-            element.muted = true;
-            element.defaultMuted = true;
-            element.playsInline = true;
-            starting = true;
-            const thisVisit = visit;
-            const playback = element.play();
-            if (!playback) { starting = false; return; }
-            playback.catch(function(error) {
-              if (thisVisit !== visit || index !== currentIndex) return;
-              if (error.name === "NotAllowedError") {
-                setMessage("Autoplay is blocked by your browser. Press play to continue.");
-              } else if (error.name !== "AbortError") {
-                setMessage("Unable to play this video. Use the controls to retry.");
-              }
-            }).finally(function() {
-              if (thisVisit === visit) starting = false;
-            });
+      // Reuse one player across all three clips. Keep its inline/mute settings
+      // in place before assigning a source; full-screen uses this same player.
+      const video = document.createElement("video");
+      video.controls = true;
+      video.preload = "auto";
+      video.loop = false;
+      video.muted = true;
+      video.defaultMuted = true;
+      video.playsInline = true;
+      video.setAttribute("muted", "");
+      video.setAttribute("playsinline", "");
+      video.setAttribute("webkit-playsinline", "");
+      stage.appendChild(video);
+
+      function videoIsActive() {
+        return currentIndex >= 0 && /\.mp4$/i.test(mediaFiles[currentIndex]);
+      }
+      function visibleNow() {
+        if (document.hidden) return false;
+        const bounds = stage.getBoundingClientRect();
+        return bounds.width > 0 && bounds.height > 0 &&
+          bounds.bottom > 0 && bounds.top < window.innerHeight &&
+          bounds.right > 0 && bounds.left < window.innerWidth;
+      }
+      function tryPlayback() {
+        if (!videoIsActive() || !wantsPlayback || !visibleNow() || video.error || playRequest) return;
+        video.muted = true;
+        video.defaultMuted = true;
+        video.playsInline = true;
+        const request = { visit: visit };
+        playRequest = request;
+        function failed(error) {
+          if (request.visit !== visit || !videoIsActive()) return;
+          if (error.name === "NotAllowedError") {
+            setMessage("Your browser blocked autoplay. Press play to watch this video.");
+          } else if (error.name !== "AbortError") {
+            setMessage("Unable to play this video. Use the controls to retry.");
           }
-          element.startSlide = function() {
-            visit++;
-            starting = false;
-            needsAutoStart = true;
-            element.muted = true;
-            element.autoplay = true;
-            if (element.readyState > 0) element.currentTime = 0;
-            tryAutoStart();
-          };
-          element.stopSlide = function() {
-            visit++;
-            starting = false;
-            needsAutoStart = false;
-            element.autoplay = false;
-            element.pause();
-          };
-          // Retry when loading completes; only the visible slide may start.
-          element.addEventListener("loadeddata", tryAutoStart);
-          element.addEventListener("canplay", tryAutoStart);
-          element.addEventListener("playing", function() {
-            if (index !== currentIndex) { element.pause(); return; }
-            needsAutoStart = false;
-            setMessage("");
-          });
-        } else {
-          element.alt = label;
-          element.addEventListener("load", function() {
-            if (index === currentIndex) {
-              setMessage("");
-              scheduleImage(index);
-            }
-          });
-          element.addEventListener("click", function() { setExpanded(!expanded); });
         }
-        element.addEventListener("error", function() {
-          if (index === currentIndex) {
-            clearImageTimer();
-            setMessage("Unable to load this media. Use the arrows to continue.");
-          }
-        });
-        element.src = src;
-        stage.appendChild(element);
-        return element;
+        try {
+          Promise.resolve(video.play()).catch(failed).finally(function() {
+            if (playRequest === request) playRequest = null;
+          });
+        } catch (error) {
+          playRequest = null;
+          failed(error);
+        }
+      }
+      video.addEventListener("loadeddata", tryPlayback);
+      video.addEventListener("canplay", tryPlayback);
+      video.addEventListener("playing", function() {
+        if (!videoIsActive() || !visibleNow()) { video.pause(); return; }
+        wantsPlayback = false;
+        resumeVideo = false;
+        wasPlaying = true;
+        setMessage("");
+      });
+      video.addEventListener("pause", function() {
+        // Honor a viewer's pause; don't restart it on a later canplay event.
+        if (visibleNow() && !wantsPlayback) wasPlaying = false;
+      });
+      video.addEventListener("ended", function() {
+        if (videoIsActive() && video.ended) showMedia(currentIndex + 1);
+      });
+      video.addEventListener("error", function() {
+        if (!videoIsActive() || !video.error) return;
+        wantsPlayback = false;
+        resumeVideo = false;
+        setMessage("Unable to load this video. Use the arrows to continue.");
       });
 
+      const mediaElements = mediaFiles.map(function(src, index) {
+        if (/\.mp4$/i.test(src)) return video;
+        const img = document.createElement("img");
+        img.alt = `Research 1 image ${index + 1}`;
+        img.addEventListener("load", function() {
+          if (index === currentIndex) { setMessage(""); scheduleImage(index); }
+        });
+        img.addEventListener("error", function() {
+          if (index === currentIndex) {
+            clearImageTimer();
+            setMessage("Unable to load this image. Use the arrows to continue.");
+          }
+        });
+        img.addEventListener("click", function() { setExpanded(!expanded); });
+        img.src = src;
+        stage.appendChild(img);
+        return img;
+      });
       const dots = mediaFiles.map(function(_, index) {
         const dot = document.createElement("button");
         dot.type = "button";
@@ -2123,31 +2126,80 @@
 
       function showMedia(index) {
         clearImageTimer();
+        visit++;
+        playRequest = null;
+        wantsPlayback = false;
+        resumeVideo = false;
+        wasPlaying = false;
+        video.autoplay = false;
+        video.pause();
         if (currentIndex >= 0) {
-          const previous = mediaElements[currentIndex];
-          previous.classList.remove("active");
-          if (previous.tagName === "VIDEO") previous.stopSlide();
+          mediaElements[currentIndex].classList.remove("active");
           dots[currentIndex].classList.remove("active");
           dots[currentIndex].removeAttribute("aria-current");
         }
-        currentIndex = (index + mediaElements.length) % mediaElements.length;
+        currentIndex = (index + mediaFiles.length) % mediaFiles.length;
         const current = mediaElements[currentIndex];
         current.classList.add("active");
         dots[currentIndex].classList.add("active");
         dots[currentIndex].setAttribute("aria-current", "true");
         setMessage("");
-
-        if (current.tagName === "VIDEO") {
-          if (current.error) {
-            setMessage("Unable to load this video. Use the arrows to continue.");
-            return;
+        if (videoIsActive()) {
+          video.muted = true;
+          video.defaultMuted = true;
+          video.autoplay = true;
+          video.setAttribute("aria-label", `Research 1 video ${currentIndex + 1}`);
+          video.src = mediaFiles[currentIndex];
+          video.load();
+          wantsPlayback = true;
+          previouslyVisible = visibleNow();
+          // A synchronous attempt preserves a click's user activation.
+          // A second attempt after layout covers timed image-to-video transitions.
+          tryPlayback();
+          const thisVisit = visit;
+          requestAnimationFrame(function() {
+            if (thisVisit === visit) tryPlayback();
+          });
+        } else {
+          video.removeAttribute("src");
+          video.load();
+          if (current.complete) {
+            if (current.naturalWidth > 0) scheduleImage(currentIndex);
+            else setMessage("Unable to load this image. Use the arrows to continue.");
           }
-          current.startSlide();
-        } else if (current.complete) {
-          if (current.naturalWidth > 0) scheduleImage(currentIndex);
-          else setMessage("Unable to load this image. Use the arrows to continue.");
         }
       }
+
+      function checkVisibility() {
+        const visible = visibleNow();
+        if (videoIsActive()) {
+          if (!visible) {
+            resumeVideo = resumeVideo || wantsPlayback || wasPlaying || !video.paused;
+            video.pause();
+          } else if (!previouslyVisible && (resumeVideo || wantsPlayback)) {
+            wantsPlayback = true;
+            resumeVideo = false;
+            tryPlayback();
+          }
+        }
+        previouslyVisible = visible;
+      }
+      if ("IntersectionObserver" in window) {
+        new IntersectionObserver(checkVisibility, { threshold: [0, 0.01] }).observe(stage);
+      } else {
+        window.addEventListener("scroll", checkVisibility, { passive: true });
+        window.addEventListener("resize", checkVisibility);
+      }
+      document.addEventListener("visibilitychange", checkVisibility);
+      window.addEventListener("pageshow", checkVisibility);
+      // If the browser requires interaction, a normal page click/key can also
+      // retry a pending start. A deliberately paused video stays paused.
+      document.addEventListener("click", function(event) {
+        if (event.target !== video) tryPlayback();
+      });
+      document.addEventListener("keydown", function(event) {
+        if (event.target !== video && event.key !== "Tab") tryPlayback();
+      });
 
       // 같은 미디어를 확대하므로 영상의 현재 재생 위치가 유지됩니다.
       function setExpanded(open) {
